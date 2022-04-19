@@ -108,9 +108,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Administrativo\" />
-    <Folder Include="Estudiante\" />
-    <Folder Include="Profesor\" />
+    <Folder Include="Administrativo\Admin\" />
+    <Folder Include="Administrativo\Controles\" />
+    <Folder Include="Administrativo\Home\" />
+    <Folder Include="Administrativo\Images\" />
+    <Folder Include="Administrativo\Students\" />
+    <Folder Include="Administrativo\Teacher\" />
+    <Folder Include="Estudiante\Account\" />
+    <Folder Include="Estudiante\Claims\" />
+    <Folder Include="Estudiante\Grades\" />
+    <Folder Include="Estudiante\Home\" />
+    <Folder Include="Estudiante\Schedules\" />
+    <Folder Include="Profesor\Account\" />
+    <Folder Include="Profesor\Claims\" />
+    <Folder Include="Profesor\Home\" />
+    <Folder Include="Profesor\Schedules\" />
+    <Folder Include="Profesor\Subjects\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
