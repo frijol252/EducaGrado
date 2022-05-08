@@ -37,4 +37,16 @@ namespace EducaGrado.InicioSesion
             Application.Current.Shutdown();
         }
     }
+
+    /*
+     #region Properiarities
+
+        #endregion
+        #region Getters/Setters
+
+        #endregion
+        #region Constructor
+       
+        #endregion
+     */
 }
