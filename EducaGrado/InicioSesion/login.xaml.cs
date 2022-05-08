@@ -19,6 +19,9 @@ namespace EducaGrado.InicioSesion
     /// </summary>
     public partial class Index : Window
     {
+        //UserImpl implUser;
+        private bool accept = false;
+        private bool revisara = false;
         public Index()
         {
             InitializeComponent();
