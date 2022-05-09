@@ -19,7 +19,7 @@ namespace Model
         #endregion
         #region Getters/Setters
         public int CityId { get => cityId; set => cityId = value; }
-        public string Name { get => name; set => name = value; }
+        
         public byte Status { get => status; set => status = value; }
         public int ProvinceId { get => provinceId; set => provinceId = value; }
 
@@ -27,12 +27,13 @@ namespace Model
 
         #endregion
         #region Constructor
-        public Province(int provinceId, int cityId, string name, byte status)
+        public Province(int provinceId, int cityId, string name, byte status, string provinceName)
         {
             this.provinceId = provinceId;
             this.cityId = cityId;
-            this.name = name;
+            this.provinceName = name;
             this.status = status;
+            this.provinceName = provinceName;
         }
 
         #endregion

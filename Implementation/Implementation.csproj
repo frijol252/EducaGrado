@@ -41,7 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministratorImpl.cs" />
+    <Compile Include="AttendanceImpl.cs" />
+    <Compile Include="CityImpl.cs" />
+    <Compile Include="ClassImpl.cs" />
+    <Compile Include="CourseImpl.cs" />
+    <Compile Include="DBImplementation.cs" />
+    <Compile Include="GradeImpl.cs" />
+    <Compile Include="MatterImpl.cs" />
+    <Compile Include="PersonImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinceImpl.cs" />
+    <Compile Include="RoleUserImpl.cs" />
+    <Compile Include="ScheduleImpl.cs" />
+    <Compile Include="StudentImpl.cs" />
+    <Compile Include="TeacherImpl.cs" />
+    <Compile Include="TownImpl.cs" />
+    <Compile Include="UserImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj">

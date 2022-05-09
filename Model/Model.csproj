@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +42,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator.cs" />
+    <Compile Include="Attendance.cs" />
+    <Compile Include="CategoryMatter.cs" />
+    <Compile Include="CheckHour.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Course.cs" />
+    <Compile Include="Matter.cs" />
+    <Compile Include="Modality.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Province.cs" />
+    <Compile Include="RoleUser.cs" />
+    <Compile Include="Salary.cs" />
+    <Compile Include="Schedule.cs" />
+    <Compile Include="School.cs" />
+    <Compile Include="SchoolType.cs" />
+    <Compile Include="Student.cs" />
+    <Compile Include="Teacher.cs" />
+    <Compile Include="Town.cs" />
+    <Compile Include="TypeWork.cs" />
+    <Compile Include="UserAccount.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

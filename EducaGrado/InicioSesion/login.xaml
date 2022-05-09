@@ -6,7 +6,7 @@
         xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:EducaGrado.InicioSesion"
         mc:Ignorable="d"
-        Title="Index" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        Title="Login" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
@@ -14,8 +14,8 @@
                 <GradientStop Color="#f9d264" Offset="0"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Border Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="#100E17">
-            
+
+        <Border Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="#100E17" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
         </Border>
         <StackPanel Orientation="Horizontal">
             <StackPanel Width="350">
@@ -35,12 +35,12 @@
                     </StackPanel>
                     <StackPanel Margin="10" HorizontalAlignment="Center">
                         <Button Width="100" Height="40" Style="{StaticResource MaterialDesignRaisedButton}" materialDesing:ButtonAssist.CornerRadius="10" BorderThickness="2" BorderBrush="#D94448"
-                                Background="#D94448" Foreground="White" ToolTip="Login" x:Name="btnLogin" Click="btnLogin_Click" Content="Ingresar">
+                                Background="#D94448" Foreground="White" ToolTip="Login" x:Name="btnLogin"  Content="Ingresar">
 
                         </Button>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="30 10 0 0">
-                        <TextBlock HorizontalAlignment="Center" Margin="60 0 0 0"><Hyperlink Foreground="#D94448" Click="Hyperlink_Click">¿Olvidaste Tu Contraseña?</Hyperlink></TextBlock>
+                        <TextBlock HorizontalAlignment="Center" Margin="60 0 0 0"><Hyperlink Foreground="#D94448" Hyperlink.Click="Hyperlink_Click">¿Olvidaste Tu Contraseña?</Hyperlink></TextBlock>
                     </StackPanel>
                 </StackPanel>
                 

@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Implementation;
+using Model;
 
 namespace EducaGrado.InicioSesion
 {
@@ -19,22 +21,29 @@ namespace EducaGrado.InicioSesion
     /// </summary>
     public partial class Index : Window
     {
-        //UserImpl implUser;
+        UserImpl implUser;
         private bool accept = false;
         private bool revisara = false;
+
         public Index()
         {
             InitializeComponent();
         }
-
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            ForgotPassword fp = new ForgotPassword();
+            fp.Show();
+            this.Close();
         }
     }
 
