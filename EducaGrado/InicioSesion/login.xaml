@@ -35,7 +35,7 @@
                     </StackPanel>
                     <StackPanel Margin="10" HorizontalAlignment="Center">
                         <Button Width="100" Height="40" Style="{StaticResource MaterialDesignRaisedButton}" materialDesing:ButtonAssist.CornerRadius="10" BorderThickness="2" BorderBrush="#D94448"
-                                Background="#D94448" Foreground="White" ToolTip="Login" x:Name="btnLogin"  Content="Ingresar">
+                                Background="#D94448" Foreground="White" ToolTip="Login" x:Name="btnLogin"  Content="Ingresar" Click="btnLogin_Click">
 
                         </Button>
                     </StackPanel>

@@ -63,6 +63,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Administrativo\Home\HomeAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InicioSesion\ForgotPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -71,6 +75,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Administrativo\Home\HomeAdmin.xaml.cs">
+      <DependentUpon>HomeAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -126,7 +133,6 @@
   <ItemGroup>
     <Folder Include="Administrativo\Admin\" />
     <Folder Include="Administrativo\Controles\" />
-    <Folder Include="Administrativo\Home\" />
     <Folder Include="Administrativo\Images\" />
     <Folder Include="Administrativo\Students\" />
     <Folder Include="Administrativo\Teacher\" />
@@ -143,6 +149,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\educadblogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\EducaImage.png" />
+    <Resource Include="images\EducaLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />
