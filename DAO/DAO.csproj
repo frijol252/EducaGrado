@@ -45,9 +45,25 @@
     <Compile Include="AttendanceDao.cs" />
     <Compile Include="CategoryMatterDao.cs" />
     <Compile Include="CheckHourDao.cs" />
+    <Compile Include="CityDao.cs" />
     <Compile Include="ClassDao.cs" />
+    <Compile Include="CourseDao.cs" />
     <Compile Include="IDao.cs" />
+    <Compile Include="MatterDao.cs" />
+    <Compile Include="ModalityDao.cs" />
+    <Compile Include="PersonDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinceDao.cs" />
+    <Compile Include="RoleUserDao.cs" />
+    <Compile Include="SalaryDao.cs" />
+    <Compile Include="ScheduleDao.cs" />
+    <Compile Include="SchoolDao.cs" />
+    <Compile Include="SchoolTypeDao.cs" />
+    <Compile Include="StudentDao.cs" />
+    <Compile Include="TeacherDao.cs" />
+    <Compile Include="TownDao.cs" />
+    <Compile Include="TypeWorkDao.cs" />
+    <Compile Include="UserAccountDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

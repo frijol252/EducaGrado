@@ -6,17 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using DAO;
 using Model;
-
 namespace Implementation
 {
-    public class GradeImpl : GradeDao
+    public class SectionGradeImpl : SectionGradeDao
     {
-        public int Delete(Grade t)
+        public int Delete(SectionGrade t)
         {
             throw new NotImplementedException();
         }
 
-        public int Insert(Grade t)
+        public int Insert(SectionGrade t)
         {
             throw new NotImplementedException();
         }
@@ -26,7 +25,7 @@ namespace Implementation
             throw new NotImplementedException();
         }
 
-        public int Update(Grade t)
+        public int Update(SectionGrade t)
         {
             throw new NotImplementedException();
         }
