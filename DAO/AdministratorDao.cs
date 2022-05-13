@@ -7,7 +7,7 @@ using Model;
 
 namespace DAO
 {
-    interface AdministratorDao:IDao<Administrator>
+    public interface AdministratorDao:IDao<Administrator>
     {
 
     }

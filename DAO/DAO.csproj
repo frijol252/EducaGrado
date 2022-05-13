@@ -45,6 +45,7 @@
     <Compile Include="AttendanceDao.cs" />
     <Compile Include="CategoryMatterDao.cs" />
     <Compile Include="CheckHourDao.cs" />
+    <Compile Include="ClassDao.cs" />
     <Compile Include="IDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

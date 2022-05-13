@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    interface CheckHourDao : IDao<CheckHour>
+    public interface CheckHourDao : IDao<CheckHour>
     {
     }
 }

@@ -1,12 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAO;
 using Model;
 namespace Implementation
 {
-    public class UserImpl
+    public class UserImpl : UserAccountDao
     {
+        public int Delete(UserAccount t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Insert(UserAccount t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataTable Select()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Update(UserAccount t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

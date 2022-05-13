@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    interface AttendanceDao : IDao<Attendance>
+    public interface AttendanceDao : IDao<Attendance>
     {
     }
 }

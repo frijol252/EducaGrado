@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    interface CategoryMatterDao : IDao<CategoryMatter>
+    public interface CategoryMatterDao : IDao<CategoryMatter>
     {
     }
 }
