@@ -48,6 +48,7 @@
     <Compile Include="CityDao.cs" />
     <Compile Include="ClassDao.cs" />
     <Compile Include="CourseDao.cs" />
+    <Compile Include="GradeDao.cs" />
     <Compile Include="IDao.cs" />
     <Compile Include="MatterDao.cs" />
     <Compile Include="ModalityDao.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="ScheduleDao.cs" />
     <Compile Include="SchoolDao.cs" />
     <Compile Include="SchoolTypeDao.cs" />
+    <Compile Include="SectionGradeDao.cs" />
     <Compile Include="StudentDao.cs" />
     <Compile Include="TeacherDao.cs" />
     <Compile Include="TownDao.cs" />

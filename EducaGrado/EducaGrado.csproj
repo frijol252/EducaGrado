@@ -43,6 +43,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.5.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.5.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Maps.MapControl.WPF.1.0.0.3\lib\net40-Client\Microsoft.Maps.MapControl.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -67,6 +70,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administrativo\Students\CourseSubject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrativo\Students\CoursesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrativo\Students\StudentAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrativo\Students\StudentforCourseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrativo\Students\StudentModif.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrativo\Students\SubjectAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InicioSesion\ForgotPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,6 +104,24 @@
     </Page>
     <Compile Include="Administrativo\Home\HomeAdmin.xaml.cs">
       <DependentUpon>HomeAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Students\CourseSubject.xaml.cs">
+      <DependentUpon>CourseSubject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Students\CoursesView.xaml.cs">
+      <DependentUpon>CoursesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Students\StudentAdd.xaml.cs">
+      <DependentUpon>StudentAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Students\StudentforCourseView.xaml.cs">
+      <DependentUpon>StudentforCourseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Students\StudentModif.xaml.cs">
+      <DependentUpon>StudentModif.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Students\SubjectAdd.xaml.cs">
+      <DependentUpon>SubjectAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -134,7 +179,6 @@
     <Folder Include="Administrativo\Admin\" />
     <Folder Include="Administrativo\Controles\" />
     <Folder Include="Administrativo\Images\" />
-    <Folder Include="Administrativo\Students\" />
     <Folder Include="Administrativo\Teacher\" />
     <Folder Include="Estudiante\Account\" />
     <Folder Include="Estudiante\Claims\" />
