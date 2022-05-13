@@ -66,6 +66,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Administrativo\Controles\Account\AccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrativo\Controles\Account\ModifAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administrativo\Home\HomeAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,6 +102,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administrativo\Teacher\TeacherAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrativo\Teacher\TeacherList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrativo\Teacher\TeacherScheduleAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrativo\Teacher\TeacherSubject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InicioSesion\ForgotPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,6 +126,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Administrativo\Controles\Account\AccountView.xaml.cs">
+      <DependentUpon>AccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Controles\Account\ModifAccount.xaml.cs">
+      <DependentUpon>ModifAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Administrativo\Home\HomeAdmin.xaml.cs">
       <DependentUpon>HomeAdmin.xaml</DependentUpon>
     </Compile>
@@ -123,6 +153,18 @@
     <Compile Include="Administrativo\Students\SubjectAdd.xaml.cs">
       <DependentUpon>SubjectAdd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Administrativo\Teacher\TeacherAdd.xaml.cs">
+      <DependentUpon>TeacherAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Teacher\TeacherList.xaml.cs">
+      <DependentUpon>TeacherList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Teacher\TeacherScheduleAdd.xaml.cs">
+      <DependentUpon>TeacherScheduleAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Teacher\TeacherSubject.xaml.cs">
+      <DependentUpon>TeacherSubject.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -133,8 +175,15 @@
     <Compile Include="InicioSesion\login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
+    <Page Include="InicioSesion\PasswordLog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InicioSesion\PasswordLog.xaml.cs">
+      <DependentUpon>PasswordLog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -177,9 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Administrativo\Admin\" />
-    <Folder Include="Administrativo\Controles\" />
     <Folder Include="Administrativo\Images\" />
-    <Folder Include="Administrativo\Teacher\" />
     <Folder Include="Estudiante\Account\" />
     <Folder Include="Estudiante\Claims\" />
     <Folder Include="Estudiante\Grades\" />
