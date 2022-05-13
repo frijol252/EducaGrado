@@ -54,6 +54,7 @@
     <Compile Include="ProvinceImpl.cs" />
     <Compile Include="RoleUserImpl.cs" />
     <Compile Include="ScheduleImpl.cs" />
+    <Compile Include="SectionGradeImpl.cs" />
     <Compile Include="StudentImpl.cs" />
     <Compile Include="TeacherImpl.cs" />
     <Compile Include="TownImpl.cs" />

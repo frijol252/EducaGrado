@@ -47,7 +47,9 @@
     <Compile Include="CategoryMatter.cs" />
     <Compile Include="CheckHour.cs" />
     <Compile Include="City.cs" />
+    <Compile Include="Class.cs" />
     <Compile Include="Course.cs" />
+    <Compile Include="Grade.cs" />
     <Compile Include="Matter.cs" />
     <Compile Include="Modality.cs" />
     <Compile Include="Person.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="Schedule.cs" />
     <Compile Include="School.cs" />
     <Compile Include="SchoolType.cs" />
+    <Compile Include="SectionGrade.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="Town.cs" />
