@@ -3,34 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:EducaGrado.Administrativo.Students" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
               Initialized="UserControl_Initialized" Loaded="UserControl_Loaded"
              d:DesignHeight="650" d:DesignWidth="1000">
     <Grid>
-        <Grid Height="30" Width="1000" VerticalAlignment="Top" Background="#2a3f54">
+        <Grid Height="30" Width="1000" VerticalAlignment="Top" Background="#06ad75">
 
         </Grid>
         <Grid Margin="0 25 0 0" Height="620" Width="1000" Background="#ededed">
             <StackPanel Height="418"  VerticalAlignment="Top" Margin="0,-2,0,0">
                 <StackPanel Orientation="Horizontal" Margin="24,10,24,0">
                     <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 4"/>
-                    <TextBox x:Name="txtsearch" TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="932" materialDesign:HintAssist.Hint="Search" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
+                    <TextBox x:Name="txtsearch" TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="932" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
                 </StackPanel>
                 <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="960"/>
             </StackPanel>
             <StackPanel Margin="0,421,0,0">
                 <StackPanel Height="40" Margin="60,40,0,0" Orientation="Horizontal">
-                    <Label Foreground="#2a3f54" FontSize="15" >Course Name:</Label>
+                    <Label Foreground="Black" FontSize="15" >Nombre del curso:</Label>
                     <Label x:Name="lblcourse" FontSize="15" Content="..." Width="50"></Label>
-                    <Label Foreground="#2a3f54" Margin="60,0,0,0" FontSize="15" >Course's Letter:</Label>
+                    <Label Foreground="Black" Margin="60,0,0,0" FontSize="15" >Letra del curso:</Label>
                     <Label x:Name="lblletter" FontSize="15" Content="..." Width="50"></Label>
-                    <Label Foreground="#2a3f54" Margin="80,0,0,0" FontSize="15" >Course's Section:</Label>
+                    <Label Foreground="Black" Margin="80,0,0,0" FontSize="15" >Seccion del curso:</Label>
                     <Label x:Name="lblsection" FontSize="15" Content="..." Width="150"></Label>
                 </StackPanel>
                 <StackPanel Margin="300,10,0,0" Orientation="Horizontal">
-                    <Button IsEnabled="False" x:Name="btnSubs" Content="Subjects" Foreground="White" Background="#dfa752" Width="150" Click="BtnSubs_Click"></Button>
-                    <Button IsEnabled="False" x:Name="btnStu" Content="Students" Foreground="White" Background="#06ad75" Width="150" Margin="15,0,0,0" Click="BtnStu_Click"></Button>
+                    <Button IsEnabled="False" x:Name="btnSubs" Content="Materias" Foreground="White" Background="#FFE63070" Width="150" Click="BtnSubs_Click" materialDesing:ButtonAssist.CornerRadius="15"></Button>
+                    <Button IsEnabled="False" x:Name="btnStu" Content="Estudiantes" Foreground="White" Background="#06ad75" Width="150" Margin="15,0,0,0" Click="BtnStu_Click" materialDesing:ButtonAssist.CornerRadius="15"></Button>
                 </StackPanel>
 
             </StackPanel>

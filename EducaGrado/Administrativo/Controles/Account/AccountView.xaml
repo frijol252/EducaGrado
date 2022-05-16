@@ -1,6 +1,7 @@
 ﻿<Window x:Class="EducaGrado.Administrativo.Controles.Account.AccountView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EducaGrado.Administrativo.Controles.Account" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -10,7 +11,7 @@
     <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
         <Grid>
             <Grid>
-                <Grid Height="25" Width="400" VerticalAlignment="Top"  MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#2a3f54">
+                <Grid Height="25" Width="400" VerticalAlignment="Top"  MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75">
                     <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="BtnClose_Click">
                         <materialDesign:PackIcon Kind="Close" Foreground="White"/>
                     </Button>
@@ -22,9 +23,9 @@
                             <StackPanel Orientation="Horizontal" Margin="20,20,10,0">
                                 <Image x:Name="imagesector" Height="200" Width="200" >
                                 </Image>
-                                <Button VerticalAlignment="Bottom" Content="Modif Account" Background="#7a91b0" Foreground="White" Margin="20,0,0,10" Click="Button_Click"></Button>
+                                <Button VerticalAlignment="Bottom" Content="Modificar cuenta" Background="#06ad75" Foreground="White" Margin="20,0,0,10" Click="Button_Click" materialDesing:ButtonAssist.CornerRadius="15"></Button>
                             </StackPanel>
-                            <StackPanel Orientation="Vertical" Background="#7a91b0" Height="235" Margin="0,0,-9,0" >
+                            <StackPanel Orientation="Vertical" Background="#FFE63070" Height="235" Margin="0,0,-9,0" >
                                 <StackPanel Orientation="Horizontal" Margin="15,20,0,0">
                                     <materialDesign:PackIcon Kind="key" FontSize="20" Foreground="White" VerticalAlignment="Bottom" Margin="0 4"/>
                                     <Label x:Name="lblNames" Foreground="White" FontSize="20" Margin="15,0,10,0" Height="35" FontWeight="Bold"></Label>

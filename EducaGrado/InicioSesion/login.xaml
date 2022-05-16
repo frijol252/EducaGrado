@@ -15,7 +15,7 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <Border Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="#100E17" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
+        <Border Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="WhiteSmoke" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
         </Border>
         <StackPanel Orientation="Horizontal">
             <StackPanel Width="350">
@@ -24,29 +24,29 @@
             </StackPanel>
             <StackPanel Width="350">
                 <StackPanel Margin="20 40">
-                    <TextBlock Text="BIENVENIDO" Margin="20" Foreground="White" TextAlignment="Center" FontSize="38" ></TextBlock>
+                    <TextBlock Text="BIENVENIDO" Margin="20" Foreground="Black" TextAlignment="Center" FontSize="38" ></TextBlock>
                     <StackPanel Orientation="Horizontal" Margin="10">
-                        <materialDesing:PackIcon Kind="User" Width="25" Height="25" Foreground="White"/>
-                        <TextBox x:Name="txtUsername" Margin="10 0" materialDesing:HintAssist.Hint="Ingrese su nombre de usuario" Foreground="White" Width="250" BorderBrush="White" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
+                        <materialDesing:PackIcon Kind="User" Width="25" Height="25" Foreground="Black"/>
+                        <TextBox x:Name="txtUsername" Margin="10 0" materialDesing:HintAssist.Hint="Ingrese su nombre de usuario" Foreground="Black" Width="250" BorderBrush="Black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="10">
-                        <materialDesing:PackIcon Kind="Lock" Width="25" Height="25" Foreground="White"/>
-                        <TextBox x:Name="txtPassword" Margin="10 0" materialDesing:HintAssist.Hint="Ingrese su contraseña" Foreground="White" Width="250" BorderBrush="White" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
+                        <materialDesing:PackIcon Kind="Lock" Width="25" Height="25" Foreground="Black"/>
+                        <TextBox x:Name="txtPassword" Margin="10 0" materialDesing:HintAssist.Hint="Ingrese su contraseña" Foreground="Black" Width="250" BorderBrush="Black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
                     </StackPanel>
                     <StackPanel Margin="10" HorizontalAlignment="Center">
-                        <Button Width="100" Height="40" Style="{StaticResource MaterialDesignRaisedButton}" materialDesing:ButtonAssist.CornerRadius="10" BorderThickness="2" BorderBrush="#D94448"
-                                Background="#D94448" Foreground="White" ToolTip="Login" x:Name="btnLogin"  Content="Ingresar" Click="btnLogin_Click">
+                        <Button Width="100" Height="40" Style="{StaticResource MaterialDesignRaisedButton}" materialDesing:ButtonAssist.CornerRadius="15" BorderThickness="2" BorderBrush="#04af76" 
+                                Background="#04af76"  Foreground="White" ToolTip="Login" x:Name="btnLogin"  Content="Ingresar" Click="btnLogin_Click">
 
                         </Button>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="30 10 0 0">
-                        <TextBlock HorizontalAlignment="Center" Margin="60 0 0 0"><Hyperlink Foreground="#D94448" Hyperlink.Click="Hyperlink_Click">¿Olvidaste Tu Contraseña?</Hyperlink></TextBlock>
+                        <TextBlock HorizontalAlignment="Center" Margin="60 0 0 0"><Hyperlink Foreground="Black" Hyperlink.Click="Hyperlink_Click">¿Olvidaste Tu Contraseña?</Hyperlink></TextBlock>
                     </StackPanel>
                 </StackPanel>
                 
             </StackPanel>
             <StackPanel Width="100">
-                <Button  Margin="10 20" Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="Transparent"  Background=" #04af76" ToolTip="Close" x:Name="btnExit" Click="btnExit_Click">
+                <Button  Margin="10 20" Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="Transparent"  Background="#04af76" ToolTip="Close" x:Name="btnExit" Click="btnExit_Click">
                     <materialDesing:PackIcon Kind="Shutdown" Foreground="White" Padding="0" Height="46" Width="32"/>
                 </Button>
             </StackPanel>

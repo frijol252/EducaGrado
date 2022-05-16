@@ -3,12 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:EducaGrado.Administrativo.Students" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="SubjectAdd"  WindowStyle="None" AllowsTransparency="True" Initialized="Window_Initialized" Loaded="Window_Loaded"
          Height="550" Width="860">
     <Grid>
-        <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#2a3f54" Margin="0,0,1,0">
+        <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75" Margin="0,0,1,0">
             <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="BtnClose_Click">
                 <materialDesign:PackIcon Kind="Close" Foreground="White"/>
             </Button>
@@ -21,7 +22,8 @@
 
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                        <Button x:Name="btnSelectSubject" Width="150" Content="Select Subject" Height="40" Margin="70 20 0 0" Foreground="White" Background="#06ad75" Click="BtnSelectSubject_Click"></Button>
+                        <Button x:Name="btnSelectSubject" Width="160" Content="Seleccionar materia" Height="40" Margin="70 20 0 0" Foreground="White" Background="#FFE63070"  Click="BtnSelectSubject_Click" materialDesing:ButtonAssist.CornerRadius="15"
+></Button>
 
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Height="198"  Margin="20,0,22,10">
@@ -53,8 +55,10 @@
                             <DataGrid IsEnabled="False" x:Name="dgvDatossab" SelectedCellsChanged="DgvDatossab_SelectedCellsChanged" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" HorizontalAlignment="Left" Height="362" Margin="0,-2,0,0" VerticalAlignment="Top" Width="69"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="50 0 60 0">
-                            <Button x:Name="Add" Click="Add_Click" IsEnabled="False" Content="Add Schedule" Height="40" Margin="0 20 0 0" Foreground="White" Background="#06ad75"/>
-                            <Button x:Name="Addsubject" Click="Addsubject_Click" IsEnabled="False" Content="Add Class" Height="40" Margin="40 20 0 0" Foreground="White" Background="#06ad75"></Button>
+                            <Button x:Name="Add" Click="Add_Click" IsEnabled="False" Content="Añadir horario" Height="40" Margin="0 20 0 0" Foreground="White" Background="#06ad75" materialDesing:ButtonAssist.CornerRadius="15"
+/>
+                            <Button x:Name="Addsubject" Click="Addsubject_Click" IsEnabled="False" Content="Añadir clase" Height="40" Margin="40 20 0 0" Foreground="White" Background="#06ad75" materialDesing:ButtonAssist.CornerRadius="15"
+></Button>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="50 10 60 0">

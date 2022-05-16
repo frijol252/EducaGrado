@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:EducaGrado.Administrativo.Students"
         WindowStyle="None" AllowsTransparency="True"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Initialized="Window_Initialized"
@@ -17,7 +18,7 @@
             <RowDefinition Height="59*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#2a3f54" Grid.ColumnSpan="2">
+        <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75" Grid.ColumnSpan="2">
             <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="BtnClose_Click">
                 <materialDesign:PackIcon Kind="Close" Foreground="White"/>
             </Button>
@@ -26,15 +27,15 @@
             <StackPanel Height="418"  VerticalAlignment="Top" Margin="0,-2,0,0">
                 <StackPanel Orientation="Horizontal" Margin="24,10,24,0">
                     <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 4"/>
-                    <TextBox x:Name="txtsearch" TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="932" materialDesign:HintAssist.Hint="Search" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
+                    <TextBox x:Name="txtsearch" TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="932" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="680"/>
 
                     <StackPanel VerticalAlignment="Center" Width="299">
-                        <Button  x:Name="btnAdd" Content="Add Subject" Click="BtnAdd_Click" Foreground="White" Background="#dfa752" Width="100" ></Button>
+                        <Button  x:Name="btnAdd" Content="Añadir materia" Click="BtnAdd_Click" Foreground="White" Background="#06ad75" Width="130"  materialDesing:ButtonAssist.CornerRadius="15"></Button>
 
-                        <Button  IsEnabled="False" x:Name="btnDel" Click="BtnDel_Click" Content="Delete" Foreground="White" Background="#2a3f54" Width="100" Margin="0,40,0,0" ></Button>
+                        <Button  IsEnabled="False" x:Name="btnDel" Click="BtnDel_Click" Content="Eliminar" Foreground="White" Background="Red" Width="130" Margin="0,40,0,0"  materialDesing:ButtonAssist.CornerRadius="15"></Button>
                     </StackPanel>
 
                 </StackPanel>
@@ -42,9 +43,9 @@
             </StackPanel>
             <StackPanel Margin="0,421,0,0" Height="200">
                 <StackPanel Height="40" Margin="60,40,0,0" Orientation="Horizontal">
-                    <Label Foreground="#2a3f54" FontSize="15" >Subject Name:</Label>
+                    <Label Foreground="Black" FontSize="15" >Nombre de la materia:</Label>
                     <Label x:Name="lblnames" FontSize="15" Content="..." Width="50"></Label>
-                    <Label Foreground="#2a3f54" Margin="60,0,0,0" FontSize="15" >Subject's Category:</Label>
+                    <Label Foreground="Black" Margin="60,0,0,0" FontSize="15" >Categoria de la materia:</Label>
                     <Label x:Name="lblcat" FontSize="15" Content="..." Width="250"></Label>
                     <TextBox Visibility="Hidden" x:Name="lblid"></TextBox>
                 </StackPanel>

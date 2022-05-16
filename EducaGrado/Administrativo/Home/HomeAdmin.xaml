@@ -106,38 +106,38 @@
         <Grid x:Name="GridBackground" Background="#55313131" Opacity="0">
 
         </Grid>
-        <StackPanel VerticalAlignment="Top" Background="#ededed">
-            <Grid Background="#939393" Height="10"/>
+        <StackPanel VerticalAlignment="Top" Background="#06ad75">
+            <Grid Background="#06ad75" Height="10"/>
             <Grid Margin="5" >
                 <Button x:Name="ButtonOpen"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
                     <materialDesign:PackIcon Kind="Menu" Foreground="Black"/>
                 </Button>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock Text="Educa DB" VerticalAlignment="Center" FontSize="20" FontFamily="Champagne &amp; Limousines" Margin="20 0"/>
+                    <TextBlock Text="EDUCA" VerticalAlignment="Center" FontSize="30" FontFamily="Champagne &amp; Limousines" Margin="20 0" Foreground="Black"/>
 
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0">
                     <Label x:Name="labelUser"></Label>
-                    <materialDesign:PopupBox Content="PopupBox"  HorizontalAlignment="Right" Foreground="Gray" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Padding="0" Margin="0,0,0,0" >
+                    <materialDesign:PopupBox Content="PopupBox"  HorizontalAlignment="Right" Foreground="Black" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Padding="0" Margin="0,0,0,0" >
                         <StackPanel Width="180">
                             <Button x:Name="btnLogOut" Content="Log Out" Click="BtnLogOut_Click"/>
                         </StackPanel>
                     </materialDesign:PopupBox>
 
-                    <Button x:Name="ButtonFechar" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Click="ButtonFechar_Click">
+                    <Button x:Name="ButtonFechar" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Black" Click="ButtonFechar_Click">
                         <materialDesign:PackIcon Kind="Power"/>
                     </Button>
                 </StackPanel>
             </Grid>
         </StackPanel>
 
-        <Grid Margin="0 50 0 0" Background="#748aa0">
-            <Image Source="/EducaGrado;component/images/EducaImage.png" Opacity="100" Margin="4,-1,2,0"/>
+        <Grid Margin="0 50 0 0" Background="Transparent">
+            <Image Source="/EducaGrado;component/images/educadblogo.png" Opacity="100" Margin="4,-1,2,0"/>
         <Grid x:Name="GridPrincipal" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         </Grid>
 
-        <Grid x:Name="GridMenu" Width="250" Margin="-250 10 0 0" HorizontalAlignment="Left" Background="#2a3f54">
+        <Grid x:Name="GridMenu" Width="250" Margin="-250 10 0 0" HorizontalAlignment="Left" Background="#04af76">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -149,18 +149,18 @@
             <Button x:Name="ButtonClose"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
                 <materialDesign:PackIcon Kind="Menu" Foreground="White"/>
             </Button>
-            <Image Source="/EducaGrado;component/images/EducaLogo.png" VerticalAlignment="Top" Opacity="100" Margin="33,-1,10,0" Height="78"/>
-            <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="ListViewMenu" Margin="0 100 0 0" Foreground="LightGray" FontFamily="Champagne &amp; Limousines" FontSize="18" SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0">
+            <Image Source="/EducaGrado;component/images/EducaImage.png" VerticalAlignment="Top" Opacity="100" Margin="30,-1,10,0" Height="100"/>
+            <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="ListViewMenu" Margin="0 100 0 0" Foreground="Black" FontFamily="Champagne &amp; Limousines" FontSize="18" SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0">
                 <ListViewItem Height="60" x:Name="ListHome">
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Width="230">
 
-                            <Grid x:Name="GridCursorInicio" Margin="0 0 0 0" Background="#999999" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
+                            <Grid x:Name="GridCursorInicio" Margin="0 0 0 0" Background="#FFE63070" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
 
                             <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Home" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                            <TextBlock Text="Inicio" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
                         </StackPanel>
-                        <StackPanel  Height="10" Width="auto" Background="#999999">
+                        <StackPanel  Height="10" Width="auto" Background="#FFE63070">
                         </StackPanel>
                     </StackPanel>
 
@@ -195,12 +195,12 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Width="230">
 
-                            <Grid x:Name="GridCursorSalario" Margin="0 0 0 0" Background="#999999" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
+                            <Grid x:Name="GridCursorSalario" Margin="0 0 0 0" Background="#FFE63070" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
 
                             <materialDesign:PackIcon Kind="CashPlus" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Administration" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                            <TextBlock Text="Administracion" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
                         </StackPanel>
-                        <StackPanel  Height="10" Width="auto" Background="#999999">
+                        <StackPanel  Height="10" Width="auto" Background="#FFE63070">
                         </StackPanel>
                     </StackPanel>
                 </ListViewItem>
@@ -208,22 +208,22 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Width="230">
 
-                            <Grid x:Name="GridCursorMaestros" Margin="0 0 0 0" Background="#999999" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
+                            <Grid x:Name="GridCursorMaestros" Margin="0 0 0 0" Background="#FFE63070" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
 
                             <materialDesign:PackIcon Kind="Teacher" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Teachers" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                            <TextBlock Text="Profesores" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
                         </StackPanel>
                         <StackPanel  Width="auto" Background="#999999">
-                            <Button Height="60" Background="#999999" x:Name="ListTeacher" Click="ListTeacher_Click">
+                            <Button Height="60" Background="#FFE63070" x:Name="ListTeacher" Click="ListTeacher_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="UserBox" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                                    <TextBlock Text="Teachers List" FontSize="17" Foreground="LightGray" VerticalAlignment="Center" Margin="20 0"/>
+                                    <TextBlock Text="Lista de Maestros" FontSize="15" Foreground="Black" VerticalAlignment="Center" Margin="20 0"/>
                                 </StackPanel>
                             </Button>
-                            <Button Height="60" Background="#999999" x:Name="CrudTeacher" Click="CrudTeacher_Click">
+                            <Button Height="60" Background="#FFE63070" x:Name="CrudTeacher" Click="CrudTeacher_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="UserAdd" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                                    <TextBlock Text="Manage Teachers" FontSize="17" Foreground="LightGray" VerticalAlignment="Center" Margin="20 0"/>
+                                    <TextBlock Text="Administrar maestros" FontSize="12" Foreground="Black" VerticalAlignment="Center" Margin="20 0"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
@@ -233,12 +233,12 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Width="230">
 
-                            <Grid x:Name="GridCursorEstudiante" Margin="0 0 0 0" Background="#999999" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
+                            <Grid x:Name="GridCursorEstudiante" Margin="0 0 0 0" Background="#FFE63070" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
 
-                            <materialDesign:PackIcon Kind="User" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Students" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                            <materialDesign:PackIcon Kind="AccountStudent" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Estudiantes" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
                         </StackPanel>
-                        <StackPanel  Height="10" Width="auto" Background="#999999">
+                        <StackPanel  Height="10" Width="auto" Background="#FFE63070">
                         </StackPanel>
                     </StackPanel>
                 </ListViewItem>
@@ -246,22 +246,22 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Width="230">
 
-                            <Grid x:Name="GridCursorControl" Margin="0 0 0 0" Background="#999999" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
+                            <Grid x:Name="GridCursorControl" Margin="0 0 0 0" Background="#FFE63070" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
 
                             <materialDesign:PackIcon Kind="AppleKeyboardControl" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Controls" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                            <TextBlock Text="Controles" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
                         </StackPanel>
                         <StackPanel Height="120" Width="auto" Background="#999999">
-                            <Button Height="60" Background="#999999" x:Name="MateriasButton" Click="MateriasButton_Click" IsEnabled="False">
+                            <Button Height="60" Background="#FFE63070" x:Name="MateriasButton" Click="MateriasButton_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Book" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                                    <TextBlock Text="Subjects" FontSize="17" Foreground="LightGray" VerticalAlignment="Center" Margin="20 0"/>
+                                    <TextBlock Text="Materias" FontSize="17" Foreground="Black" VerticalAlignment="Center" Margin="20 0"/>
                                 </StackPanel>
                             </Button>
-                            <Button Height="60" Background="#999999" x:Name="HorariosButton" Click="HorariosButton_Click">
+                            <Button Height="60" Background="#FFE63070" x:Name="HorariosButton" Click="HorariosButton_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Clock" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                                    <TextBlock Text="Account" FontSize="17" Foreground="LightGray" VerticalAlignment="Center" Margin="20 0"/>
+                                    <TextBlock Text="Horaios" FontSize="17" Foreground="Black" VerticalAlignment="Center" Margin="20 0"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
