@@ -16,7 +16,7 @@
         </Grid>
         <Grid Margin="0,28,-4,-3" Background="#ededed">
             <StackPanel Height="440"  VerticalAlignment="Top" Margin="0,-2,0,0">
-                <Button x:Name="DisStu" Margin="60,10,60,0" Background="#FFE63070" Foreground="White" FontSize="30" Content="Disabled Students" Height="47" Click="Button_Click" materialDesing:ButtonAssist.CornerRadius="15"></Button>
+                <Button x:Name="DisStu" Margin="60,10,60,0" Background="#FFE63070" Foreground="White" FontSize="30" Content="Estudiantes deshabilitados" Height="47" Click="Button_Click" materialDesing:ButtonAssist.CornerRadius="15"></Button>
                 <StackPanel Orientation="Horizontal" Margin="24,10,24,0">
                     <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 4"/>
                     <TextBox x:Name="txtsearch" TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="932" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>

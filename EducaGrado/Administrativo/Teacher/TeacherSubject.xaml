@@ -16,7 +16,7 @@
             <RowDefinition Height="59*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown" Background="#2a3f54" Margin="0,0,3,0" Grid.ColumnSpan="2">
+        <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown" Background="#06ad75" Margin="0,0,3,0" Grid.ColumnSpan="2">
             <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="BtnClose_Click">
                 <materialDesign:PackIcon Kind="Close" Foreground="White"/>
             </Button>
@@ -24,14 +24,14 @@
         <Grid Margin="-25,28,-32,2" Height="620" Background="#ededed" Grid.RowSpan="2" Grid.ColumnSpan="2">
 
             <StackPanel Height="418"  VerticalAlignment="Top" Margin="0,-2,0,0">
-                <Button Width="186" Margin="50,0,0,0" Foreground="White" FontWeight="Bold" Background="PaleVioletRed" HorizontalAlignment="Left" Content="Return to Teacher List" Click="Button_Click"></Button>
+                <Button Width="240" Margin="50,20,0,0" Foreground="White" FontWeight="Bold" Background="PaleVioletRed" HorizontalAlignment="Left" Content="Retorna a la lista de profesores" Click="Button_Click"></Button>
                 <StackPanel Orientation="Horizontal">
                     <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="436" Margin="20,10,0,0" VerticalAlignment="Top" Width="680"/>
 
-                    <StackPanel VerticalAlignment="Center" Width="299">
-                        <Button  x:Name="btnAdd" Content="Add Subject" Foreground="White" Background="#dfa752" Click="BtnAdd_Click" Margin="100,0,87,0" />
+                    <StackPanel VerticalAlignment="Center" Width="310">
+                        <Button  x:Name="btnAdd" Content="Añadir materia" Foreground="White" Background="#06ad75" Click="BtnAdd_Click" Margin="100,0,87,0" Width="128" />
 
-                        <Button Click="BtnDel_Click"  IsEnabled="False" x:Name="btnDel" Content="Delete" Foreground="White" Background="#2a3f54" Width="100" Margin="0,40,0,0" ></Button>
+                        <Button Click="BtnDel_Click"  IsEnabled="False" x:Name="btnDel" Content="Eliminar" Foreground="White" Background="Red" Width="100" Margin="0,40,0,0" ></Button>
                     </StackPanel>
 
                 </StackPanel>
@@ -39,10 +39,10 @@
             </StackPanel>
             <StackPanel Margin="0,421,0,0" Height="200">
 
-                <StackPanel Height="40" Margin="60,40,0,0" Orientation="Horizontal">
-                    <Label Foreground="#2a3f54" FontSize="15" >Subject Name:</Label>
+                <StackPanel Height="40" Margin="60,90,0,0" Orientation="Horizontal">
+                    <Label Foreground="Black" FontSize="15" >nombre de la materia:</Label>
                     <Label x:Name="lblnames" FontSize="15" Content="..." Width="50"></Label>
-                    <Label Foreground="#2a3f54" Margin="60,0,0,0" FontSize="15" >Course's Subject:</Label>
+                    <Label Foreground="Black" Margin="60,0,0,0" FontSize="15" >Materia del curso:</Label>
                     <Label x:Name="lblcat" FontSize="15" Content="..." Width="250"></Label>
                     <TextBox Visibility="Hidden" x:Name="lblid"></TextBox>
                 </StackPanel>
