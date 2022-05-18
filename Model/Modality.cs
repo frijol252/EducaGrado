@@ -32,6 +32,10 @@ namespace Model
             this.numberTest = numberTest;
             this.typeQualify = typeQualify;
         }
+        public Modality()
+        {
+            
+        }
         #endregion
     }
 }

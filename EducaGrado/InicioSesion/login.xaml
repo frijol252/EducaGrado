@@ -31,7 +31,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="10">
                         <materialDesing:PackIcon Kind="Lock" Width="25" Height="25" Foreground="Black"/>
-                        <TextBox x:Name="txtPassword" Margin="10 0" materialDesing:HintAssist.Hint="Ingrese su contraseña" Foreground="Black" Width="250" BorderBrush="Black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
+                        <PasswordBox x:Name="txtPassword" Margin="10 0" materialDesing:HintAssist.Hint="Ingrese su contraseña" Foreground="Black" Width="250" BorderBrush="Black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
                     </StackPanel>
                     <StackPanel Margin="10" HorizontalAlignment="Center">
                         <Button Width="100" Height="40" Style="{StaticResource MaterialDesignRaisedButton}" materialDesing:ButtonAssist.CornerRadius="15" BorderThickness="2" BorderBrush="#04af76" 

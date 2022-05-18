@@ -27,16 +27,16 @@
                     <StackPanel x:Name="Insestack" Background="#ededed" Margin="30 10 30 0" Height="250" Orientation="Vertical" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
                             <TextBlock Text="Cantidad de notas :"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 35 0" FontWeight="Bold"></TextBlock>
-                            <TextBox x:Name="txtname" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de notas" ></TextBox>
+                            <TextBox x:Name="txtnotas" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de notas" ></TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
                             <TextBlock Text="Cantidad de examenes:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 15 0" FontWeight="Bold"></TextBlock>
-                            <TextBox x:Name="txtlastname" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de examenes" ></TextBox>
+                            <TextBox x:Name="txtexamen" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de examenes" ></TextBox>
                         </StackPanel>
                         
                         <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
                             <TextBlock Text="Tipo de calificación:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 30 0" FontWeight="Bold"></TextBlock>
-                            <ComboBox x:Name="txtGender" VerticalAlignment="Top" Foreground="Black" Width="300" FontWeight="Bold" >
+                            <ComboBox x:Name="comboCalificacion" VerticalAlignment="Top" Foreground="Black" Width="300" FontWeight="Bold" >
                                 <ComboBoxItem Content="Bimestral" IsSelected="True"/>
                                 <ComboBoxItem Content="Trimestral"/>
                                 <ComboBoxItem Content="Semestral"/>
@@ -44,12 +44,12 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
                             <TextBlock Text="Cantidad de cursos por paralelo :" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 10 0" FontWeight="Bold"></TextBlock>
-                            <TextBox x:Name="txtAddress" VerticalAlignment="Top" Foreground="Black" Width="240" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de cursos por paralelo" ></TextBox>
+                            <TextBox x:Name="txtcursos" VerticalAlignment="Top" Foreground="Black" Width="240" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de cursos por paralelo" ></TextBox>
                         </StackPanel>
                         
 
                         <StackPanel Orientation="Horizontal" Margin="100 0 50 0">
-                            <Button x:Name="btnModifySchool" Content="Modificar colegio" Height="40" Margin="60 20 0 0" Foreground="White" Background="#06ad75" materialDesing:ButtonAssist.CornerRadius="15"></Button>
+                            <Button x:Name="btnModifySchool" Content="Modificar colegio" Height="40" Margin="60 20 0 0" Foreground="White" Background="#06ad75" materialDesing:ButtonAssist.CornerRadius="15" Click="btnModifySchool_Click"></Button>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>

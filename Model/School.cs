@@ -10,7 +10,8 @@ namespace Model
     {
         #region Properiarities
         int schoolId;
-        int typeWorkId;
+        int schooltypeId;
+        int modalityId;
         string name;
         string address;
         double latitude;
@@ -35,12 +36,17 @@ namespace Model
         public byte Status { get => status; set => status = value; }
         public DateTime RegistrationDate { get => registrationDate; set => registrationDate = value; }
         public DateTime UpdateDate { get => updateDate; set => updateDate = value; }
+        public int SchooltypeId { get => schooltypeId; set => schooltypeId = value; }
+        public int ModalityId { get => modalityId; set => modalityId = value; }
+
+
         #endregion
         #region Constructor
-        public School(int schoolId, int typeWorkId, string name, string address, double latitude, double longitude, byte status, DateTime registrationDate, DateTime updateDate)
+        public School(int schoolId, int schooltypeId, int modalityId, string name, string address, double latitude, double longitude, byte status, DateTime registrationDate, DateTime updateDate)
         {
             this.schoolId = schoolId;
-            this.typeWorkId = typeWorkId;
+            this.schooltypeId = schooltypeId;
+            this.modalityId = modalityId;
             this.name = name;
             this.address = address;
             this.latitude = latitude;

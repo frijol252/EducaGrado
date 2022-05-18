@@ -26,14 +26,9 @@ namespace EducaGrado.InicioSesion
     public partial class Index : Window
     {
         UserImpl implUser;
-        private bool accept = false;
-        private bool revisara = false;
-        UserAccount userAccount;
+        UserAccount userAccount = new UserAccount();
 
-        static byte[] Key = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-            17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32}; //Llave de encriptación
-        static byte[] IV = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }; // Vector de inicialización
-        static byte[] encriptado;
+        
         static byte state;
         static AesManaged aes = new AesManaged();
 
@@ -65,7 +60,8 @@ namespace EducaGrado.InicioSesion
             {
                 
                 string user = txtUsername.Text.ToLower();
-                string password = txtPassword.Text;
+                string password = txtPassword.Password;
+                userAccount = new UserAccount();
                 if (!string.IsNullOrEmpty(user))
                 {
                     if (!string.IsNullOrEmpty(password))
@@ -74,20 +70,53 @@ namespace EducaGrado.InicioSesion
                         DataTable dt = implUser.GET(user);
                         if (dt.Rows.Count > 0)
                         {
-                            encriptado = Encoding.Default.GetBytes(dt.Rows[0][2].ToString());
-                            Key = Encoding.Default.GetBytes(dt.Rows[0][3].ToString());
-                            IV = Encoding.Default.GetBytes(dt.Rows[0][4].ToString());
+                            userAccount.Password = Encoding.Default.GetBytes(dt.Rows[0][2].ToString());
+                            userAccount.Key = Encoding.Default.GetBytes(dt.Rows[0][3].ToString());
+                            userAccount.VI = Encoding.Default.GetBytes(dt.Rows[0][4].ToString());
                             state = Convert.ToByte(dt.Rows[0][5].ToString());
                             if (state == 1)
                             {
-                                if (Validar(password))
+                                
+                                if (Encriptar(password,userAccount).SequenceEqual(userAccount.Password))
                                 {
-                                    Administrativo.Home.HomeAdmin HA = new Administrativo.Home.HomeAdmin();
-                                    HA.Show();
-                                    this.Close();
+                                    switch (Validar(dt))
+                                    {
+                                        case 1:
+                                            PasswordLog pl = new PasswordLog(int.Parse(dt.Rows[0][0].ToString()));
+                                            pl.Show();
+                                            this.Close();
+                                            break;
+                                        case 2:
+                                            SetSession(dt);
+                                            if (Session.SessionRole==1)
+                                            {
+                                                Administrativo.School.ModifySchool MS = new Administrativo.School.ModifySchool();
+                                                MS.Show();
+                                                this.Close();
+                                            }
+                                            else MessageBox.Show("La unidad educativa cuenta con problemas de inicio");
+                                            break;
+                                        case 3:
+                                            SetSession(dt);
+                                            switch (Session.SessionRole)
+                                            {
+                                                case 1:
+                                                    Administrativo.Home.HomeAdmin MS = new Administrativo.Home.HomeAdmin();
+                                                    MS.Show();
+                                                    this.Close();
+                                                    break;
+                                                case 2:
+                                                    break;
+                                                case 3:
+                                                    break;
+                                            }
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                 }
                                     
-                                else MessageBox.Show("Algo ocurrio Comunicate con educa");
+                                else MessageBox.Show("Usuario o contraseña erroneos");
                             }
                             else MessageBox.Show("Su usuario esta bloqueado  comuniquese con su organizacion");
                         }
@@ -112,20 +141,39 @@ namespace EducaGrado.InicioSesion
             }
         }
 
-        private bool Validar(string password)
+        public int Validar(DataTable dt)
         {
-            return Encriptar(password).SequenceEqual(encriptado);
+            if (dt.Rows[0][6].ToString() != "1")
+            {
+                return 1;
+            }
+            if (string.IsNullOrEmpty(dt.Rows[0][11].ToString()) || string.IsNullOrEmpty(dt.Rows[0][12].ToString()) || string.IsNullOrEmpty(dt.Rows[0][13].ToString()) ||
+                string.IsNullOrEmpty(dt.Rows[0][14].ToString()) || string.IsNullOrEmpty(dt.Rows[0][15].ToString()))
+            {
+                return 2;
+            }
+            return 3;
+        }
+
+        public void SetSession(DataTable dt)
+        {
+            Session.SessionID = int.Parse(dt.Rows[0][0].ToString());
+            Session.SessionRole = int.Parse(dt.Rows[0][16].ToString());
+            Session.SessionCurrent = dt.Rows[0][7].ToString();
+            Session.SessionPersonId = int.Parse(dt.Rows[0][8].ToString());
+            Session.SessionSchoolId = int.Parse(dt.Rows[0][9].ToString());
+            Session.SessionSchoolName = dt.Rows[0][10].ToString();
         }
 
 
 
         #region Encriptar
-        static byte[] Encriptar(string texto)
+        static byte[] Encriptar(string texto, UserAccount userAccount)
         {
             byte[] encriptando;
             using (AesManaged aes = new AesManaged())
             {
-                ICryptoTransform encriptador = aes.CreateEncryptor(Key, IV);
+                ICryptoTransform encriptador = aes.CreateEncryptor(userAccount.Key, userAccount.VI);
                 using (MemoryStream ms = new MemoryStream())
                 {
                     using (CryptoStream cs = new CryptoStream(ms, encriptador, CryptoStreamMode.Write))
@@ -140,39 +188,7 @@ namespace EducaGrado.InicioSesion
         }
         
         #endregion
-        /*
-         * string user = "educasa";
-            string password = "educa2020";
-            string ASD = "";
-            encriptadoAES(password);
-            userAccount = new UserAccount(user, encriptado, Key, IV, 1);
-            implUser = new UserImpl();
-            implUser.Insert(userAccount);
-            MessageBox.Show(Key.Length.ToString());
-            for (int ciclo = 0; ciclo < 32; ciclo++)
-                ASD += (Key[ciclo] + "-");
-            MessageBox.Show(ASD);
-
-            implUser = new UserImpl();
-            DataTable dt = implUser.GET();
-            if (dt.Rows.Count > 0)
-            {
-                ASD += "\n";
-                user = dt.Rows[0][1].ToString();
-                encriptado = Encoding.Default.GetBytes(dt.Rows[0][2].ToString());
-                Key = Encoding.Default.GetBytes(dt.Rows[0][3].ToString());
-                IV = Encoding.Default.GetBytes(dt.Rows[0][4].ToString());
-                for (int ciclo = 0; ciclo < 32; ciclo++)
-                    ASD += (Key[ciclo] + "-");
-                MessageBox.Show(Key.Length.ToString());
-                MessageBox.Show(ASD);
-                txtPassword.Text = Desencripta(encriptado);
-            }
-            else
-            {
-
-            }
-         */
+        
     }
 
 

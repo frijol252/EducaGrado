@@ -2,7 +2,10 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,19 +24,18 @@ namespace EducaGrado.InicioSesion
     /// </summary>
     public partial class PasswordLog : Window
     {
-        public PasswordLog()
+        public PasswordLog(int userId)
         {
             InitializeComponent();
+
+            this.userId = userId;
         }
-        string random;
-        UserAccount userito;
-        UserImpl userImpl;
+        int userId;
+        UserImpl implUser;
+        UserAccount userAccount = new UserAccount();
         private void Window_Initialized(object sender, EventArgs e)
         {
 
-            //Random rdm = new Random();
-            //random = rdm.Next(1000, 10000).ToString();
-            //name.Text = Session.SessionCurrent;
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -48,47 +50,92 @@ namespace EducaGrado.InicioSesion
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    if (txtcode.Text == random)
-            //    {
-            //        if (txtpass.Password.Length >= 5)
-            //        {
-            //            if (txtpass.Password == txtconfirm.Password)
-            //            {
-            //                userito = new User(txtpass.Password,Session.SessionID);
-            //                userImpl = new UserImpl();
-            //                int res = userImpl.Updatepass(userito);
-            //                if (res > 0)
-            //                {
+            try
+            {
+                string pass = txtpass.Password;
+                string passconf = txtconfirm.Password;
+                userAccount = new UserAccount();
+                userAccount.UserID = userId;
+                
+                if (!string.IsNullOrEmpty(pass) || !string.IsNullOrEmpty(passconf))
+                {
+                    if (pass == passconf)
+                    {
+                        
+                        encriptadoAES(pass);
+                        userAccount.Password = encriptado;
+                        userAccount.Key = Key;
+                        userAccount.VI = IV;
+                        userAccount.RevisionPass = 1;
+                        implUser = new UserImpl();
+                        int res = implUser.Update(userAccount);
+                        if (res > 0)
+                        {
+                            MessageBox.Show("Contraseña Cambiada");
+                            Index log = new Index();
+                            log.Show();
+                            this.Close();
+                        }
 
-            //                    MessageBox.Show("Password Modifed successfully!!!");
-            //                    Educa.MainWindow log = new MainWindow();
-            //                    log.Show();
-            //                    System.Diagnostics.Debug.WriteLine(string.Format("{0} | Change Password: ({1}).", DateTime.Now, Session.SessionEmail));
-            //                    this.Close();
-            //                }
-            //                else MessageBox.Show("Something happened \nCommunicate with the Suport department \neducateam.suport@gmail.com");
-            //            }
-            //            else
-            //            {
-            //                MessageBox.Show("Passwords do not match");
-            //            }
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("The password cannot be less than 5 characters");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Code incorrect");
-            //    }
-            //}
-            //catch(Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+                    }
+                    else MessageBox.Show("Las contraseñas no concuerdan");
+                }
+                else MessageBox.Show("Todos los campos tienen que estar llenados");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo ocurrio comuniquese con el soporte" );
+            }
         }
+
+        #region Encriptar
+
+        static byte[] Key = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+            17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32}; //Llave de encriptación
+        static byte[] IV = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }; // Vector de inicialización
+        static byte[] encriptado;
+        static AesManaged aes = new AesManaged();
+        static string encriptadoAES(string cadena)
+        {
+            string salida = "";
+            // Generación de la llave de encriptación y del vector de inicialización
+            Key = aes.Key;
+            IV = aes.IV;
+            try
+            {
+                using (aes)
+                {
+                    encriptado = Encriptar(cadena);
+                    salida = $"{Encoding.UTF8.GetString(encriptado)}";
+                }
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Excepcion: " + exp.Message);
+                Console.ReadKey();
+            }
+            return salida;
+        }
+
+        static byte[] Encriptar(string texto)
+        {
+            byte[] encriptando;
+            using (AesManaged aes = new AesManaged())
+            {
+                ICryptoTransform encriptador = aes.CreateEncryptor(Key, IV);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encriptador, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter sw = new StreamWriter(cs))
+                            sw.Write(texto);
+                        encriptando = ms.ToArray();
+                    }
+                }
+            }
+            return encriptando;
+        }
+
+        #endregion
     }
 }

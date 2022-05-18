@@ -49,11 +49,14 @@
     <Compile Include="DBImplementation.cs" />
     <Compile Include="GradeImpl.cs" />
     <Compile Include="MatterImpl.cs" />
+    <Compile Include="ModalityImpl.cs" />
     <Compile Include="PersonImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinceImpl.cs" />
     <Compile Include="RoleUserImpl.cs" />
     <Compile Include="ScheduleImpl.cs" />
+    <Compile Include="SchoolImpl.cs" />
+    <Compile Include="SchoolTypeImpl.cs" />
     <Compile Include="SectionGradeImpl.cs" />
     <Compile Include="StudentImpl.cs" />
     <Compile Include="TeacherImpl.cs" />

@@ -58,5 +58,10 @@ namespace Model
             this.password = password;
             this.userID = userID;
         }
+
+        public UserAccount()
+        {
+            
+        }
     }
 }
