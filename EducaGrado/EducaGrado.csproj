@@ -78,6 +78,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administrativo\School\ModifySchool.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administrativo\Students\CourseSubject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -134,6 +138,9 @@
     </Compile>
     <Compile Include="Administrativo\Home\HomeAdmin.xaml.cs">
       <DependentUpon>HomeAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\School\ModifySchool.xaml.cs">
+      <DependentUpon>ModifySchool.xaml</DependentUpon>
     </Compile>
     <Compile Include="Administrativo\Students\CourseSubject.xaml.cs">
       <DependentUpon>CourseSubject.xaml</DependentUpon>

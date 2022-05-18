@@ -1,0 +1,59 @@
+﻿<Window x:Class="EducaGrado.Administrativo.School.ModifySchool"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EducaGrado.Administrativo.School"
+        mc:Ignorable="d" WindowStyle="None" AllowsTransparency="True"
+        Title="ModifySchool" Height="300" Width="500">
+    <Grid>
+        <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75" Margin="0,0,1,0">
+            <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible">
+                <materialDesign:PackIcon Kind="Close" Foreground="White"/>
+            </Button>
+        </Grid>
+        <Grid Margin="0,31,0,0" Background="#ededed">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    
+
+                   
+       
+                </StackPanel>
+                <StackPanel>
+                    <!-- INSERT -->
+                    <StackPanel x:Name="Insestack" Background="#ededed" Margin="30 10 30 0" Height="250" Orientation="Vertical" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                            <TextBlock Text="Cantidad de notas :"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 35 0" FontWeight="Bold"></TextBlock>
+                            <TextBox x:Name="txtname" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de notas" ></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                            <TextBlock Text="Cantidad de examenes:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 15 0" FontWeight="Bold"></TextBlock>
+                            <TextBox x:Name="txtlastname" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de examenes" ></TextBox>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                            <TextBlock Text="Tipo de calificación:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 30 0" FontWeight="Bold"></TextBlock>
+                            <ComboBox x:Name="txtGender" VerticalAlignment="Top" Foreground="Black" Width="300" FontWeight="Bold" >
+                                <ComboBoxItem Content="Bimestral" IsSelected="True"/>
+                                <ComboBoxItem Content="Trimestral"/>
+                                <ComboBoxItem Content="Semestral"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                            <TextBlock Text="Cantidad de cursos por paralelo :" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 10 0" FontWeight="Bold"></TextBlock>
+                            <TextBox x:Name="txtAddress" VerticalAlignment="Top" Foreground="Black" Width="240" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de cursos por paralelo" ></TextBox>
+                        </StackPanel>
+                        
+
+                        <StackPanel Orientation="Horizontal" Margin="100 0 50 0">
+                            <Button x:Name="btnModifySchool" Content="Modificar colegio" Height="40" Margin="60 20 0 0" Foreground="White" Background="#06ad75" materialDesing:ButtonAssist.CornerRadius="15"></Button>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
