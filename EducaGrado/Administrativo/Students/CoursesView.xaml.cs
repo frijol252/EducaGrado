@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace EducaGrado.Administrativo.Students
     /// </summary>
     public partial class CoursesView : UserControl
     {
-        Course course;
+        Course course = new Course();
         CourseImpl courseImpl;
         public CoursesView()
         {
@@ -30,100 +31,98 @@ namespace EducaGrado.Administrativo.Students
         }
         private void UserControl_Initialized(object sender, EventArgs e)
         {
-            //LoadDataGrid();
+            LoadDataGrid();
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            //Ocultar();
+            Ocultar();
         }
         public void LoadDataGrid()
         {
-            //try
-            //{
-            //    courseImpl = new CourseImpl();
-            //    dgvDatos.ItemsSource = null;
-            //    dgvDatos.ItemsSource = courseImpl.Select().DefaultView;
+            try
+            {
+                courseImpl = new CourseImpl();
+                dgvDatos.ItemsSource = null;
+                dgvDatos.ItemsSource = courseImpl.Select().DefaultView;
 
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
         public void LoadDataGridlike(string like)
         {
-            //try
-            //{
-            //    courseImpl = new CourseImpl();
-            //    dgvDatos.ItemsSource = null;
-            //    dgvDatos.ItemsSource = courseImpl.Selectlike(like).DefaultView;
+            try
+            {
+                courseImpl = new CourseImpl();
+                dgvDatos.ItemsSource = null;
+                dgvDatos.ItemsSource = courseImpl.SelectLike(like).DefaultView;
 
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
         public void Ocultar()
         {
-            //dgvDatos.Columns[0].Visibility = Visibility.Hidden;
+            dgvDatos.Columns[0].Visibility = Visibility.Hidden;
         }
 
 
         private void DgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            //if (dgvDatos.Items.Count > 0 && dgvDatos.SelectedItem != null)
-            //{
-            //    try
-            //    {
+            if (dgvDatos.Items.Count > 0 && dgvDatos.SelectedItem != null)
+            {
+                try
+                {
 
-            //        DataRowView dataRow = (DataRowView)dgvDatos.SelectedItem;
-            //        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
+                    DataRowView dataRow = (DataRowView)dgvDatos.SelectedItem;
+                    int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
 
-            //        courseImpl = new CourseImpl();
-            //        course = courseImpl.Get(id);
-            //        lblcourse.Content = "" + course.Number;
-            //        lblletter.Content = course.Letter;
-            //        lblsection.Content = course.Section;
-            //        btnStu.IsEnabled = true;
-            //        btnSubs.IsEnabled = true;
+                    course.Idcourse = id;
+                    lblcourse.Content = dataRow.Row.ItemArray[1].ToString();
+                    lblsection.Content = dataRow.Row.ItemArray[2].ToString();
+                    btnStu.IsEnabled = true;
+                    btnSubs.IsEnabled = true;
 
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         private void Txtsearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //try
-            //{
-            //    if (txtsearch.Text == "")
-            //    {
-            //        LoadDataGrid();
-            //        Ocultar();
-            //    }
-            //    else
-            //    {
-            //        LoadDataGridlike(txtsearch.Text);
-            //        Ocultar();
-            //    }
-            //}
-            //catch
-            //{
+            try
+            {
+                if (txtsearch.Text == "")
+                {
+                    LoadDataGrid();
+                    Ocultar();
+                }
+                else
+                {
+                    LoadDataGridlike(txtsearch.Text);
+                    Ocultar();
+                }
+            }
+            catch
+            {
 
-            //}
+            }
         }
 
 
 
         private void BtnStu_Click(object sender, RoutedEventArgs e)
         {
-            //Students s = new Students(course.Idcourse);
-            //s.Show();
+            StudentforCourseView s = new StudentforCourseView(course.Idcourse);
+            s.Show();
 
         }
 
         private void BtnSubs_Click(object sender, RoutedEventArgs e)
         {
-            //SubjectsList sl = new SubjectsList(course.Idcourse);
-            //sl.Show();
+            CourseSubject sl  = new CourseSubject(course.Idcourse);
+            sl.Show();
         }
     }
 }

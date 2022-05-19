@@ -8,6 +8,7 @@
              mc:Ignorable="d" 
               Initialized="UserControl_Initialized" Loaded="UserControl_Loaded"
              d:DesignHeight="650" d:DesignWidth="1000">
+    
     <Grid>
         <Grid Height="30" Width="1000" VerticalAlignment="Top" Background="#06ad75">
 
@@ -18,14 +19,27 @@
                     <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 4"/>
                     <TextBox x:Name="txtsearch" TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="932" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
                 </StackPanel>
-                <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="960"/>
+
+
+                <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" AutoGenerateColumns="False" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="960" HorizontalContentAlignment="Center">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='IdCourse'}" Visibility="Collapsed"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Course" Width="400" Binding="{Binding Path='Course'}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Section" Width="400" Binding="{Binding Path='Sections'}"></DataGridTextColumn>
+
+                        
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
             </StackPanel>
             <StackPanel Margin="0,421,0,0">
                 <StackPanel Height="40" Margin="60,40,0,0" Orientation="Horizontal">
-                    <Label Foreground="Black" FontSize="15" >Nombre del curso:</Label>
+                    <Label Foreground="Black" Margin="200,0,0,0" FontSize="15" >Nombre del curso:</Label>
                     <Label x:Name="lblcourse" FontSize="15" Content="..." Width="50"></Label>
-                    <Label Foreground="Black" Margin="60,0,0,0" FontSize="15" >Letra del curso:</Label>
-                    <Label x:Name="lblletter" FontSize="15" Content="..." Width="50"></Label>
                     <Label Foreground="Black" Margin="80,0,0,0" FontSize="15" >Seccion del curso:</Label>
                     <Label x:Name="lblsection" FontSize="15" Content="..." Width="150"></Label>
                 </StackPanel>

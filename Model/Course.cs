@@ -32,6 +32,10 @@ namespace Model
             this.letter = letter;
             this.sectionCourse = sectionCourse;
         }
+        public Course()
+        {
+            
+        }
         #endregion
     }
 }

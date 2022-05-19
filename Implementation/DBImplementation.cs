@@ -156,6 +156,7 @@ namespace Implementation
                 cmd.Connection.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(res);
+                adapter.Dispose();
             }
             catch (Exception ex)
             {
