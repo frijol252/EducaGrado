@@ -8,15 +8,18 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="EducaGrado.Administrativo.Controles.Horarios.ScheduleView"
         mc:Ignorable="d"
         mc:Ignorable="d" WindowStyle="None" AllowsTransparency="True"
-        Title="ModifySchool" Height="450" Width="1000">
+        Title="ModifySchool" Height="450" Width="850">
     <Grid>
-        <Grid Height="30" Width="1000" VerticalAlignment="Top" Background="#06ad75">
-
+        <Grid Height="30" VerticalAlignment="Top" Background="#06ad75">
+            <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible">
+                <materialDesign:PackIcon Kind="Close" Foreground="White"/>
+            </Button>
         </Grid>
-        <Grid Margin="350 40 0 0" Height="410" Width="600" Background="#ededed">
+        
+        <Grid Margin="290 40 0 0" Height="410" Width="450" Background="#ededed">
             <StackPanel Height="418"  VerticalAlignment="Top" Margin="0,-2,0,0">
                 <StackPanel Orientation="Horizontal">
-                    <DataGrid x:Name="dgvDatosHorario" Background="#ededed" AutoGenerateColumns="False" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="100,10,0,0" VerticalAlignment="Top" Width="400" HorizontalContentAlignment="Center">
+                    <DataGrid x:Name="dgvDatosHorario" Background="#ededed" AutoGenerateColumns="False" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="400" HorizontalContentAlignment="Center">
 
                         <DataGrid.Columns>
 
@@ -46,7 +49,7 @@
         <materialDesign:TimePicker x:Name="DPHoraFinal" HorizontalAlignment="Left" Margin="201,145,0,0" VerticalAlignment="Top" Width="122"/>
         <Label Content="Hora de inicio" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,104,0,0"/>
         <Label Content="Hora de Conclusion" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="201,104,0,0"/>
-        <Button x:Name="btnAddSchedule" Content="Añadir Horario" Foreground="White" Background="#c51d6a" Width="150" Margin="103,229,747,189" materialDesing:ButtonAssist.CornerRadius="15"></Button>
+        <Button x:Name="btnAddSchedule" Content="Añadir Horario" Foreground="White" Background="#c51d6a" Width="150" Margin="98,223,602,195" materialDesing:ButtonAssist.CornerRadius="15"></Button>
     </Grid>
 
 </Window>
