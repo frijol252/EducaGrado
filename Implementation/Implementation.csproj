@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AdministratorImpl.cs" />
     <Compile Include="AttendanceImpl.cs" />
+    <Compile Include="CategoryMatterImpl.cs" />
     <Compile Include="CityImpl.cs" />
     <Compile Include="ClassImpl.cs" />
     <Compile Include="CourseImpl.cs" />

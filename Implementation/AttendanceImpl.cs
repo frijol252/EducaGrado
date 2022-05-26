@@ -11,7 +11,7 @@ namespace Implementation
 {
     public class AttendanceImpl : AttendanceDao
     {
-        public int Delete(Attendance t)
+        public void Delete(Attendance t)
         {
             throw new NotImplementedException();
         }

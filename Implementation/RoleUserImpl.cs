@@ -11,7 +11,7 @@ namespace Implementation
 {
     public class RoleUserImpl : RoleUserDao
     {
-        public int Delete(RoleUser t)
+        public void Delete(RoleUser t)
         {
             throw new NotImplementedException();
         }

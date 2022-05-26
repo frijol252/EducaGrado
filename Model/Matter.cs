@@ -31,5 +31,19 @@ namespace Model
             this.registrationDate = registrationDate;
             this.updateDate = updateDate;
         }
+        public Matter(string matterName, int categoryId)
+        {
+            this.matterName = matterName;
+            this.categoryId = categoryId;
+        }
+        public Matter(int matterId, string matterName)
+        {
+            this.matterId = matterId;
+            this.matterName = matterName;
+        }
+        public Matter()
+        {
+            
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace Implementation
 {
     public class GradeImpl : GradeDao
     {
-        public int Delete(Grade t)
+        public void Delete(Grade t)
         {
             throw new NotImplementedException();
         }

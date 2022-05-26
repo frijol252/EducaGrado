@@ -22,5 +22,6 @@ namespace Model
             this.courseId = courseId;
             this.rudeNume = rudeNume;
         }
+
     }
 }

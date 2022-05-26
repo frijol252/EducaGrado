@@ -11,7 +11,7 @@ namespace DAO
     {
         int Insert(T t);
         int Update(T t);
-        int Delete(T t);
+        void Delete(T t);
         DataTable Select();
     }
 }

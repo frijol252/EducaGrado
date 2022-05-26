@@ -11,7 +11,7 @@ namespace Implementation
 {
     public class ModalityImpl : ModalityDao
     {
-        public int Delete(Modality t)
+        public void Delete(Modality t)
         {
             throw new NotImplementedException();
         }

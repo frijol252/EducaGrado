@@ -11,7 +11,7 @@ namespace Implementation
 {
     public class CityImpl : CityDao
     {
-        public int Delete(City t)
+        public void Delete(City t)
         {
             throw new NotImplementedException();
         }

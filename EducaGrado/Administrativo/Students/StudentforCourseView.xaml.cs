@@ -148,9 +148,9 @@ namespace EducaGrado.Administrativo.Students
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //StudentAdd stu = new StudentAdd(idCourse);
-            //stu.Show();
-            //this.Close();
+            StudentAdd stu = new StudentAdd(idCourse);
+            stu.Show();
+            this.Close();
         }
 
         private void BtnMod_Click(object sender, RoutedEventArgs e)

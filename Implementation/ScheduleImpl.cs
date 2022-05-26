@@ -11,7 +11,7 @@ namespace Implementation
 {
     public class ScheduleImpl : ScheduleDao
     {
-        public int Delete(Schedule t)
+        public void Delete(Schedule t)
         {
             throw new NotImplementedException();
         }

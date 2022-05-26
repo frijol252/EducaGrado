@@ -10,7 +10,7 @@ namespace Implementation
 {
     public class TeacherImpl : TeacherDao
     {
-        public int Delete(Teacher t)
+        public void Delete(Teacher t)
         {
             throw new NotImplementedException();
         }

@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="EducaGrado.Administrativo.Controles.Materias.MattersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:EducaGrado.Administrativo.Controles.Materias" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+              Initialized="UserControl_Initialized" Loaded="UserControl_Loaded"
+             d:DesignHeight="650" d:DesignWidth="1000">
+    <Grid>
+        <Grid Height="30" Width="1000" VerticalAlignment="Top" Background="#06ad75">
+
+        </Grid>
+        <Grid Margin="0 25 0 0" Height="620" Width="1000" Background="#ededed">
+            <StackPanel Height="418"  VerticalAlignment="Top" Margin="0,-2,0,0">
+                <StackPanel Orientation="Horizontal" Margin="24,10,24,0">
+                    <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 10"/>
+                    <TextBox x:Name="txtsearch" TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="330" materialDesign:HintAssist.Hint="Buscar / Agregar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
+                    <Button  Margin="10 0 10 0" Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="Transparent"  Background="#04af76" ToolTip="Close" x:Name="btnAdd" Click="btnAdd_Click" Height="25" Width="25">
+                        <materialDesing:PackIcon Kind="Add" Foreground="White" Padding="0"/>
+                    </Button>
+                    <Label x:Name="lblcategory" Width="100" Margin="0 0 10 0"></Label>
+                    <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 10"/>
+                    <TextBox  x:Name="txtsearch2" TextChanged="txtsearch2_TextChanged" Foreground="Black" Width="330" materialDesign:HintAssist.Hint="Buscar / Agregar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
+                    <Button  Margin="10 0 0 0" Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="Transparent"  Background="#04af76" ToolTip="Close" x:Name="btnAdd2" Click="btnAdd2_Click" Height="25" Width="25">
+                        <materialDesing:PackIcon Kind="Add" Foreground="White" Padding="0"/>
+                    </Button>
+                </StackPanel>
+
+
+                <StackPanel Orientation="Horizontal">
+                    <DataGrid x:Name="dgvDatos" Background="#ededed" AutoGenerateColumns="False"
+                              CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" 
+                              Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="400" HorizontalContentAlignment="Center"
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nombre Categoria" Binding="{Binding Path='Name'}" IsReadOnly="False" />
+                            <DataGridTextColumn Header="Section" Width="100" IsReadOnly="True" Visibility="Collapsed" Binding="{Binding Path='Modalidad'}"></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Control">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Content="Eliminar" Background="#ef4d4d" Foreground="White" Click="btnView_Click"  materialDesing:ButtonAssist.CornerRadius="15" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <DataGrid x:Name="dgvDatos2" Background="#ededed" AutoGenerateColumns="False" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="100,10,0,0" VerticalAlignment="Top" Width="400" HorizontalContentAlignment="Center">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nombre Materia" Width="150" IsReadOnly="False" Binding="{Binding Path='Name'}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Section" Width="100" IsReadOnly="True" Visibility="Collapsed" Binding="{Binding Path='Categoria'}"></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Control">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Content="Eliminar" Background="#ef4d4d" Foreground="White" materialDesing:ButtonAssist.CornerRadius="15" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                </StackPanel>
+
+            </StackPanel>
+            <StackPanel Margin="0,421,0,0">
+                <StackPanel Height="40" Margin="60,40,0,0" Orientation="Horizontal">
+                    <Button x:Name="btnactu" Content="Actualizar" Foreground="White" Background="#06ad75" Width="150" Margin="50,0,0,0" materialDesing:ButtonAssist.CornerRadius="15" Click="btnEdit_Click"></Button>
+                    <Button x:Name="btnactu2" Content="Actualizar" Foreground="White" Background="#06ad75" Width="150" Margin="400,0,0,0" materialDesing:ButtonAssist.CornerRadius="15" Click="btnEdit2_Click"></Button>
+                </StackPanel>
+                <StackPanel Margin="300,10,0,0" Orientation="Horizontal"/>
+
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</UserControl>

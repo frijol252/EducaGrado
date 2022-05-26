@@ -11,7 +11,7 @@ namespace Implementation
 {
     public class AdministratorImpl : AdministratorDao
     {
-        public int Delete(Administrator t)
+        public void Delete(Administrator t)
         {
             throw new NotImplementedException();
         }

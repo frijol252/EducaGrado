@@ -16,6 +16,8 @@ using Implementation;
 using Model;
 using System.Data;
 using Microsoft.Win32;
+using System.IO;
+using EducaGrado.xDialog;
 
 namespace EducaGrado.Administrativo.Students
 {
@@ -30,6 +32,10 @@ namespace EducaGrado.Administrativo.Students
             this.idcourse = i;
             InitializeComponent();
             comboCity();
+        }
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            loadImage();
         }
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -93,24 +99,60 @@ namespace EducaGrado.Administrativo.Students
         }
         private void btnAddImage_Click(object sender, RoutedEventArgs e)
         {
-            //OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.Filter = "Archivos de Imagen|*.PNG";
-            //if (ofd.ShowDialog() == true)
-            //{
-            //    image = new BitmapImage();
-            //    image.BeginInit();
-            //    image.CacheOption = BitmapCacheOption.OnLoad;
-            //    image.UriSource = new Uri(ofd.FileName);
-            //    image.EndInit();
-            //    imagesector.Source = image;
-            //    pathImagePortada = ofd.FileName;
-            //}
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;";
+            if (ofd.ShowDialog() == true)
+            {
+                image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.UriSource = new Uri(ofd.FileName);
+                image.EndInit();
+                imagesector.Source = image;
+                //pathImagePortada = ofd.FileName;
+                
+            }
 
+        }
+        
+        public void loadImage()
+        {
+            
+            imagesector.Source = ToImage(File.ReadAllBytes(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\images\Test.txt")));
+        }
+        public byte[] ToByte(BitmapImage bitmapImage)
+        {
+            byte[] data;
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
+            using (MemoryStream ms = new MemoryStream())
+            {
+                encoder.Save(ms);
+                data = ms.ToArray();
+                return data;
+            }
         }
 
 
+        public BitmapImage ToImage(byte[] array)
+        {
+            using (MemoryStream ms = new MemoryStream(array))
+            {
+                BitmapImage img = new BitmapImage();
+                img.BeginInit();
+                img.CacheOption = BitmapCacheOption.OnLoad;//CacheOption must be set after BeginInit()
+                img.StreamSource = ms;
+                img.EndInit();
+
+                if (img.CanFreeze)
+                {
+                    img.Freeze();
+                }
 
 
+                return img;
+            }
+        }
         #region mapa
         Location ubicationPoint;
         private void MyMap_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -266,5 +308,7 @@ namespace EducaGrado.Administrativo.Students
 
 
         #endregion
+
+        
     }
 }

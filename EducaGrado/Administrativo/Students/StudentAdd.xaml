@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:EducaGrado.Administrativo.Students" xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" WindowStyle="None" AllowsTransparency="True"
+        mc:Ignorable="d" WindowStyle="None" AllowsTransparency="True" Loaded="Window_Initialized"
         Title="StudentAdd" Height="550" Width="790">
     <Grid>
         <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75" Margin="0,0,1,0">

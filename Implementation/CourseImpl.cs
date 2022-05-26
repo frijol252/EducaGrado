@@ -11,7 +11,7 @@ namespace Implementation
 {
     public class CourseImpl : CourseDao
     {
-        public int Delete(Course t)
+        public void Delete(Course t)
         {
             throw new NotImplementedException();
         }

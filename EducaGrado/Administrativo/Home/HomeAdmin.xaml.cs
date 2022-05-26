@@ -60,7 +60,8 @@ namespace EducaGrado.Administrativo.Home
 
         private void MateriasButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new EducaGrado.Administrativo.Controles.Materias.MattersView());
         }
 
         private void HorariosButton_Click(object sender, RoutedEventArgs e)

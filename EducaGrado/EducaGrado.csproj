@@ -48,6 +48,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,11 +68,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="xDialog\MsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="xDialog\MsgBox.Designer.cs">
+      <DependentUpon>MsgBox.cs</DependentUpon>
+    </Compile>
     <Page Include="Administrativo\Controles\Account\AccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Administrativo\Controles\Account\ModifAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrativo\Controles\Materias\MattersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,6 +147,10 @@
     </Compile>
     <Compile Include="Administrativo\Controles\Account\ModifAccount.xaml.cs">
       <DependentUpon>ModifAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Controles\Horarios\Class1.cs" />
+    <Compile Include="Administrativo\Controles\Materias\MattersView.xaml.cs">
+      <DependentUpon>MattersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Administrativo\Home\HomeAdmin.xaml.cs">
       <DependentUpon>HomeAdmin.xaml</DependentUpon>
@@ -208,6 +224,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="xDialog\MsgBox.resx">
+      <DependentUpon>MsgBox.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -251,6 +270,9 @@
   <ItemGroup>
     <Resource Include="images\EducaImage.png" />
     <Resource Include="images\EducaLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Test.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />

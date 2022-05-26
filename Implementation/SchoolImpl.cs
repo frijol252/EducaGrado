@@ -12,7 +12,7 @@ namespace Implementation
 {
     public class SchoolImpl : SchoolDao
     {
-        public int Delete(School t)
+        public void Delete(School t)
         {
             throw new NotImplementedException();
         }
@@ -41,8 +41,6 @@ WHERE ModalityId = (SELECT s.ModalityId  FROM School s WHERE SchoolId = @SchoolI
             string querySchoolType = @"UPDATE  SchoolType  SET numberCourses  = @numberCourses  WHERE SchoolTypeId = (SELECT s.SchoolTypeId  FROM School s WHERE SchoolId = @SchoolId)";
             try
             {
-
-                System.Diagnostics.Debug.WriteLine(string.Format("{0} | Info: Start student Update.", DateTime.Now));
                 List<SqlCommand> cmds = DBImplementation.CreateNBasicCommands(2);
                 cmds[0].CommandText = queryModality;
                 cmds[0].Parameters.AddWithValue("@NumberGrades", modality.NumberGrades);

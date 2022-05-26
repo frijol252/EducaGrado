@@ -11,7 +11,7 @@ namespace Implementation
 {
     public class ProvinceImpl : ProvinceDao
     {
-        public int Delete(Province t)
+        public void Delete(Province t)
         {
             throw new NotImplementedException();
         }

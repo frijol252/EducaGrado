@@ -11,7 +11,7 @@ namespace Implementation
 {
     public class UserImpl : UserAccountDao
     {
-        public int Delete(UserAccount t)
+        public void Delete(UserAccount t)
         {
             throw new NotImplementedException();
         }

@@ -10,7 +10,7 @@ namespace Implementation
 {
     public class SectionGradeImpl : SectionGradeDao
     {
-        public int Delete(SectionGrade t)
+        public void Delete(SectionGrade t)
         {
             throw new NotImplementedException();
         }

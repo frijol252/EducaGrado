@@ -10,7 +10,7 @@ namespace Implementation
 {
     public class ClassImpl : ClassDao
     {
-        public int Delete(Class t)
+        public void Delete(Class t)
         {
             throw new NotImplementedException();
         }

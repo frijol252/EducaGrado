@@ -11,7 +11,7 @@ namespace Implementation
 {
     public class SchoolTypeImpl : SchoolTypeDao
     {
-        public int Delete(SchoolType t)
+        public void Delete(SchoolType t)
         {
             throw new NotImplementedException();
         }

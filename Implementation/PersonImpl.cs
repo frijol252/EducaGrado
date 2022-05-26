@@ -11,7 +11,7 @@ namespace Implementation
 {
     public class PersonImpl : PersonDao
     {
-        public int Delete(Person t)
+        public void Delete(Person t)
         {
             throw new NotImplementedException();
         }
