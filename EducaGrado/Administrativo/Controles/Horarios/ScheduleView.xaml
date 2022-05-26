@@ -1,0 +1,52 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:EducaGrado.Administrativo.Controles.Horarios"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="EducaGrado.Administrativo.Controles.Horarios.ScheduleView"
+        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStyle="None" AllowsTransparency="True"
+        Title="ModifySchool" Height="450" Width="1000">
+    <Grid>
+        <Grid Height="30" Width="1000" VerticalAlignment="Top" Background="#06ad75">
+
+        </Grid>
+        <Grid Margin="350 40 0 0" Height="410" Width="600" Background="#ededed">
+            <StackPanel Height="418"  VerticalAlignment="Top" Margin="0,-2,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <DataGrid x:Name="dgvDatosHorario" Background="#ededed" AutoGenerateColumns="False" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="100,10,0,0" VerticalAlignment="Top" Width="400" HorizontalContentAlignment="Center">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Hora de inicio" Width="150" IsReadOnly="False" Binding="{Binding Path='HS'}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Hora de conclusion" Width="150" IsReadOnly="True" Binding="{Binding Path='HF'}"></DataGridTextColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Content="Eliminar" Background="#ef4d4d" Foreground="White" materialDesing:ButtonAssist.CornerRadius="15" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                </StackPanel>
+
+            </StackPanel>
+       
+
+        </Grid>
+        <materialDesign:TimePicker x:Name="DPHoraInicio" HorizontalAlignment="Left" Margin="31,145,0,0" VerticalAlignment="Top" Width="108"/>
+        <materialDesign:TimePicker x:Name="DPHoraFinal" HorizontalAlignment="Left" Margin="201,145,0,0" VerticalAlignment="Top" Width="122"/>
+        <Label Content="Hora de inicio" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,104,0,0"/>
+        <Label Content="Hora de Conclusion" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="201,104,0,0"/>
+        <Button x:Name="btnAddSchedule" Content="Añadir Horario" Foreground="White" Background="#c51d6a" Width="150" Margin="103,229,747,189" materialDesing:ButtonAssist.CornerRadius="15"></Button>
+    </Grid>
+
+</Window>

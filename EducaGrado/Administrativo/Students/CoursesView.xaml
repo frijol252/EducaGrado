@@ -26,14 +26,15 @@
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='IdCourse'}" Visibility="Collapsed"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Course" Width="400" Binding="{Binding Path='Course'}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Section" Width="400" Binding="{Binding Path='Sections'}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Curso" Width="400" Binding="{Binding Path='Course'}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Paralelo" Width="400" Binding="{Binding Path='Sections'}"></DataGridTextColumn>
 
                         
 
                     </DataGrid.Columns>
 
                 </DataGrid>
+                <materialDesign:TimePicker VerticalAlignment="Stretch"/>
 
             </StackPanel>
             <StackPanel Margin="0,421,0,0">

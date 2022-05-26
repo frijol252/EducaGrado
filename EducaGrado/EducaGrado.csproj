@@ -68,6 +68,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Administrativo\Controles\Horarios\ScheduleView.xaml.cs">
+      <DependentUpon>ScheduleView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="xDialog\MsgBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +82,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Administrativo\Controles\Account\ModifAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administrativo\Controles\Horarios\ScheduleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
