@@ -1,0 +1,22 @@
+﻿<Window x:Class="EducaGrado.Administrativo.Controles.Invoice.RevisionInvoice"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:EducaGrado.Administrativo.Controles.Invoice"
+        mc:Ignorable="d"
+        Title="RevisionInvoice" Height="600" Width="1024"  WindowStyle="None" AllowsTransparency="True">
+    <Grid>
+        <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75">
+            <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible">
+                <materialDesign:PackIcon Kind="Close" Foreground="White"/>
+            </Button>
+        </Grid>
+        <Grid Background="#ededed" Margin="0,35,0,0">
+
+            <Label FontSize="70">Aca va lo del crystal reports</Label>
+
+        </Grid>
+    </Grid>
+</Window>
