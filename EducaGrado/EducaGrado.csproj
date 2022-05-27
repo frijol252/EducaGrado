@@ -95,6 +95,18 @@
     <Compile Include="Estudiante\Schedules\StudenSchedules.xaml.cs">
       <DependentUpon>StudenSchedules.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Profesor\Home\TeacherHome.xaml.cs">
+      <DependentUpon>TeacherHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\Schedules\TeacehrSchedule.xaml.cs">
+      <DependentUpon>TeacehrSchedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\Subjects\StudenGrade.xaml.cs">
+      <DependentUpon>StudenGrade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\Subjects\TeacherSubjectView.xaml.cs">
+      <DependentUpon>TeacherSubjectView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="xDialog\MsgBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,6 +277,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Profesor\Home\TeacherHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Profesor\Schedules\TeacehrSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Profesor\Subjects\StudenGrade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Profesor\Subjects\TeacherSubjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InicioSesion\PasswordLog.xaml.cs">
@@ -320,9 +348,6 @@
     <Folder Include="Estudiante\Claims\" />
     <Folder Include="Profesor\Account\" />
     <Folder Include="Profesor\Claims\" />
-    <Folder Include="Profesor\Home\" />
-    <Folder Include="Profesor\Schedules\" />
-    <Folder Include="Profesor\Subjects\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\educadblogo.png" />
