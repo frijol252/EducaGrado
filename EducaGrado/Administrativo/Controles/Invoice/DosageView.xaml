@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:EducaGrado.Administrativo.Controles.Invoice"
         mc:Ignorable="d"
        Title="DosageView"  WindowStyle="None" AllowsTransparency="True"
-             mc:Ignorable="d" Width="727.631" Height="300">
+        Width="727.631" Height="300">
     <Grid Margin="0,0,25,61">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
