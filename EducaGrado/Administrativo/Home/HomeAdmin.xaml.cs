@@ -68,7 +68,8 @@ namespace EducaGrado.Administrativo.Home
         {
             try
             {
-                
+                GridPrincipal.Children.Clear();
+                GridPrincipal.Children.Add(new EducaGrado.Administrativo.Controles.Horarios.ScheduleView());
             }
             catch (Exception ex)
             {

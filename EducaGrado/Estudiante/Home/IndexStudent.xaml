@@ -85,7 +85,7 @@
                     <materialDesign:PopupBox Content="PopupBox"  HorizontalAlignment="Right" Foreground="Black" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Padding="0" Margin="0,0,0,0" >
                         <StackPanel Width="180">
                             <Button x:Name="btnAccount" Content="Account"/>
-                            <Button x:Name="btnLogOut" Content="Log Out" Click="BtnLogOut_Click"/>
+                            <Button x:Name="btnLogOut" Content="Log Out" Click="btnLogOut_Click"/>
                         </StackPanel>
                     </materialDesign:PopupBox>
 

@@ -23,5 +23,30 @@ namespace EducaGrado.Profesor.Subjects
         {
             InitializeComponent();
         }
+
+        private void btnAddGrade_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void dgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+
+        }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void txtsearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

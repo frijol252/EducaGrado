@@ -23,5 +23,20 @@ namespace EducaGrado.Administrativo.Controles.Invoice
         {
             InitializeComponent();
         }
+
+        private void btnAnular_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void txtCode_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

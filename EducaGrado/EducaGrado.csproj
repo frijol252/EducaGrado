@@ -71,6 +71,8 @@
     <Compile Include="Administrativo\Controles\Horarios\ScheduleView.xaml.cs">
       <DependentUpon>ScheduleView.xaml</DependentUpon>
     </Compile>
+<<<<<<< Updated upstream
+=======
     <Compile Include="Administrativo\Controles\Invoice\DosageView.xaml.cs">
       <DependentUpon>DosageView.xaml</DependentUpon>
     </Compile>
@@ -86,6 +88,9 @@
     <Compile Include="Administrativo\Controles\Invoice\StudentLint.xaml.cs">
       <DependentUpon>StudentLint.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Administrativo\Students\SubjectModif.xaml.cs">
+      <DependentUpon>SubjectModif.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Estudiante\Grades\StudentsGradeView.xaml.cs">
       <DependentUpon>StudentsGradeView.xaml</DependentUpon>
     </Compile>
@@ -95,6 +100,7 @@
     <Compile Include="Estudiante\Schedules\StudenSchedules.xaml.cs">
       <DependentUpon>StudenSchedules.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Estudiante\Schedules\StudenSchedulesBase.cs" />
     <Compile Include="Profesor\Home\TeacherHome.xaml.cs">
       <DependentUpon>TeacherHome.xaml</DependentUpon>
     </Compile>
@@ -107,6 +113,7 @@
     <Compile Include="Profesor\Subjects\TeacherSubjectView.xaml.cs">
       <DependentUpon>TeacherSubjectView.xaml</DependentUpon>
     </Compile>
+>>>>>>> Stashed changes
     <Compile Include="xDialog\MsgBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,26 +129,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Administrativo\Controles\Horarios\ScheduleView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Administrativo\Controles\Invoice\DosageView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Administrativo\Controles\Invoice\InvoiceView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Administrativo\Controles\Invoice\PaymentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Administrativo\Controles\Invoice\RevisionInvoice.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Administrativo\Controles\Invoice\StudentLint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,6 +168,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administrativo\Students\SubjectModif.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administrativo\Teacher\TeacherAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,18 +185,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Administrativo\Teacher\TeacherSubject.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Estudiante\Grades\StudentsGradeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Estudiante\Home\IndexStudent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Estudiante\Schedules\StudenSchedules.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,7 +202,6 @@
     <Compile Include="Administrativo\Controles\Account\ModifAccount.xaml.cs">
       <DependentUpon>ModifAccount.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Administrativo\Controles\Horarios\Class1.cs" />
     <Compile Include="Administrativo\Controles\Materias\MattersView.xaml.cs">
       <DependentUpon>MattersView.xaml</DependentUpon>
     </Compile>
@@ -277,22 +255,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Profesor\Home\TeacherHome.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Profesor\Schedules\TeacehrSchedule.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Profesor\Subjects\StudenGrade.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Profesor\Subjects\TeacherSubjectView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InicioSesion\PasswordLog.xaml.cs">
@@ -342,12 +304,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Administrativo\Admin\" />
     <Folder Include="Administrativo\Images\" />
     <Folder Include="Estudiante\Account\" />
     <Folder Include="Estudiante\Claims\" />
+    <Folder Include="Estudiante\Grades\" />
+    <Folder Include="Estudiante\Home\" />
+    <Folder Include="Estudiante\Schedules\" />
     <Folder Include="Profesor\Account\" />
     <Folder Include="Profesor\Claims\" />
+    <Folder Include="Profesor\Home\" />
+    <Folder Include="Profesor\Schedules\" />
+    <Folder Include="Profesor\Subjects\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\educadblogo.png" />

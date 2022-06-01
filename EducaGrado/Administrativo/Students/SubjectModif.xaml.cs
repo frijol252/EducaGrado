@@ -19,90 +19,55 @@ using System.Windows.Shapes;
 namespace EducaGrado.Administrativo.Students
 {
     /// <summary>
-    /// Lógica de interacción para SubjectAdd.xaml
+    /// Lógica de interacción para SubjectModif.xaml
     /// </summary>
-    public partial class SubjectAdd : Window
+    public partial class SubjectModif : Window
     {
         int course;
-        public SubjectAdd(int course)
+        int idclass;
+        Schedule sch;
+        ScheduleImpl scheduleImpl;
+        public SubjectModif(int course, int idclass)
         {
-            this.course = course;
             InitializeComponent();
+            this.course = course;
+            this.idclass = idclass;
         }
-        private void BtnClose_Click(object sender, RoutedEventArgs e)
+
+        
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
+            this.DragMove();
         }
 
-
-        #region grid
-        Matter matter;
-        MatterImpl matterImpl;
-        Schedule sch;
-        ScheduleImpl scheduleImpl;
-        ClassImpl clasImpl;
-        Class classs;
-        private void Window_Initialized(object sender, EventArgs e)
-        {
-            loadGrid();
-            loadGridSche();
-
-        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            loadGrid();
         }
-        public void loadGrid()
-        {
-            try
-            {
-                matterImpl = new MatterImpl();
-                dgvSub.ItemsSource = null;
-                dgvSub.ItemsSource = matterImpl.SelectForAddMatters(course).DefaultView;
 
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+
         }
-        public void loadGridSche()
+
+        public void loadGrid()
         {
             try
             {
                 scheduleImpl = new ScheduleImpl();
                 dgvDatos.ItemsSource = null;
-                dgvDatos.ItemsSource = scheduleImpl.SelectHourClass(course).DefaultView;
+                dgvDatos.ItemsSource = scheduleImpl.SelectHourClass(course,idclass).DefaultView;
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-        #endregion
 
-        
-        int idSchedule = 0;
-        int idSubject = 0;
-        string materiaselected = "";
-        List<int> lista = new List<int>();
-        private void DgvSub_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            if (dgvSub.Items.Count > 0 && dgvSub.SelectedItem != null)
-            {
-                try
-                {
-                    DataRowView dataRow = (DataRowView)dgvSub.SelectedItem;
-                    int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
-                    materiaselected = dataRow.Row.ItemArray[1].ToString();
-                    idSubject = id;
-                    lblmatery.Content = dataRow.Row.ItemArray[1].ToString();
-                    dgvDatos.IsEnabled = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
         private void dgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             if (dgvDatos.Items.Count > 0 && dgvDatos.SelectedItem != null)
@@ -125,7 +90,7 @@ namespace EducaGrado.Administrativo.Students
                             count++;
                         }
                     }
-                    else if(cellValue== "Seleccionado")
+                    else if (cellValue == "Seleccionado")
                     {
                         foreach (DataRowView row in dgvDatos.ItemsSource)
                         {
@@ -137,10 +102,6 @@ namespace EducaGrado.Administrativo.Students
                         }
                     }
                     else { MsgBox.Show("No puede crear choques de horario", "Atencion", MsgBox.Buttons.OK, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn); }
-                    
-
-                    
-
 
 
                 }
@@ -150,56 +111,33 @@ namespace EducaGrado.Administrativo.Students
                 }
             }
         }
-        private void BtnSelectSubject_Click(object sender, RoutedEventArgs e)
-        {
-            //try
-            //{
-            //    if (idSubject == 0) { MessageBox.Show("Please select one Subject"); }
-            //    else
-            //    {
-            //        dgvSub.IsEnabled = false;
-            //        btnSelectSubject.IsEnabled = false;
-            //        dgvDatos.IsEnabled = true;
-            //        dgvDatosjue.IsEnabled = true;
-            //        dgvDatosmar.IsEnabled = true;
-            //        dgvDatosmier.IsEnabled = true;
-            //        dgvDatossab.IsEnabled = true;
-            //        dgvDatosvier.IsEnabled = true;
-            //    }
-            //}
-            //catch
-            //{
-
-            //}
-        }
-
+        ClassImpl classImpl;
+        Class @class;
         private void Addsubject_Click(object sender, RoutedEventArgs e)
         {
             List<Class> lista = new List<Class>();
-            
-            System.Windows.Forms.DialogResult result = MsgBox.Show("Esta seguro de Agregar "+materiaselected+"?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+
+            System.Windows.Forms.DialogResult result = MsgBox.Show("Esta seguro de Modificar?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 foreach (DataRowView row in dgvDatos.ItemsSource)
                 {
-                    for (int i=2; i<8; i++)
+                    for (int i = 2; i < 8; i++)
                     {
                         if (row[i].ToString() == "Seleccionado")
                         {
 
-                            lista.Add(new Class(course, int.Parse(row[0].ToString()),idSubject,ReturnDay(i)));
+                            lista.Add(new Class(course, int.Parse(row[0].ToString()), idclass, ReturnDay(i)));
                         }
                     }
                 }
-                clasImpl = new ClassImpl();
-                clasImpl.Inserttransact(lista);
-                MsgBox.Show("Clase Insertada", "Completada", MsgBox.Buttons.OK, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
+                classImpl = new ClassImpl();
+                classImpl.Updatetransact(lista);
+                MsgBox.Show("Clase Modificada", "Completada", MsgBox.Buttons.OK, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
                 CourseSubject courseSubject = new CourseSubject(course);
                 courseSubject.Show();
                 this.Close();
             }
-            
-
         }
         public string ReturnDay(int i)
         {
@@ -210,7 +148,5 @@ namespace EducaGrado.Administrativo.Students
             if (i == 6) return "Vi";
             else return "Sa";
         }
-       
     }
-    
 }

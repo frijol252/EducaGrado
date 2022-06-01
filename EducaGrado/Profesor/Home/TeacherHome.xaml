@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EducaGrado.Profesor.Home"
-        mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" Height="600" Width="1024" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize" WindowStyle="None" >
     <Window.Resources>
@@ -96,7 +95,7 @@
                     <materialDesign:PopupBox Content="PopupBox"  HorizontalAlignment="Right" Foreground="Black" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Padding="0" Margin="0,0,0,0" >
                         <StackPanel Width="180">
                             <Button x:Name="btnAccount" Content="Account"/>
-                            <Button x:Name="btnLogOut" Content="Log Out" Click="BtnLogOut_Click"/>
+                            <Button x:Name="btnLogOut" Content="Log Out" Click="btnLogOut_Click"/>
                         </StackPanel>
                     </materialDesign:PopupBox>
 
@@ -165,7 +164,7 @@
                             <TextBlock Text="Trabajo" FontSize="17" VerticalAlignment="Center" Margin="20 0" Foreground="Black"/>
                         </StackPanel>
                         <StackPanel  Width="auto" Background="#999999">
-                            <Button Height="60" Background="#FFE63070" x:Name="ListTeacher" Click="ListTeacher_Click_1">
+                            <Button Height="60" Background="#FFE63070" x:Name="ListTeacher" Click="ListTeacher_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Schedule" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="Black"/>
                                     <TextBlock Text="Horarios" FontSize="17" VerticalAlignment="Center" Margin="20 0" Foreground="Black"/>

@@ -17,7 +17,7 @@ namespace EducaGrado.Profesor.Schedules
     /// <summary>
     /// Lógica de interacción para TeacehrSchedule.xaml
     /// </summary>
-    public partial class TeacehrSchedule : Window
+    public partial class TeacehrSchedule : UserControl
     {
         public TeacehrSchedule()
         {

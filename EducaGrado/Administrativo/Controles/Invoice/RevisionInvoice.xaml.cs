@@ -23,5 +23,10 @@ namespace EducaGrado.Administrativo.Controles.Invoice
         {
             InitializeComponent();
         }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

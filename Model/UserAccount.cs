@@ -10,6 +10,7 @@ namespace Model
     {
         private int userID;
         private string userName;
+        private string passstring;
         private byte[] password;
         private byte[] key;
         private byte[] vi;
@@ -28,6 +29,7 @@ namespace Model
         public int UserID { get => userID; set => userID = value; }
         public byte RoleUserId { get => roleUserId; set => roleUserId = value; }
         public byte RevisionPass { get => revisionPass; set => revisionPass = value; }
+        public string Passstring { get => passstring; set => passstring = value; }
 
         //GET
         public UserAccount(int userID, string userName, byte[] password, byte[] key, byte[] vi, byte roleUserId, byte revisionPass, byte state, DateTime createDate, DateTime lastUpdate)

@@ -44,7 +44,7 @@
                     <StackPanel x:Name="Insestack" Background="#ededed" Margin="30 0 30 0" Height="514" Orientation="Vertical" VerticalAlignment="Top">
 
                         <StackPanel Orientation="Horizontal" Height="287"  Margin="10 10 0 10" Width="520">
-                            <DataGrid x:Name="dgvSub" IsReadOnly="True" Background="#ededed" IsEnabled="True" SelectedCellsChanged="DgvSub_SelectedCellsChanged" CanUserAddRows="False" HorizontalAlignment="Left" Height="260" Margin="0,20,0,0" VerticalAlignment="Top" Width="472"/>
+                            <DataGrid x:Name="dgvSub" IsReadOnly="True" Background="#ededed" IsEnabled="True" SelectedCellsChanged="dgvSub_SelectedCellsChanged" CanUserAddRows="False" HorizontalAlignment="Left" Height="260" Margin="0,20,0,0" VerticalAlignment="Top" Width="472"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="50 0 60 0">
                             <Button x:Name="Add" IsEnabled="False" Content="Agregar horario" Height="40" Margin="0 20 0 0" Foreground="White" Background="#FFE63070"/>

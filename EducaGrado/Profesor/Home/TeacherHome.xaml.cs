@@ -23,5 +23,30 @@ namespace EducaGrado.Profesor.Home
         {
             InitializeComponent();
         }
+
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonFechar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CrudTeacher_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListTeacher_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

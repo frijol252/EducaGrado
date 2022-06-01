@@ -17,7 +17,7 @@ namespace EducaGrado.Estudiante.Grades
     /// <summary>
     /// Lógica de interacción para StudentsGradeView.xaml
     /// </summary>
-    public partial class StudentsGradeView : Window
+    public partial class StudentsGradeView : UserControl
     {
         public StudentsGradeView()
         {

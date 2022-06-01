@@ -16,7 +16,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#04af76" Margin="0,0,-25,0">
-            <Button x:Name="btnClose" Padding="0" HorizontalAlignment="Right" Width="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible">
+            <Button x:Name="btnClose" Padding="0" HorizontalAlignment="Right" Click="btnClose_Click" Width="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible">
                 <materialDesign:PackIcon Kind="Close" Foreground="White"/>
             </Button>
         </Grid>
@@ -36,7 +36,7 @@
                             <TextBox x:Name="txtTest" Width="234" Height="30" VerticalAlignment="Top"></TextBox>
                         </StackPanel>
                         <StackPanel Margin="150,10,0,0" Orientation="Horizontal">
-                            <Button x:Name="btnAddGrade" Content="Cambiar dosificación" Background="#FFE63070" Foreground="White" IsEnabled="True" Click="btnAddGrade_Click" Height="30" Width="242"></Button>
+                            <Button x:Name="btnAddGrade" Content="Cambiar dosificación" Background="#FFE63070" Foreground="White" IsEnabled="True"  Height="30" Width="242"></Button>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">

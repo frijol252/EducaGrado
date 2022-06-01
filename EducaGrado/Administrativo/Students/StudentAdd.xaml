@@ -13,7 +13,7 @@
                 <materialDesign:PackIcon Kind="Close" Foreground="White"/>
             </Button>
         </Grid>
-        <Grid Margin="0,31,0,25" Background="#ededed">
+        <Grid Margin="0,31,0,0" Background="#ededed">
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
@@ -42,7 +42,7 @@
                             <TextBox x:Name="txtlastname" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el primer apellido del estudiante" ></TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                            <TextBlock Text="Segundo apellido:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 14 0" FontWeight="Bold"></TextBlock>
+                            <TextBlock Text="Segundo apellido*:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 14 0" FontWeight="Bold"></TextBlock>
                             <TextBox x:Name="txtsecondlastname" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el segundo apellido del estudiante (Opcional)" FontSize="11"></TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
@@ -54,15 +54,21 @@
                             <TextBox x:Name="txtPhone" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el telefono/celular del estudiante" ></TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                            <TextBlock Text="Ci:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 20 0" FontWeight="Bold"></TextBlock>
+                            <TextBox x:Name="txtCi" VerticalAlignment="Top" Foreground="Black" Width="150" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el CI" ></TextBox>
+                            <TextBlock Text="Extension*:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 20 0" FontWeight="Bold"></TextBlock>
+                            <TextBox x:Name="txtCieX" VerticalAlignment="Top" Foreground="Black" Width="150" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la extension de CI" ></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
                             <TextBlock Text="Fecha de nacimiento:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 10 0" FontWeight="Bold"></TextBlock>
-                            <DatePicker x:Name="txtBirth" VerticalAlignment="Top" Foreground="Black" Width="280" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la fecha de nacimiento" ></DatePicker>
+                            <DatePicker x:Name="txtBirth" VerticalAlignment="Top" Foreground="Black" Width="280" FontWeight="Bold" Focusable="False" materialDesign:HintAssist.Hint="Ingrese la fecha de nacimiento" ></DatePicker>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
                             <TextBlock Text="Genero:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 70 0" FontWeight="Bold"></TextBlock>
                             <ComboBox x:Name="txtGender" VerticalAlignment="Top" Foreground="Black" Width="300" FontWeight="Bold" >
-                                <ComboBoxItem Content="Masculino" IsSelected="True"/>
-                                <ComboBoxItem Content="Femenino"/>
-                                <ComboBoxItem Content="Sin especificar"/>
+                                <ComboBoxItem Content="Ma" IsSelected="True"/>
+                                <ComboBoxItem Content="Fe"/>
+                                <ComboBoxItem Content="SE"/>
                             </ComboBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
@@ -71,13 +77,13 @@
                         </StackPanel>
                         <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Center">
                             <TextBlock VerticalAlignment="Center" Text="Ciudad:" Margin="-8 0 10 0" Foreground="#c51d6a" FontWeight="Bold"></TextBlock>
-                            <ComboBox x:Name="comboCiudad" DropDownClosed="ComboCiudad_DropDownClosed" VerticalAlignment="Center" Width="120"></ComboBox>
+                            <ComboBox x:Name="comboCiudad" DropDownClosed="ComboCiudad_DropDownClosed" DisplayMemberPath="Name" SelectedValuePath="ID" VerticalAlignment="Center" Width="120"></ComboBox>
                             <TextBlock VerticalAlignment="Center" Text="Provincia:" Margin="40 0 10 0" Foreground="#c51d6a" FontWeight="Bold"></TextBlock>
-                            <ComboBox x:Name="comboProvincia" DropDownClosed="ComboProvincia_DropDownClosed" VerticalAlignment="Center" Width="120"></ComboBox>
+                            <ComboBox x:Name="comboProvincia" DropDownClosed="ComboProvincia_DropDownClosed" DisplayMemberPath="Name" SelectedValuePath="ID" VerticalAlignment="Center" Width="120"></ComboBox>
                         </StackPanel>
                         <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Center" Margin="30 10 0 0">
                             <TextBlock VerticalAlignment="Center" Text="Pueblo:" Foreground="#c51d6a" Margin="-00 0 10 0" FontWeight="Bold"></TextBlock>
-                            <ComboBox x:Name="comboMuni" DropDownClosed="ComboMuni_DropDownClosed" VerticalAlignment="Center" Width="120"></ComboBox>
+                            <ComboBox x:Name="comboMuni" DropDownClosed="ComboMuni_DropDownClosed" VerticalAlignment="Center" DisplayMemberPath="Name" SelectedValuePath="ID" Width="120"></ComboBox>
                             <TextBlock Text="Codigo rude:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="30 10 20 0" FontWeight="Bold"></TextBlock>
                             <TextBox x:Name="txtrude" VerticalAlignment="Top" Foreground="Black" Width="110" FontWeight="Bold" materialDesign:HintAssist.Hint="Rude" ></TextBox>
                         </StackPanel>

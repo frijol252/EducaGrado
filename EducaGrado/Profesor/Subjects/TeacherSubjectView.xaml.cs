@@ -17,11 +17,16 @@ namespace EducaGrado.Profesor.Subjects
     /// <summary>
     /// Lógica de interacción para TeacherSubjectView.xaml
     /// </summary>
-    public partial class TeacherSubjectView : Window
+    public partial class TeacherSubjectView : UserControl
     {
         public TeacherSubjectView()
         {
             InitializeComponent();
+        }
+
+        private void dgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+
         }
     }
 }

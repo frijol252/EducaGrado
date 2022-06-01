@@ -12,6 +12,7 @@ namespace Model
         #region Properiarities
         int personId;
         int userAccountId;
+        int townId;
         int schoolId;
         string names;
         string lastName;
@@ -20,7 +21,7 @@ namespace Model
         string ci;
         string ciextension;
         DateTime birthDate;
-        Bitmap photo;
+        byte[] photo;
         DateTime startDate;
         DateTime finishDate;
         string email;
@@ -31,7 +32,7 @@ namespace Model
         byte status;
         DateTime registrationDate;
         DateTime updateDate;
-
+        string extra;
         
 
 
@@ -48,7 +49,7 @@ namespace Model
         public string Ci { get => ci; set => ci = value; }
         public string Ciextension { get => ciextension; set => ciextension = value; }
         public DateTime BirthDate { get => birthDate; set => birthDate = value; }
-        public Bitmap Photo { get => photo; set => photo = value; }
+        public byte[] Photo { get => photo; set => photo = value; }
         public DateTime StartDate { get => startDate; set => startDate = value; }
         public DateTime FinishDate { get => finishDate; set => finishDate = value; }
         public string Email { get => email; set => email = value; }
@@ -59,9 +60,11 @@ namespace Model
         public byte Status { get => status; set => status = value; }
         public DateTime RegistrationDate { get => registrationDate; set => registrationDate = value; }
         public DateTime UpdateDate { get => updateDate; set => updateDate = value; }
+        public int TownId { get => townId; set => townId = value; }
+        public string Extra { get => extra; set => extra = value; }
         #endregion
         #region Constructor
-        public Person(int personId, int userAccountId, int schoolId, string names, string lastName, string secondLastName, string address, string ci, string ciextension, DateTime birthDate, Bitmap photo, DateTime startDate, DateTime finishDate, string email, double latitude, double longitude, string phone, string gender, byte status, DateTime registrationDate, DateTime updateDate)
+        public Person(int personId, int userAccountId, int schoolId, string names, string lastName, string secondLastName, string address, string ci, string ciextension, DateTime birthDate, byte[] photo, DateTime startDate, DateTime finishDate, string email, double latitude, double longitude, string phone, string gender, byte status, DateTime registrationDate, DateTime updateDate)
         {
             this.personId = personId;
             this.userAccountId = userAccountId;
@@ -84,6 +87,48 @@ namespace Model
             this.status = status;
             this.registrationDate = registrationDate;
             this.updateDate = updateDate;
+        }
+        public Person( string names, string lastName, string secondLastName, string address, string ci, string ciextension, DateTime birthDate, byte[] photo, string email, double latitude, double longitude, string phone, string gender,int townId)
+        {
+            
+            this.names = names;
+            this.lastName = lastName;
+            this.secondLastName = secondLastName;
+            this.address = address;
+            this.ci = ci;
+            this.ciextension = ciextension;
+            this.birthDate = birthDate;
+            this.photo = photo;
+            this.email = email;
+            this.latitude = latitude;
+            this.longitude = longitude;
+            this.phone = phone;
+            this.gender = gender;
+            this.townId = townId;
+        }
+        public Person(string names, string lastName, string secondLastName, string address, string ci, string ciextension, DateTime birthDate, byte[] photo, string email, double latitude, double longitude, string phone, string gender, int townId,string extra)
+        {
+
+            this.names = names;
+            this.lastName = lastName;
+            this.secondLastName = secondLastName;
+            this.address = address;
+            this.ci = ci;
+            this.ciextension = ciextension;
+            this.birthDate = birthDate;
+            this.photo = photo;
+            this.email = email;
+            this.latitude = latitude;
+            this.longitude = longitude;
+            this.phone = phone;
+            this.gender = gender;
+            this.townId = townId;
+            this.extra = extra;
+        }
+        public Person()
+        {
+
+            
         }
         #endregion
     }

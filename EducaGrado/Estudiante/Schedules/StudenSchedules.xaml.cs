@@ -17,11 +17,21 @@ namespace EducaGrado.Estudiante.Schedules
     /// <summary>
     /// Lógica de interacción para StudenSchedules.xaml
     /// </summary>
-    public partial class StudenSchedules : Window
+    public partial class StudenSchedules : UserControl
     {
         public StudenSchedules()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Initialized(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

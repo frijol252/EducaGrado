@@ -10,7 +10,7 @@
              d:DesignHeight="634.825" d:DesignWidth="987.354">
     <Grid>
         <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75" Margin="-25,0,-4,0">
-            <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="BtnClose_Click">
+            <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="btnClose_Click">
                 <materialDesign:PackIcon Kind="Close" Foreground="White"/>
             </Button>
         </Grid>
@@ -18,10 +18,10 @@
             <StackPanel Height="440"  VerticalAlignment="Top" Margin="0,-2,0,0">
                 <StackPanel Orientation="Horizontal" Margin="24,10,24,0">
                     <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 4"/>
-                    <TextBox x:Name="txtsearch" TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="932" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
+                    <TextBox x:Name="txtsearch" TextChanged="txtsearch_TextChanged" Foreground="Black" Width="932" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="246" Margin="20,10,0,0" VerticalAlignment="Top" Width="680"/>
+                    <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="dgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="246" Margin="20,10,0,0" VerticalAlignment="Top" Width="680"/>
 
                     <StackPanel VerticalAlignment="Center" Width="299">
                         <Image Margin="40,0,0,0" Width="200" Height="200" x:Name="imagesector"></Image>

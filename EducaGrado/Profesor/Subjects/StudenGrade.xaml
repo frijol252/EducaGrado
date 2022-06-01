@@ -8,7 +8,7 @@
         Title="StudenGrade" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStyle="None" AllowsTransparency="True"
-        mc:Ignorable="d" Width="727.631" Height="633.083">
+         Width="727.631" Height="633.083">
     <Grid Margin="0,0,25,61">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -17,7 +17,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#04af76" Margin="0,0,-25,0">
-            <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="BtnClose_Click">
+            <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="btnClose_Click">
                 <materialDesign:PackIcon Kind="Close" Foreground="White"/>
             </Button>
         </Grid>
@@ -25,10 +25,10 @@
             <StackPanel Height="418"  VerticalAlignment="Top" Margin="0,-2,0,0">
                 <StackPanel Orientation="Horizontal" Margin="24,10,31,0">
                     <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 4"/>
-                    <TextBox x:Name="txtsearch" TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="653" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
+                    <TextBox x:Name="txtsearch" TextChanged="txtsearch_TextChanged" Foreground="Black" Width="653" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="680"/>
+                    <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="dgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="680"/>
 
 
 
@@ -53,7 +53,7 @@
                     <TextBox x:Name="txtTest" Width="45" Height="30" VerticalAlignment="Top"></TextBox>
                 </StackPanel>
                 <StackPanel Margin="300,10,0,0" Orientation="Horizontal">
-                    <Button x:Name="btnAddGrade" Content="Añadir notas" Background="#FFE63070" Foreground="White" IsEnabled="False" Click="BtnAddGrade_Click"></Button>
+                    <Button x:Name="btnAddGrade" Content="Añadir notas" Background="#FFE63070" Foreground="White" IsEnabled="False" Click="btnAddGrade_Click"></Button>
                 </StackPanel>
 
             </StackPanel>
