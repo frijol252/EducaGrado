@@ -5,15 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:EducaGrado.Administrativo.Controles.Horarios"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="EducaGrado.Administrativo.Controles.Horarios.ScheduleView"
-<<<<<<< Updated upstream
-        mc:Ignorable="d"
-        mc:Ignorable="d" WindowStyle="None" AllowsTransparency="True"
-        Title="ModifySchool" Height="450" Width="800">
-=======
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        x:Class="EducaGrado.Administrativo.Controles.Horarios.ScheduleView"
         mc:Ignorable="d"  Loaded="Window_Loaded"
          Height="450" Width="800" Background="White">
->>>>>>> Stashed changes
     <Grid>
         <Grid Height="30" VerticalAlignment="Top" Background="#06ad75" >
             

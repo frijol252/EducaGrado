@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 
 namespace EducaGrado.xDialog
 {
-    public partial class MsgBox : Form
+    class MsgBox : Form
     {
         private const int CS_DROPSHADOW = 0x00020000;
         private static MsgBox _msgBox;
@@ -29,7 +29,7 @@ namespace EducaGrado.xDialog
         private MsgBox()
         {
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.BackColor = Color.FromArgb(10, 160, 110);
+            this.BackColor = Color.FromArgb(45, 45, 48);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Padding = new System.Windows.Forms.Padding(3);
             this.Width = 400;
@@ -169,8 +169,7 @@ namespace EducaGrado.xDialog
             Timer timer = (Timer)sender;
             AnimateMsgBox animate = (AnimateMsgBox)timer.Tag;
 
-            switch (animate.Style)
-            {
+            switch(animate.Style){
                 case MsgBox.AnimateStyle.SlideDown:
                     if (_msgBox.Height < animate.FormSize.Height)
                     {
@@ -198,7 +197,7 @@ namespace EducaGrado.xDialog
                     break;
 
                 case MsgBox.AnimateStyle.ZoomIn:
-                    if (_msgBox.Width > animate.FormSize.Width)
+                    if (_msgBox.Width > animate.FormSize.Width )
                     {
                         _msgBox.Width -= 17;
                         _msgBox.Invalidate();
@@ -421,7 +420,7 @@ namespace EducaGrado.xDialog
         private static Size MessageSize(string message)
         {
             Graphics g = _msgBox.CreateGraphics();
-            int width = 350;
+            int width=350;
             int height = 230;
 
             SizeF size = g.MeasureString(message, new System.Drawing.Font("Segoe UI", 10));
@@ -436,9 +435,9 @@ namespace EducaGrado.xDialog
             else
             {
                 string[] groups = (from Match m in Regex.Matches(message, ".{1,180}") select m.Value).ToArray();
-                int lines = groups.Length + 1;
+                int lines = groups.Length+1;
                 width = 700;
-                height += (int)(size.Height + 10) * lines;
+                height += (int)(size.Height+10) * lines;
             }
             return new Size(width, height);
         }
@@ -466,15 +465,15 @@ namespace EducaGrado.xDialog
 
         public enum Buttons
         {
-            AbortRetryIgnore = 1,
-            OK = 2,
-            OKCancel = 3,
-            RetryCancel = 4,
-            YesNo = 5,
-            YesNoCancel = 6
+            AbortRetryIgnore=1,
+            OK=2,
+            OKCancel=3,
+            RetryCancel=4,
+            YesNo=5,
+            YesNoCancel=6
         }
 
-        public enum Icon
+        public enum Icon 
         {
             Application = 1,
             Exclamation = 2,
@@ -488,12 +487,13 @@ namespace EducaGrado.xDialog
 
         public enum AnimateStyle
         {
-            SlideDown = 1,
-            FadeIn = 2,
-            ZoomIn = 3
+            SlideDown=1,
+            FadeIn= 2, 
+            ZoomIn =3
         }
 
     }
+
     class AnimateMsgBox
     {
         public Size FormSize;

@@ -68,57 +68,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Administrativo\Controles\Horarios\ScheduleView.xaml.cs">
-      <DependentUpon>ScheduleView.xaml</DependentUpon>
-    </Compile>
-<<<<<<< Updated upstream
-=======
-    <Compile Include="Administrativo\Controles\Invoice\DosageView.xaml.cs">
-      <DependentUpon>DosageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Administrativo\Controles\Invoice\InvoiceView.xaml.cs">
-      <DependentUpon>InvoiceView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Administrativo\Controles\Invoice\PaymentView.xaml.cs">
-      <DependentUpon>PaymentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Administrativo\Controles\Invoice\RevisionInvoice.xaml.cs">
-      <DependentUpon>RevisionInvoice.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Administrativo\Controles\Invoice\StudentLint.xaml.cs">
-      <DependentUpon>StudentLint.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Administrativo\Students\SubjectModif.xaml.cs">
       <DependentUpon>SubjectModif.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Estudiante\Grades\StudentsGradeView.xaml.cs">
-      <DependentUpon>StudentsGradeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Estudiante\Home\IndexStudent.xaml.cs">
-      <DependentUpon>IndexStudent.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Estudiante\Schedules\StudenSchedules.xaml.cs">
-      <DependentUpon>StudenSchedules.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Estudiante\Schedules\StudenSchedulesBase.cs" />
-    <Compile Include="Profesor\Home\TeacherHome.xaml.cs">
-      <DependentUpon>TeacherHome.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Profesor\Schedules\TeacehrSchedule.xaml.cs">
-      <DependentUpon>TeacehrSchedule.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Profesor\Subjects\StudenGrade.xaml.cs">
-      <DependentUpon>StudenGrade.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Profesor\Subjects\TeacherSubjectView.xaml.cs">
-      <DependentUpon>TeacherSubjectView.xaml</DependentUpon>
-    </Compile>
->>>>>>> Stashed changes
     <Compile Include="xDialog\MsgBox.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="xDialog\MsgBox.Designer.cs">
-      <DependentUpon>MsgBox.cs</DependentUpon>
     </Compile>
     <Page Include="Administrativo\Controles\Account\AccountView.xaml">
       <SubType>Designer</SubType>
@@ -129,20 +83,32 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Administrativo\Controles\Horarios\ScheduleView.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Administrativo\Controles\Invoice\DosageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Administrativo\Controles\Invoice\PaymentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Administrativo\Controles\Invoice\StudentLint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Administrativo\Controles\Materias\MattersView.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Administrativo\Home\HomeAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Administrativo\School\ModifySchool.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Administrativo\Students\CourseSubject.xaml">
       <SubType>Designer</SubType>
@@ -169,8 +135,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Administrativo\Students\SubjectModif.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Administrativo\Teacher\TeacherAdd.xaml">
       <SubType>Designer</SubType>
@@ -201,6 +167,20 @@
     </Compile>
     <Compile Include="Administrativo\Controles\Account\ModifAccount.xaml.cs">
       <DependentUpon>ModifAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Controles\Horarios\ScheduleView.xaml.cs">
+      <DependentUpon>ScheduleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Controles\Invoice\DosageView.xaml.cs">
+      <DependentUpon>DosageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Controles\Invoice\InvoiceView.xaml.cs" />
+    <Compile Include="Administrativo\Controles\Invoice\PaymentView.xaml.cs">
+      <DependentUpon>PaymentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Controles\Invoice\RevisionInvoice.xaml.cs" />
+    <Compile Include="Administrativo\Controles\Invoice\StudentLint.xaml.cs">
+      <DependentUpon>StudentLint.xaml</DependentUpon>
     </Compile>
     <Compile Include="Administrativo\Controles\Materias\MattersView.xaml.cs">
       <DependentUpon>MattersView.xaml</DependentUpon>
@@ -304,6 +284,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Administrativo\Admin\" />
     <Folder Include="Administrativo\Images\" />
     <Folder Include="Estudiante\Account\" />
     <Folder Include="Estudiante\Claims\" />
@@ -322,9 +303,6 @@
   <ItemGroup>
     <Resource Include="images\EducaImage.png" />
     <Resource Include="images\EducaLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\Test.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />

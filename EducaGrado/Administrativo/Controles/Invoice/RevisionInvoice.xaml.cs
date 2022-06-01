@@ -21,7 +21,7 @@ namespace EducaGrado.Administrativo.Controles.Invoice
     {
         public RevisionInvoice()
         {
-            InitializeComponent();
+            //
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -21,7 +21,7 @@ namespace EducaGrado.Administrativo.Controles.Invoice
     {
         public InvoiceView()
         {
-            InitializeComponent();
+            //
         }
 
         private void btnAnular_Click(object sender, RoutedEventArgs e)
