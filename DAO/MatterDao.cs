@@ -13,6 +13,7 @@ namespace DAO
         DataTable SelectLike(string like);
         DataTable SelectLikeByCategory(int idcat, string like);
         DataTable SelectByCategory(int idcat);
+        DataTable SelectForAddMatters(int idCourse);
         void updateMatters(List<Matter> matters);
     }
 }

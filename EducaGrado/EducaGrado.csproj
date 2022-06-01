@@ -71,6 +71,49 @@
     <Compile Include="Administrativo\Controles\Horarios\ScheduleView.xaml.cs">
       <DependentUpon>ScheduleView.xaml</DependentUpon>
     </Compile>
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Administrativo\Controles\Invoice\DosageView.xaml.cs">
+      <DependentUpon>DosageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Controles\Invoice\InvoiceView.xaml.cs">
+      <DependentUpon>InvoiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Controles\Invoice\PaymentView.xaml.cs">
+      <DependentUpon>PaymentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Controles\Invoice\RevisionInvoice.xaml.cs">
+      <DependentUpon>RevisionInvoice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Controles\Invoice\StudentLint.xaml.cs">
+      <DependentUpon>StudentLint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Students\SubjectModif.xaml.cs">
+      <DependentUpon>SubjectModif.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Estudiante\Grades\StudentsGradeView.xaml.cs">
+      <DependentUpon>StudentsGradeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Estudiante\Home\IndexStudent.xaml.cs">
+      <DependentUpon>IndexStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Estudiante\Schedules\StudenSchedules.xaml.cs">
+      <DependentUpon>StudenSchedules.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Estudiante\Schedules\StudenSchedulesBase.cs" />
+    <Compile Include="Profesor\Home\TeacherHome.xaml.cs">
+      <DependentUpon>TeacherHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\Schedules\TeacehrSchedule.xaml.cs">
+      <DependentUpon>TeacehrSchedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\Subjects\StudenGrade.xaml.cs">
+      <DependentUpon>StudenGrade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\Subjects\TeacherSubjectView.xaml.cs">
+      <DependentUpon>TeacherSubjectView.xaml</DependentUpon>
+    </Compile>
+>>>>>>> Stashed changes
     <Compile Include="xDialog\MsgBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +168,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administrativo\Students\SubjectModif.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administrativo\Teacher\TeacherAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,7 +202,6 @@
     <Compile Include="Administrativo\Controles\Account\ModifAccount.xaml.cs">
       <DependentUpon>ModifAccount.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Administrativo\Controles\Horarios\Class1.cs" />
     <Compile Include="Administrativo\Controles\Materias\MattersView.xaml.cs">
       <DependentUpon>MattersView.xaml</DependentUpon>
     </Compile>
@@ -258,7 +304,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Administrativo\Admin\" />
     <Folder Include="Administrativo\Images\" />
     <Folder Include="Estudiante\Account\" />
     <Folder Include="Estudiante\Claims\" />

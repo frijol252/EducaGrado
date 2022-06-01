@@ -64,7 +64,7 @@
                             <DataGridTemplateColumn Header="Control">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Name="btnView" Content="Eliminar" Background="#ef4d4d" Foreground="White" materialDesing:ButtonAssist.CornerRadius="15" />
+                                        <Button Name="btnView" Content="Eliminar" Background="#ef4d4d" Foreground="White" materialDesing:ButtonAssist.CornerRadius="15" Click="btnView_Click_1"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

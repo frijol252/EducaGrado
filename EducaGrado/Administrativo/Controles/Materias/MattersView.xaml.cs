@@ -197,6 +197,8 @@ namespace EducaGrado.Administrativo.Controles.Materias
                     categoryMatterImpl.Delete(categoryMatter);
                     MsgBox.Show("Categoria Eliminada", "Completado",MsgBox.Buttons.OK);
                     LoadDataGrid();
+                    categoriaselected = -1;
+                    LoadDataGridMatter();
                 }
             }
             catch (Exception ex)
@@ -266,13 +268,39 @@ namespace EducaGrado.Administrativo.Controles.Materias
                 int res = matterImpl.Insert(matter);
                 if (res == 1)
                 {
-                    MsgBox.Show("Categoria Insertada", "Completado", MsgBox.Buttons.OK);
+                    MsgBox.Show("Materia Insertada", "Completado", MsgBox.Buttons.OK);
                     LoadDataGridMatter();
                 }
             }
             else MsgBox.Show("Seleccione una categoria", "Atencion", MsgBox.Buttons.OK);
         }
 
-        
+        private void btnView_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+
+                string NombreMateria = dataRowView[1].ToString();
+
+
+                System.Windows.Forms.DialogResult result = MsgBox.Show("Estas Seguro de Eliminar " + NombreMateria + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    int IdMatter = int.Parse(dataRowView[0].ToString());
+                    matter = new Matter();
+                    matter.MatterId= IdMatter;
+                    matterImpl = new MatterImpl();
+                    matterImpl.Delete(matter);
+                    MsgBox.Show("Materia Eliminada", "Completado", MsgBox.Buttons.OK);
+                    LoadDataGridMatter();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
     }
 }

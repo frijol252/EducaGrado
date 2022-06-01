@@ -35,5 +35,9 @@ namespace Model
             this.registrationDate = registrationDate;
             this.updateDate = updateDate;
         }
+        public Schedule()
+        {
+            
+        }
     }
 }

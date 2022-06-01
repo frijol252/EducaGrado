@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:EducaGrado.Administrativo.Students"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              mc:Ignorable="d" Loaded="Window_Loaded" Initialized="Window_Initialized" WindowStyle="None" AllowsTransparency="True"
-             d:DesignHeight="634.825" d:DesignWidth="999.354">
+             d:DesignHeight="550" d:DesignWidth="999.354">
     <Grid>
         <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75" Margin="0,0,-4,0">
             <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="BtnClose_Click">
@@ -21,19 +21,54 @@
                     <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 4"/>
                     <TextBox x:Name="txtsearch" TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="932" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="246" Margin="20,10,0,0" VerticalAlignment="Top" Width="680"/>
+                <StackPanel Orientation="Horizontal" Height="340">
+                    <DataGrid x:Name="dgvDatos" IsReadOnly="True" AutoGenerateColumns="False" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="300" Margin="20,10,0,0" VerticalAlignment="Top" Width="680">
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Control">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <Button Name="btnModif" Content="Modificar" Background="#20a8a6" FontSize="10"
+                                                    Foreground="White" Click="btnModif_Click" Width="60"   Height="30"
+                                                    materialDesing:ButtonAssist.CornerRadius="15" />
+                                            <Button Name="btnView" Content="Eliminar" Background="#ef4d4d"  FontSize="10"
+                                                    Foreground="White" Click="btnView_Click" Width="60"  Height="30"
+                                                    materialDesing:ButtonAssist.CornerRadius="15" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Deshabilitar" x:Name="templatecolumn">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <Button Name="btnDisgrid" Content="" Background="#ff6232" FontSize="10"
+                                                    Foreground="White" Click="btnDisgrid_Click" Width="60"  Height="30"
+                                                    materialDesing:ButtonAssist.CornerRadius="15" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Nombre Completo" Binding="{Binding Path='Name'}" Width="150" IsReadOnly="False" />
+                            <DataGridTextColumn Header="Ci" Binding="{Binding Path='Ci'}" Width="80" IsReadOnly="False" />
+                            <DataGridTextColumn Header="Telefono" Binding="{Binding Path='Phone'}" Width="80" IsReadOnly="False" />
+                            <DataGridTextColumn Header="Direccion" Binding="{Binding Path='DIR'}" Width="200" IsReadOnly="False" />
+
+
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
 
                     <StackPanel VerticalAlignment="Center" Width="299">
-                        <Image Margin="40,0,0,0" Width="200" Height="200" x:Name="imagesector"></Image>
                         <StackPanel Orientation="Horizontal">
-                            <Button  x:Name="btnAdd" Content="Añadir estudiante" Foreground="White" Background="#FFE63070"  Width="150" Click="BtnAdd_Click" Margin="20,40,0,0" materialDesing:ButtonAssist.CornerRadius="15"></Button>
-                            <Button Click="BtnMod_Click" IsEnabled="False" x:Name="btnMod" Content="Modificar" Foreground="White" Background="#06ad75" Width="100" Margin="10,40,0,0" materialDesing:ButtonAssist.CornerRadius="15"></Button>
+                            <Button  x:Name="btnAdd" Content="Añadir estudiante" Foreground="White" Background="#FFE63070"  Width="150" Click="BtnAdd_Click" Margin="80,40,0,0" materialDesing:ButtonAssist.CornerRadius="15"></Button>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Button Click="BtnDel_Click" IsEnabled="False" x:Name="btnDel" Content="Eliminar" Foreground="White" Background="Red" Width="100" Margin="30,40,0,0" materialDesing:ButtonAssist.CornerRadius="15" />
-                            <Button Click="BtnDis_Click" IsEnabled="False" x:Name="btnDis" Content="Deshabilitar" Foreground="White" Background="#D15656" Width="108" Margin="30,40,0,0" materialDesing:ButtonAssist.CornerRadius="15"></Button>
-                        </StackPanel>
+                        <Image Margin="0,20,0,0" Width="200"  Height="200" x:Name="imagesector"></Image>
+                        
+                        <StackPanel Orientation="Horizontal"/>
 
                     </StackPanel>
 
@@ -44,11 +79,9 @@
                 <StackPanel Height="40" Margin="60,40,0,0" Orientation="Horizontal">
                     <Label Foreground="Black" FontSize="15" >Nombre del estudiante:</Label>
                     <Label x:Name="lblnames" FontSize="15" Content="..." Width="50"></Label>
-                    <Label Foreground="Black" Margin="60,0,0,0" FontSize="15" >Correo electronico:</Label>
-                    <Label x:Name="lblmail" FontSize="15" Content="..." Width="250"></Label>
-                    <Label Foreground="Black" Margin="80,0,0,0" FontSize="15" >Rude:</Label>
-                    <Label x:Name="lblrude" FontSize="15" Content="..." Width="150"></Label>
-                    <TextBox Visibility="Hidden" x:Name="lblid"></TextBox>
+                    <Label Foreground="Black" Margin="60,0,0,0" FontSize="15" >Ci:</Label>
+                    <Label x:Name="lblCi" FontSize="15" Content="..." Width="250"></Label>
+                    
                 </StackPanel>
                 <StackPanel Margin="300,10,0,0" Orientation="Horizontal">
 

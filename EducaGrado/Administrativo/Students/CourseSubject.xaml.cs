@@ -1,7 +1,9 @@
-﻿using Implementation;
+﻿using EducaGrado.xDialog;
+using Implementation;
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +23,12 @@ namespace EducaGrado.Administrativo.Students
     /// </summary>
     public partial class CourseSubject : Window
     {
-        int Course;
+        int course;
         Class cl;
         ClassImpl clImpl;
         public CourseSubject(int Course)
         {
-            this.Course = Course;
+            this.course = Course;
             InitializeComponent();
         }
         #region control 
@@ -51,36 +53,22 @@ namespace EducaGrado.Administrativo.Students
         }
         public void Ocultar()
         {
-            //dgvDatos.Columns[0].Visibility = Visibility.Hidden;
         }
         public void loadGrid()
         {
-            //try
-            //{
-            //    clImpl = new ClassImpl();
-            //    dgvDatos.ItemsSource = null;
-            //    dgvDatos.ItemsSource = clImpl.Select(Course).DefaultView;
+            try
+            {
+                clImpl = new ClassImpl();
+                dgvDatos.ItemsSource = null;
+                dgvDatos.ItemsSource = clImpl.Select(course).DefaultView;
 
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
         int ids = 0;
         private void DgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            //if (dgvDatos.Items.Count > 0 && dgvDatos.SelectedItem != null)
-            //{
-            //    try
-            //    {
-            //        DataRowView dataRow = (DataRowView)dgvDatos.SelectedItem;
-            //        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
-            //        ids = id;
-            //        btnDel.IsEnabled = true;
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
+            
         }
 
         #endregion
@@ -115,9 +103,9 @@ namespace EducaGrado.Administrativo.Students
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //SubjectAdd sa = new SubjectAdd(Course);
-            //sa.Show();
-            //this.Close();
+            SubjectAdd sa = new SubjectAdd(course);
+            sa.Show();
+            this.Close();
         }
 
         private void BtnDel_Click(object sender, RoutedEventArgs e)
@@ -135,6 +123,47 @@ namespace EducaGrado.Administrativo.Students
             //{
             //    MessageBox.Show("Something happened \nCommunicate with the Suport department \neducateam.suport@gmail.com");
             //}
+        }
+
+        private void btnView_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+                string NombreMateria = dataRowView[1].ToString();
+                System.Windows.Forms.DialogResult result = MsgBox.Show("Estas Seguro de Eliminar " + NombreMateria + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    int IdCategory = int.Parse(dataRowView[0].ToString());
+                    cl = new Model.Class();
+                    cl.ClassId = IdCategory;
+                    clImpl= new ClassImpl();
+                    clImpl.Delete(cl);
+                    MsgBox.Show("Categoria Eliminada", "Completado", MsgBox.Buttons.OK);
+                    loadGrid();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void btnViewModif_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+                string NombreMateria = dataRowView[1].ToString();
+                int IdCategory = int.Parse(dataRowView[0].ToString());
+                SubjectModif subjectModif = new SubjectModif(course,IdCategory);
+                subjectModif.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
     }
 }

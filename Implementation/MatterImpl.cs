@@ -13,7 +13,20 @@ namespace Implementation
     {
         public void Delete(Matter t)
         {
-            throw new NotImplementedException();
+            string queryMatter = @"DELETE Matter WHERE matterid  = @matterid "; ;
+            try
+            {
+                List<SqlCommand> cmds = DBImplementation.CreateNBasicCommands(1);
+                cmds[0].CommandText = queryMatter;
+                cmds[0].Parameters.AddWithValue("@matterid ", t.MatterId);
+
+                DBImplementation.ExecuteNBasicCommand(cmds);
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(string.Format("{0} | Error:  Could not Dele Class({1}).", DateTime.Now, ex.Message));
+            }
         }
 
         public int Insert(Matter t)
@@ -67,6 +80,24 @@ WHERE co.CategoryId=@CategoryId";
                 SqlCommand cmd = DBImplementation.CreateBasicComand(query);
                 cmd.Parameters.AddWithValue("@SchoolId", Session.SessionSchoolId);
                 cmd.Parameters.AddWithValue("@CategoryId", idcat);
+                return DBImplementation.ExecuteDataTableCommand(cmd);
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public DataTable SelectForAddMatters(int idCourse)
+        {
+            string query = @"SELECT DISTINCT m.matterid AS 'ID' ,m.matterName AS 'Name', m.CategoryMatterId AS 'Categoria'
+FROM Matter m 
+INNER JOIN CategoryMatter cm ON cm.CategoryMatterId = m.CategoryMatterId 
+WHERE cm.ModalityId = (SELECT mo.ModalityId  FROM Modality mo 
+INNER JOIN School s ON s.ModalityId=mo.ModalityId
+WHERE s.SchoolId=1) and m.matterid NOT IN (SELECT c.idMatter  FROM Class c WHERE c.CourseId=@CourseId AND c.status=1) ";
+            try
+            {
+                SqlCommand cmd = DBImplementation.CreateBasicComand(query);
+                cmd.Parameters.AddWithValue("@SchoolId", Session.SessionSchoolId);
+                cmd.Parameters.AddWithValue("@CourseId", Session.SessionSchoolId);
                 return DBImplementation.ExecuteDataTableCommand(cmd);
             }
             catch (Exception ex) { throw ex; }

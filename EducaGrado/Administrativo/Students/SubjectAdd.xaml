@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:EducaGrado.Administrativo.Students" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="SubjectAdd"  WindowStyle="None" AllowsTransparency="True" Initialized="Window_Initialized" Loaded="Window_Loaded"
-         Height="550" Width="860">
+         Height="550" Width="960">
     <Grid>
         <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75" Margin="0,0,1,0">
             <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="BtnClose_Click">
@@ -17,18 +17,15 @@
         <Grid Margin="0,31,0,0" Background="#ededed">
             <StackPanel Orientation="Horizontal">
                 <StackPanel Width="300">
-                    <StackPanel Orientation="Horizontal" Height="232" Margin="10,10,0,0">
-                        <DataGrid x:Name="dgvSub" IsReadOnly="True" Background="#ededed" SelectedCellsChanged="DgvSub_SelectedCellsChanged" CanUserAddRows="False" HorizontalAlignment="Left" Height="232" Margin="0,0,0,0" VerticalAlignment="Top" Width="317"/>
-
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                        <Button x:Name="btnSelectSubject" Width="160" Content="Seleccionar materia" Height="40" Margin="70 20 0 0" Foreground="White" Background="#FFE63070"  Click="BtnSelectSubject_Click" materialDesing:ButtonAssist.CornerRadius="15"
-></Button>
-
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="198"  Margin="20,0,22,10">
-
-                        <ListBox x:Name="lstSubs" Width="261"/>
+                    <StackPanel Orientation="Vertical" Height="500" Margin="10,10,0,0">
+                        <Label x:Name="lblmatery" Height="50" Margin="60,0,0,20"></Label>
+                        <DataGrid x:Name="dgvSub" IsReadOnly="True" Background="#ededed" AutoGenerateColumns="False" SelectedCellsChanged="DgvSub_SelectedCellsChanged" CanUserAddRows="False" HorizontalAlignment="Left" Height="400" Margin="0,0,0,0" VerticalAlignment="Top" Width="293">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Materia" Binding="{Binding Path='Name'}" Width="*" Visibility="Visible" IsReadOnly="False" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        
                     </StackPanel>
 
                 </StackPanel>
@@ -36,28 +33,29 @@
                     <!-- INSERT -->
                     <StackPanel x:Name="Insestack" Background="#ededed" Margin="30 0 30 0" Height="514" Orientation="Vertical" VerticalAlignment="Top">
 
-                        <StackPanel Orientation="Horizontal" Height="371"  Margin="10 10 0 10" Width="520">
-                            <StackPanel Orientation="Vertical">
-                                <Label FontWeight="DemiBold" Margin="0,55,0,0">7:15-8:00</Label>
-                                <Label FontWeight="DemiBold" Margin="0,12,0,0">8:00-8:45</Label>
-                                <Label FontWeight="DemiBold" Margin="0,12,0,0">8:45-9:30</Label>
-                                <Label FontWeight="DemiBold" Margin="0,12,0,0">9:30-10:15</Label>
-                                <Label FontWeight="DemiBold" Margin="0,12,0,0">10:15-11:00</Label>
-                                <Label FontWeight="DemiBold" Margin="0,12,0,0">11:00-11:45</Label>
-                                <Label FontWeight="DemiBold" Margin="0,12,0,0">11:45-12:30</Label>
-                                <Label FontWeight="DemiBold" Margin="0,12,0,0">12:30-13:15</Label>
-                            </StackPanel>
-                            <DataGrid IsEnabled="False" x:Name="dgvDatos" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" HorizontalAlignment="Left" Height="362" Margin="20,-2,0,0" VerticalAlignment="Top" Width="69"/>
-                            <DataGrid IsEnabled="False" x:Name="dgvDatosmar" SelectedCellsChanged="DgvDatosmar_SelectedCellsChanged" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" HorizontalAlignment="Left" Height="362" Margin="0,-2,0,0" VerticalAlignment="Top" Width="69"/>
-                            <DataGrid IsEnabled="False" x:Name="dgvDatosmier" SelectedCellsChanged="DgvDatosmier_SelectedCellsChanged" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" HorizontalAlignment="Left" Height="362" Margin="0,-2,0,0" VerticalAlignment="Top" Width="69"/>
-                            <DataGrid IsEnabled="False" x:Name="dgvDatosjue" SelectedCellsChanged="DgvDatosjue_SelectedCellsChanged" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" HorizontalAlignment="Left" Height="362" Margin="0,-2,0,0" VerticalAlignment="Top" Width="69"/>
-                            <DataGrid IsEnabled="False" x:Name="dgvDatosvier" SelectedCellsChanged="DgvDatosvie_SelectedCellsChanged" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" HorizontalAlignment="Left" Height="362" Margin="0,-2,0,0" VerticalAlignment="Top" Width="69"/>
-                            <DataGrid IsEnabled="False" x:Name="dgvDatossab" SelectedCellsChanged="DgvDatossab_SelectedCellsChanged" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" HorizontalAlignment="Left" Height="362" Margin="0,-2,0,0" VerticalAlignment="Top" Width="69"/>
+                        <StackPanel Orientation="Horizontal" Height="371"  Margin="10 10 0 10" Width="600">
+
+                            <DataGrid IsEnabled="False" IsReadOnly="True" x:Name="dgvDatos" AutoGenerateColumns="False" 
+                                      SelectedCellsChanged="dgvDatos_SelectedCellsChanged" Background="#ededed" 
+                                      CanUserAddRows="False" HorizontalAlignment="Left" Height="362" Margin="0,-2,0,0"
+                                      VerticalAlignment="Top" Width="600">
+                                <DataGrid.Columns>
+
+                                    <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Horario" Binding="{Binding Path='HR'}" Width="*" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Lunes" Binding="{Binding Path='Lunes'}" Width="*"  />
+                                    <DataGridTextColumn Header="Martes" Binding="{Binding Path='Martes'}" Width="*"/>
+                                    <DataGridTextColumn Header="Miercoles" Binding="{Binding Path='Miercoles'}" Width="*" />
+                                    <DataGridTextColumn Header="Jueves" Binding="{Binding Path='Jueves'}" Width="*" />
+                                    <DataGridTextColumn Header="Viernes" Binding="{Binding Path='Viernes'}" Width="*" />
+                                    <DataGridTextColumn Header="Sabado" Binding="{Binding Path='Sabado'}" Width="*" />
+
+
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="50 0 60 0">
-                            <Button x:Name="Add" Click="Add_Click" IsEnabled="False" Content="Añadir horario" Height="40" Margin="0 20 0 0" Foreground="White" Background="#06ad75" materialDesing:ButtonAssist.CornerRadius="15"
-/>
-                            <Button x:Name="Addsubject" Click="Addsubject_Click" IsEnabled="False" Content="Añadir clase" Height="40" Margin="40 20 0 0" Foreground="White" Background="#06ad75" materialDesing:ButtonAssist.CornerRadius="15"
+                            <Button x:Name="Addsubject" Click="Addsubject_Click" IsEnabled="False" Content="Añadir clase" Height="40" Margin="200 20 0 0" Foreground="White" Background="#06ad75" materialDesing:ButtonAssist.CornerRadius="15"
 ></Button>
                         </StackPanel>
 

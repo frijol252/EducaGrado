@@ -1,7 +1,9 @@
-﻿using Implementation;
+﻿using EducaGrado.xDialog;
+using Implementation;
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,334 +40,116 @@ namespace EducaGrado.Administrativo.Students
 
 
         #region grid
-        Matter sub;
-        MatterImpl subjectImpl;
+        Matter matter;
+        MatterImpl matterImpl;
         Schedule sch;
         ScheduleImpl scheduleImpl;
-        ClassImpl classs;
+        ClassImpl clasImpl;
+        Class classs;
         private void Window_Initialized(object sender, EventArgs e)
         {
             loadGrid();
             loadGridSche();
-            loadGridSchemar();
-            loadGridSchemier();
-            loadGridSchejue();
-            loadGridSchevier();
-            loadGridSchesab();
 
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Ocultar();
-            Ocultarsch();
-        }
-        public void Ocultar()
-        {
-            //dgvSub.Columns[0].Visibility = Visibility.Hidden;
-            //dgvDatos.Columns[2].Visibility = Visibility.Hidden;
-            //dgvDatos.Columns[3].Visibility = Visibility.Hidden;
-            //dgvDatosmar.Columns[0].Visibility = Visibility.Hidden;
-            //dgvDatosmar.Columns[2].Visibility = Visibility.Hidden;
-            //dgvDatosmar.Columns[3].Visibility = Visibility.Hidden;
-            //dgvDatosmier.Columns[0].Visibility = Visibility.Hidden;
-            //dgvDatosmier.Columns[2].Visibility = Visibility.Hidden;
-            //dgvDatosmier.Columns[3].Visibility = Visibility.Hidden;
-            //dgvDatosjue.Columns[0].Visibility = Visibility.Hidden;
-            //dgvDatosjue.Columns[2].Visibility = Visibility.Hidden;
-            //dgvDatosjue.Columns[3].Visibility = Visibility.Hidden;
-            //dgvDatosvier.Columns[0].Visibility = Visibility.Hidden;
-            //dgvDatosvier.Columns[2].Visibility = Visibility.Hidden;
-            //dgvDatosvier.Columns[3].Visibility = Visibility.Hidden;
-            //dgvDatossab.Columns[0].Visibility = Visibility.Hidden;
-            //dgvDatossab.Columns[2].Visibility = Visibility.Hidden;
-            //dgvDatossab.Columns[3].Visibility = Visibility.Hidden;
-        }
-        public void Ocultarsch()
-        {
-            //dgvDatos.Columns[0].Visibility = Visibility.Hidden;
         }
         public void loadGrid()
         {
-            //try
-            //{
-            //    subjectImpl = new SubjectImpl();
-            //    dgvSub.ItemsSource = null;
-            //    dgvSub.ItemsSource = subjectImpl.Select(course).DefaultView;
+            try
+            {
+                matterImpl = new MatterImpl();
+                dgvSub.ItemsSource = null;
+                dgvSub.ItemsSource = matterImpl.SelectForAddMatters(course).DefaultView;
 
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
         public void loadGridSche()
         {
-            //try
-            //{
-            //    scheduleImpl = new ScheduleImpl();
-            //    dgvDatos.ItemsSource = null;
-            //    dgvDatos.ItemsSource = scheduleImpl.Select(course).DefaultView;
+            try
+            {
+                scheduleImpl = new ScheduleImpl();
+                dgvDatos.ItemsSource = null;
+                dgvDatos.ItemsSource = scheduleImpl.SelectHourClass(course).DefaultView;
 
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-        public void loadGridSchemar()
-        {
-            //try
-            //{
-            //    scheduleImpl = new ScheduleImpl();
-            //    dgvDatosmar.ItemsSource = null;
-            //    dgvDatosmar.ItemsSource = scheduleImpl.Selectmar(course).DefaultView;
-
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-        public void loadGridSchemier()
-        {
-            //try
-            //{
-            //    scheduleImpl = new ScheduleImpl();
-            //    dgvDatosmier.ItemsSource = null;
-            //    dgvDatosmier.ItemsSource = scheduleImpl.Selectmier(course).DefaultView;
-
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-        public void loadGridSchejue()
-        {
-            //try
-            //{
-            //    scheduleImpl = new ScheduleImpl();
-            //    dgvDatosjue.ItemsSource = null;
-            //    dgvDatosjue.ItemsSource = scheduleImpl.Selectjue(course).DefaultView;
-
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-        public void loadGridSchevier()
-        {
-            //try
-            //{
-            //    scheduleImpl = new ScheduleImpl();
-            //    dgvDatosvier.ItemsSource = null;
-            //    dgvDatosvier.ItemsSource = scheduleImpl.Selectvier(course).DefaultView;
-
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-        public void loadGridSchesab()
-        {
-            //try
-            //{
-            //    scheduleImpl = new ScheduleImpl();
-            //    dgvDatossab.ItemsSource = null;
-            //    dgvDatossab.ItemsSource = scheduleImpl.Selectsab(course).DefaultView;
-
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
         #endregion
 
-        #region search
-        //private void Txtsearch_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (txtsearch.Text == "")
-        //        {
-        //            scheduleImpl = new ScheduleImpl();
-        //            dgvDatos.ItemsSource = null;
-        //            dgvDatos.ItemsSource = scheduleImpl.Select(course).DefaultView;
-        //            Ocultarsch();
-        //        }
-        //        else
-        //        {
-        //            scheduleImpl = new ScheduleImpl();
-        //            dgvDatos.ItemsSource = null;
-        //            dgvDatos.ItemsSource = scheduleImpl.Selectlike(course,txtsearch.Text).DefaultView;
-        //            Ocultarsch();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
-
-        #endregion
+        
         int idSchedule = 0;
         int idSubject = 0;
-        int count = 1;
-        string day = "";
-        string hours = "";
-        string hourf = "";
+        string materiaselected = "";
         List<int> lista = new List<int>();
         private void DgvSub_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            //if (dgvSub.Items.Count > 0 && dgvSub.SelectedItem != null)
-            //{
-            //    try
-            //    {
-            //        DataRowView dataRow = (DataRowView)dgvSub.SelectedItem;
-            //        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
+            if (dgvSub.Items.Count > 0 && dgvSub.SelectedItem != null)
+            {
+                try
+                {
+                    DataRowView dataRow = (DataRowView)dgvSub.SelectedItem;
+                    int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
+                    materiaselected = dataRow.Row.ItemArray[1].ToString();
+                    idSubject = id;
+                    lblmatery.Content = dataRow.Row.ItemArray[1].ToString();
+                    dgvDatos.IsEnabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        private void dgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if (dgvDatos.Items.Count > 0 && dgvDatos.SelectedItem != null)
+            {
+                try
+                {
+                    Addsubject.IsEnabled = true;
+                    DataRowView dataRow = (DataRowView)dgvDatos.SelectedItem;
+                    int index = dgvDatos.CurrentCell.Column.DisplayIndex;
+                    string cellValue = dataRow.Row.ItemArray[index].ToString();
+                    int count = 0;
+                    if (cellValue == "O")
+                    {
+                        foreach (DataRowView row in dgvDatos.ItemsSource)
+                        {
+                            if (count == dgvDatos.Items.IndexOf(dgvDatos.CurrentItem))
+                            {
+                                row[dgvDatos.Columns.IndexOf(dgvDatos.CurrentColumn)] = "Seleccionado";
+                            }
+                            count++;
+                        }
+                    }
+                    else if(cellValue== "Seleccionado")
+                    {
+                        foreach (DataRowView row in dgvDatos.ItemsSource)
+                        {
+                            if (count == dgvDatos.Items.IndexOf(dgvDatos.CurrentItem))
+                            {
+                                row[dgvDatos.Columns.IndexOf(dgvDatos.CurrentColumn)] = "O";
+                            }
+                            count++;
+                        }
+                    }
+                    else { MsgBox.Show("No puede crear choques de horario", "Atencion", MsgBox.Buttons.OK, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn); }
+                    
 
-            //        idSubject = id;
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
+                    
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
-        #region comboSelected
-        private void DgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            //if (dgvDatos.Items.Count > 0 && dgvDatos.SelectedItem != null)
-            //{
-            //    try
-            //    {
-            //        DataRowView dataRow = (DataRowView)dgvDatos.SelectedItem;
-            //        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
-            //        string tal = dataRow.Row.ItemArray[1].ToString();
-            //        if (tal == "X") MessageBox.Show("This schedule is occuped");
-            //        else
-            //        {
-            //            hours = dataRow.Row.ItemArray[2].ToString();
-            //            hourf = dataRow.Row.ItemArray[3].ToString();
-            //            day = "Monday";
-            //            idSchedule = id;
-            //            Add.IsEnabled = true;
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-        }
-        private void DgvDatosmar_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            //if (dgvDatosmar.Items.Count > 0 && dgvDatosmar.SelectedItem != null)
-            //{
-            //    try
-            //    {
-            //        DataRowView dataRow = (DataRowView)dgvDatosmar.SelectedItem;
-            //        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
-            //        string tal = dataRow.Row.ItemArray[1].ToString();
-            //        if (tal == "X") MessageBox.Show("This schedule is occuped");
-            //        else
-            //        {
-            //            hours = dataRow.Row.ItemArray[2].ToString();
-            //            hourf = dataRow.Row.ItemArray[3].ToString();
-            //            day = "Tuesday";
-            //            idSchedule = id;
-            //            Add.IsEnabled = true;
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-        }
-        private void DgvDatosmier_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            //if (dgvDatosmier.Items.Count > 0 && dgvDatosmier.SelectedItem != null)
-            //{
-            //    try
-            //    {
-            //        DataRowView dataRow = (DataRowView)dgvDatosmier.SelectedItem;
-            //        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
-            //        string tal = dataRow.Row.ItemArray[1].ToString();
-            //        if (tal == "X") MessageBox.Show("This schedule is occuped");
-            //        else
-            //        {
-            //            hours = dataRow.Row.ItemArray[2].ToString();
-            //            hourf = dataRow.Row.ItemArray[3].ToString();
-            //            day = "Wednesday";
-            //            idSchedule = id;
-            //            Add.IsEnabled = true;
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-        }
-        private void DgvDatosjue_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            //if (dgvDatosjue.Items.Count > 0 && dgvDatosjue.SelectedItem != null)
-            //{
-            //    try
-            //    {
-            //        DataRowView dataRow = (DataRowView)dgvDatosjue.SelectedItem;
-            //        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
-            //        string tal = dataRow.Row.ItemArray[1].ToString();
-            //        if (tal == "X") MessageBox.Show("This schedule is occuped");
-            //        else
-            //        {
-            //            hours = dataRow.Row.ItemArray[2].ToString();
-            //            hourf = dataRow.Row.ItemArray[3].ToString();
-            //            day = "Thursday";
-            //            idSchedule = id;
-            //            Add.IsEnabled = true;
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-        }
-        private void DgvDatosvie_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            //if (dgvDatosvier.Items.Count > 0 && dgvDatosvier.SelectedItem != null)
-            //{
-            //    try
-            //    {
-            //        DataRowView dataRow = (DataRowView)dgvDatosvier.SelectedItem;
-            //        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
-            //        string tal = dataRow.Row.ItemArray[1].ToString();
-            //        if (tal == "X") MessageBox.Show("This schedule is occuped");
-            //        else
-            //        {
-            //            hours = dataRow.Row.ItemArray[2].ToString();
-            //            hourf = dataRow.Row.ItemArray[3].ToString();
-            //            day = "Friday";
-            //            idSchedule = id;
-            //            Add.IsEnabled = true;
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-        }
-        private void DgvDatossab_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            //if (dgvDatossab.Items.Count > 0 && dgvDatossab.SelectedItem != null)
-            //{
-            //    try
-            //    {
-            //        DataRowView dataRow = (DataRowView)dgvDatossab.SelectedItem;
-            //        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
-            //        string tal = dataRow.Row.ItemArray[1].ToString();
-            //        if (tal == "X") MessageBox.Show("This schedule is occuped");
-            //        else
-            //        {
-            //            hours = dataRow.Row.ItemArray[2].ToString();
-            //            hourf = dataRow.Row.ItemArray[3].ToString();
-            //            day = "Saturday";
-            //            idSchedule = id;
-            //            Add.IsEnabled = true;
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-        }
-        #endregion
         private void BtnSelectSubject_Click(object sender, RoutedEventArgs e)
         {
             //try
@@ -389,34 +173,44 @@ namespace EducaGrado.Administrativo.Students
             //}
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-            //bool tryed = false;
-            //foreach (var l in lista)
-            //{
-            //    if (l == idSchedule) tryed = true;
-
-            //}
-            //if (tryed == false)
-            //{
-            //    lista.Add(idSchedule);
-            //    lstSubs.Items.Add(day + " / " + hours + " - " + hourf);
-            //    Addsubject.IsEnabled = true;
-            //    count++;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("This schedule is ready");
-            //}
-        }
-
         private void Addsubject_Click(object sender, RoutedEventArgs e)
         {
-            //classs = new ClassImpl();
-            //classs.InsertTransaction(idSubject, lista, count, course);
-            //SubjectsList sl = new SubjectsList(course);
-            //sl.Show();
-            //this.Close();
+            List<Class> lista = new List<Class>();
+            
+            System.Windows.Forms.DialogResult result = MsgBox.Show("Esta seguro de Agregar "+materiaselected+"?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                foreach (DataRowView row in dgvDatos.ItemsSource)
+                {
+                    for (int i=2; i<8; i++)
+                    {
+                        if (row[i].ToString() == "Seleccionado")
+                        {
+
+                            lista.Add(new Class(course, int.Parse(row[0].ToString()),idSubject,ReturnDay(i)));
+                        }
+                    }
+                }
+                clasImpl = new ClassImpl();
+                clasImpl.Inserttransact(lista);
+                MsgBox.Show("Clase Insertada", "Completada", MsgBox.Buttons.OK, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
+                CourseSubject courseSubject = new CourseSubject(course);
+                courseSubject.Show();
+                this.Close();
+            }
+            
+
         }
+        public string ReturnDay(int i)
+        {
+            if (i == 2) return "Lu";
+            if (i == 3) return "Ma";
+            if (i == 4) return "Mi";
+            if (i == 5) return "Ju";
+            if (i == 6) return "Vi";
+            else return "Sa";
+        }
+       
     }
+    
 }
