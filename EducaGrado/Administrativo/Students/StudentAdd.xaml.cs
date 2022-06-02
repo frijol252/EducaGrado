@@ -1,24 +1,14 @@
-﻿using Microsoft.Maps.MapControl.WPF;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using EducaGrado.xDialog;
 using Implementation;
-using Model;
-using System.Data;
+using Microsoft.Maps.MapControl.WPF;
 using Microsoft.Win32;
+using Model;
+using System;
+using System.Data;
 using System.IO;
-using EducaGrado.xDialog;
-using System.Security.Cryptography;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace EducaGrado.Administrativo.Students
 {
@@ -28,8 +18,8 @@ namespace EducaGrado.Administrativo.Students
     public partial class StudentAdd : Window
     {
         int idcourse;
-        int idcity=-1, idprovince=-1, idtown=-1;
-        double latitude=0, longitude=0;
+        int idcity = -1, idprovince = -1, idtown = -1;
+        double latitude = 0, longitude = 0;
         public StudentAdd(int i)
         {
             this.idcourse = i;
@@ -64,7 +54,7 @@ namespace EducaGrado.Administrativo.Students
                 {
                     if (validarCombos())
                     {
-                        System.Windows.Forms.DialogResult result = MsgBox.Show("Esta seguro de Agregar a " + txtname.Text + " "+txtlastname.Text + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                        System.Windows.Forms.DialogResult result = MsgBox.Show("Esta seguro de Agregar a " + txtname.Text + " " + txtlastname.Text + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
                         if (result == System.Windows.Forms.DialogResult.Yes)
                         {
                             stu = new Student(0, idcourse, txtrude.Text);
@@ -97,16 +87,16 @@ namespace EducaGrado.Administrativo.Students
                     if (!string.IsNullOrEmpty(txtemail.Text))
                         if (!string.IsNullOrEmpty(txtPhone.Text))
                             if (!string.IsNullOrEmpty(txtCi.Text))
-                                    if (!string.IsNullOrEmpty(txtBirth.Text))
-                                        if (!string.IsNullOrEmpty(txtAddress.Text))
-                                            if (!string.IsNullOrEmpty(txtrude.Text))
-                                                return true;
+                                if (!string.IsNullOrEmpty(txtBirth.Text))
+                                    if (!string.IsNullOrEmpty(txtAddress.Text))
+                                        if (!string.IsNullOrEmpty(txtrude.Text))
+                                            return true;
             return false;
         }
         public bool validarCombos()
         {
             if (idtown != -1)
-               return true;
+                return true;
             return false;
         }
         public bool validarMapa()
@@ -133,7 +123,7 @@ namespace EducaGrado.Administrativo.Students
             }
 
         }
-        
+
         public void loadImage()
         {
             image = ToImage(File.ReadAllBytes(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\images\Test.txt")));
@@ -244,7 +234,7 @@ namespace EducaGrado.Administrativo.Students
 
         private void ComboCiudad_DropDownClosed(object sender, EventArgs e)
         {
-            
+
             comboProvince();
 
         }
@@ -257,10 +247,10 @@ namespace EducaGrado.Administrativo.Students
             comboProvincia.SelectedIndex = 0;
             comboTown();
         }
-        
+
         private void ComboProvincia_DropDownClosed(object sender, EventArgs e)
         {
-            
+
             comboTown();
         }
         TownImpl townImpl;
@@ -272,12 +262,12 @@ namespace EducaGrado.Administrativo.Students
             comboMuni.ItemsSource = town.DefaultView;
             comboMuni.SelectedIndex = 0;
         }
-        
+
 
         private void ComboMuni_DropDownClosed(object sender, EventArgs e)
         {
             idtown = int.Parse(comboMuni.SelectedValue.ToString());
-            MsgBox.Show("Seleccionado "+comboMuni.Text, "Atencion", MsgBox.Buttons.OK);
+            MsgBox.Show("Seleccionado " + comboMuni.Text, "Atencion", MsgBox.Buttons.OK);
         }
 
 
@@ -290,7 +280,7 @@ namespace EducaGrado.Administrativo.Students
 
         #endregion
 
-       
+
 
     }
 }

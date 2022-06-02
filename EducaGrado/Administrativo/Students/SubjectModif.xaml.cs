@@ -4,17 +4,9 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EducaGrado.Administrativo.Students
 {
@@ -34,7 +26,7 @@ namespace EducaGrado.Administrativo.Students
             this.idclass = idclass;
         }
 
-        
+
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -62,7 +54,7 @@ namespace EducaGrado.Administrativo.Students
             {
                 scheduleImpl = new ScheduleImpl();
                 dgvDatos.ItemsSource = null;
-                dgvDatos.ItemsSource = scheduleImpl.SelectHourClass(course,idclass).DefaultView;
+                dgvDatos.ItemsSource = scheduleImpl.SelectHourClass(course, idclass).DefaultView;
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }

@@ -1,12 +1,9 @@
-﻿using System;
+﻿using DAO;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAO;
-using Model;
 namespace Implementation
 {
     public class ClassImpl : ClassDao
@@ -51,7 +48,7 @@ namespace Implementation
                 int idclass = DBImplementation.GetIdentityFromTable("Class");
                 int idgrade = DBImplementation.GetIdentityFromTable("Grade");
                 int idgradeincrement = DBImplementation.GetIncementFromTable("Grade");
-                int cantgrades=0,canttest=0, totalgrades, typeq=1,totalextras;
+                int cantgrades = 0, canttest = 0, totalgrades, typeq = 1, totalextras;
                 #region contarStudents
                 int students = 0;
                 DataTable dt = new DataTable();
@@ -95,8 +92,8 @@ namespace Implementation
                 }
                 #endregion
                 #region GRADES
-                
-                for (int j=1;j<=typeq;j++)
+
+                for (int j = 1; j <= typeq; j++)
                 {
                     foreach (DataRow dataRow in dt.Rows)
                     {
@@ -105,7 +102,7 @@ namespace Implementation
                         cmds[contadorcmd].Parameters.AddWithValue("@ClassId", idclass);
                         cmds[contadorcmd].Parameters.AddWithValue("@TypeGrade", j);
                         contadorcmd++;
-                        for (int k=0;k<cantgrades;k++)
+                        for (int k = 0; k < cantgrades; k++)
                         {
                             cmds[contadorcmd].CommandText = querySection;
                             cmds[contadorcmd].Parameters.AddWithValue("@GradeId", idgrade);
@@ -113,7 +110,7 @@ namespace Implementation
                             cmds[contadorcmd].Parameters.AddWithValue("@TypeScore", 1);
                             contadorcmd++;
                         }
-                        for (int l=0;l<canttest;l++)
+                        for (int l = 0; l < canttest; l++)
                         {
                             cmds[contadorcmd].CommandText = querySection;
                             cmds[contadorcmd].Parameters.AddWithValue("@GradeId", idgrade);
@@ -121,7 +118,7 @@ namespace Implementation
                             cmds[contadorcmd].Parameters.AddWithValue("@TypeScore", 2);
                             contadorcmd++;
                         }
-                        
+
                     }
                     idgrade += idgradeincrement;
                 }
@@ -156,7 +153,7 @@ WHERE c.CourseId = @CourseId AND c.status = 1";
             throw new NotImplementedException();
         }
 
-        
+
 
         public DataTable SelectStudents(int id)
         {
@@ -188,12 +185,12 @@ WHERE c.CourseId = @CourseId AND c.status = 1";
             try
             {
                 int contadorcmd = 0;
-                List<SqlCommand> cmds = DBImplementation.CreateNBasicCommands(1+t.Count);
+                List<SqlCommand> cmds = DBImplementation.CreateNBasicCommands(1 + t.Count);
                 cmds[contadorcmd].CommandText = query1;
                 cmds[contadorcmd].Parameters.AddWithValue("@ClassId ", t[0].MatterId);
                 contadorcmd++;
                 System.Diagnostics.Debug.WriteLine(string.Format("{0} | Parte1.", DateTime.Now));
-                for (int i=0;i<t.Count;i++)
+                for (int i = 0; i < t.Count; i++)
                 {
                     cmds[contadorcmd].CommandText = query2;
                     cmds[contadorcmd].Parameters.AddWithValue("@ClassId ", t[i].MatterId);

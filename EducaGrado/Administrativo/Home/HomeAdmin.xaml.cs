@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EducaGrado.Administrativo.Home
 {
@@ -41,15 +32,17 @@ namespace EducaGrado.Administrativo.Home
             switch (index)
             {
                 case 0:
-                    
+                    GridPrincipal.Children.Clear();
                     break;
                 case 1:
+
+                    break;
+                case 2:
+                    Administrativo.Teacher.TeacherList teacherList = new Teacher.TeacherList();
+                    teacherList.Show();
                     
                     break;
                 case 3:
-                    
-                    break;
-                case 5:
                     GridPrincipal.Children.Clear();
                     GridPrincipal.Children.Add(new EducaGrado.Administrativo.Students.CoursesView());
                     break;
@@ -79,12 +72,12 @@ namespace EducaGrado.Administrativo.Home
 
         private void CrudTeacher_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void ListTeacher_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
 

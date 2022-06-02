@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Implementation;
+﻿using Implementation;
 using Model;
-using System.IO;
-using System.Security.Cryptography;
+using System;
 using System.Data;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Windows;
+using System.Windows.Input;
 
 namespace EducaGrado.InicioSesion
 {
@@ -28,7 +19,7 @@ namespace EducaGrado.InicioSesion
         UserImpl implUser;
         UserAccount userAccount = new UserAccount();
 
-        
+
         static byte state;
         static AesManaged aes = new AesManaged();
 
@@ -58,7 +49,7 @@ namespace EducaGrado.InicioSesion
         {
             try
             {
-                
+
                 string user = txtUsername.Text.ToLower();
                 string password = txtPassword.Password;
                 userAccount = new UserAccount();
@@ -76,8 +67,8 @@ namespace EducaGrado.InicioSesion
                             state = Convert.ToByte(dt.Rows[0][5].ToString());
                             if (state == 1)
                             {
-                                
-                                if (Encriptar(password,userAccount).SequenceEqual(userAccount.Password))
+
+                                if (Encriptar(password, userAccount).SequenceEqual(userAccount.Password))
                                 {
                                     switch (Validar(dt))
                                     {
@@ -88,7 +79,7 @@ namespace EducaGrado.InicioSesion
                                             break;
                                         case 2:
                                             SetSession(dt);
-                                            if (Session.SessionRole==1)
+                                            if (Session.SessionRole == 1)
                                             {
                                                 Administrativo.School.ModifySchool MS = new Administrativo.School.ModifySchool();
                                                 MS.Show();
@@ -115,7 +106,7 @@ namespace EducaGrado.InicioSesion
                                             break;
                                     }
                                 }
-                                    
+
                                 else MessageBox.Show("Usuario o contraseña erroneos");
                             }
                             else MessageBox.Show("Su usuario esta bloqueado  comuniquese con su organizacion");
@@ -130,7 +121,7 @@ namespace EducaGrado.InicioSesion
                         MessageBox.Show("Llena todos los espacion");
                     }
                 }
-                else 
+                else
                 {
                     MessageBox.Show("Llena todos los espacion");
                 }
@@ -186,9 +177,9 @@ namespace EducaGrado.InicioSesion
             }
             return encriptando;
         }
-        
+
         #endregion
-        
+
     }
 
 

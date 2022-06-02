@@ -165,32 +165,6 @@
                     </StackPanel>
 
                 </ListViewItem>
-                <ListViewItem Height="0">
-                    <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal" Width="230">
-
-                            <Grid x:Name="GridCursorPendiente" Margin="0 0 0 0" Background="#06ad75" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
-
-                            <materialDesign:PackIcon Kind="FormatListBulleted" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Pendiente" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
-                        </StackPanel>
-                        <StackPanel  Height="10" Width="auto" Background="#058f61">
-                        </StackPanel>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Height="0">
-                    <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal" Width="230">
-
-                            <Grid x:Name="GridCursorMensualidad" Margin="0 0 0 0" Background="#06ad75" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
-
-                            <materialDesign:PackIcon Kind="Cash" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Mensualidad" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
-                        </StackPanel>
-                        <StackPanel  Height="10" Width="auto" Background="#058f61">
-                        </StackPanel>
-                    </StackPanel>
-                </ListViewItem>
                 <ListViewItem Height="60" x:Name="ListAdmin">
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Width="230">

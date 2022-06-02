@@ -2,19 +2,9 @@
 using Implementation;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EducaGrado.Administrativo.Controles.Horarios
 {
@@ -57,7 +47,7 @@ namespace EducaGrado.Administrativo.Controles.Horarios
                     }
                 }
 
-                
+
             }
             else MsgBox.Show("Seleccione Horarios", "Atencion", MsgBox.Buttons.OK);
         }
@@ -115,7 +105,7 @@ namespace EducaGrado.Administrativo.Controles.Horarios
 
         private void dgvDatosHorario_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            
+
         }
 
         private void btnView_Click(object sender, RoutedEventArgs e)
@@ -127,8 +117,8 @@ namespace EducaGrado.Administrativo.Controles.Horarios
 
                 string NombreHorario = dataRowView[1].ToString();
                 string NombreHorarioFinal = dataRowView[2].ToString();
-                
-                System.Windows.Forms.DialogResult result = MsgBox.Show("Estas Seguro de Eliminar " + NombreHorario +" a "+ NombreHorarioFinal+"?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+
+                System.Windows.Forms.DialogResult result = MsgBox.Show("Estas Seguro de Eliminar " + NombreHorario + " a " + NombreHorarioFinal + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     int IdSchedule = int.Parse(dataRowView[0].ToString());
@@ -146,6 +136,6 @@ namespace EducaGrado.Administrativo.Controles.Horarios
             }
         }
 
-        
+
     }
 }

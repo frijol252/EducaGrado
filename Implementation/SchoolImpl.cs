@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DAO;
 using Model;
-using DAO;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -32,7 +29,7 @@ namespace Implementation
             throw new NotImplementedException();
         }
 
-        
+
 
         public void UpdateTypeWork(SchoolType schoolType, Modality modality, int schoolid)
         {
@@ -55,7 +52,7 @@ WHERE ModalityId = (SELECT s.ModalityId  FROM School s WHERE SchoolId = @SchoolI
             }
             catch (Exception ex)
             {
-                
+
             }
         }
     }

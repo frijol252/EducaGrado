@@ -3,20 +3,11 @@ using Microsoft.Maps.MapControl.WPF;
 using Microsoft.Win32;
 using Model;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EducaGrado.Administrativo.Teacher
 {
@@ -37,12 +28,6 @@ namespace EducaGrado.Administrativo.Teacher
         public TeacherAdd()
         {
             InitializeComponent();
-            //image = new BitmapImage();
-            //image.BeginInit();
-            //image.UriSource = new Uri(DBImplementation.pathImages + 0 + ".png");
-            //image.EndInit();
-            //imagesector.Source = image;
-            //comboCity();
         }
 
         #region view;
@@ -53,7 +38,6 @@ namespace EducaGrado.Administrativo.Teacher
         private void modif()
         {
             Insestack.Height = 0;
-            Modstack.Height = 500;
         }
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -73,17 +57,6 @@ namespace EducaGrado.Administrativo.Teacher
 
         }
         Random rdn = new Random();
-        //public string contrasenia()
-        //{
-
-        //    string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        //    string contraseniaAleatoria = "";
-        //    for (int i = 0; i <= 4; i++)
-        //    {
-        //        contraseniaAleatoria = contraseniaAleatoria + caracteres.Substring(rdn.Next(1, 63), 1);
-        //    }
-        //    return contraseniaAleatoria;
-        //}
 
         private void InsertNow_Click(object sender, RoutedEventArgs e)
         {
@@ -220,31 +193,13 @@ namespace EducaGrado.Administrativo.Teacher
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-            LoadDataGrid();
+            
 
-        }
-        public void LoadDataGrid()
-        {
-            //try
-            //{
-            //    teacherimpl = new TeacherImpl();
-            //    dgvDatos.ItemsSource = null;
-            //    dgvDatos.ItemsSource = teacherimpl.Select().DefaultView;
-
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-        private void ocultar()
-        {
-            //dgvDatos.Columns[0].Visibility = Visibility.Hidden;
-            //dgvDatos.Columns[15].Visibility = Visibility.Hidden;
-            //dgvDatos.Columns[14].Visibility = Visibility.Hidden;
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ocultar();
+            
             comboCity();
-
         }
 
         private void Modifbtn_Click(object sender, RoutedEventArgs e)
@@ -293,71 +248,44 @@ namespace EducaGrado.Administrativo.Teacher
             //}
         }
 
-        string pathImagePortada = null;
 
         private void btnAddImage_Click(object sender, RoutedEventArgs e)
         {
-            //OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.Filter = "Archivos de Imagen|*.PNG";
-            //if (ofd.ShowDialog() == true)
-            //{
-            //    image = new BitmapImage();
-            //    image.BeginInit();
-            //    image.CacheOption = BitmapCacheOption.OnLoad;
-            //    image.UriSource = new Uri(ofd.FileName);
-            //    image.EndInit();
-            //    imagesector.Source = image;
-            //    pathImagePortada = ofd.FileName;
-            //}
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Archivos de Imagen|*.PNG";
+            if (ofd.ShowDialog() == true)
+            {
+                image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.UriSource = new Uri(ofd.FileName);
+                image.EndInit();
+                imagesector.Source = image;
+            }
 
         }
 
-        private void Txtsearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //try
-            //{
-            //    if (txtsearch.Text == "")
-            //    {
-            //        teacherimpl = new TeacherImpl();
-            //        dgvDatos.ItemsSource = null;
-            //        dgvDatos.ItemsSource = teacherimpl.Select().DefaultView;
-            //        ocultar();
-            //    }
-            //    else
-            //    {
-            //        teacherimpl = new TeacherImpl();
-            //        dgvDatos.ItemsSource = null;
-            //        dgvDatos.ItemsSource = teacherimpl.SelectSearch(txtsearch.Text).DefaultView;
-            //        ocultar();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-
-        }
         #endregion;
 
         #region mapa
         Location ubicationPoint;
         private void MyMap_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //try
-            //{
-            //    e.Handled = true;
-            //    var mousePosicion = e.GetPosition((UIElement)sender);
-            //    ubicationPoint = MyMap.ViewportPointToLocation(mousePosicion);
-            //    Pushpin point = new Pushpin();
-            //    point.Location = ubicationPoint;
-            //    MyMap.Children.Clear();
-            //    MyMap.Children.Add(point);
-            //    MessageBox.Show("Marked location");
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Something happened \nCommunicate with the Suport department \neducateam.suport@gmail.com");
-            //}
+            try
+            {
+                e.Handled = true;
+                var mousePosicion = e.GetPosition((UIElement)sender);
+                ubicationPoint = MyMap.ViewportPointToLocation(mousePosicion);
+                Pushpin point = new Pushpin();
+                point.Location = ubicationPoint;
+                MyMap.Children.Clear();
+                MyMap.Children.Add(point);
+                MessageBox.Show("Marked location");
+            }
+            catch
+            {
+                MessageBox.Show("Something happened \nCommunicate with the Suport department \neducateam.suport@gmail.com");
+            }
         }
 
         private void btnSaltelite_Click(object sender, RoutedEventArgs e)
@@ -569,13 +497,13 @@ namespace EducaGrado.Administrativo.Teacher
         }
         public void ciudadMod()
         {
-        //    if (comboCiudadMod.SelectedItem != null)
-        //    {
-        //        sValue = comboCiudadMod.Text as string;
-        //    }
-        //    comboProvinceMod();
-        //    provinceMod();
-        //
+            //    if (comboCiudadMod.SelectedItem != null)
+            //    {
+            //        sValue = comboCiudadMod.Text as string;
+            //    }
+            //    comboProvinceMod();
+            //    provinceMod();
+            //
         }
 
         public void comboProvinceMod()

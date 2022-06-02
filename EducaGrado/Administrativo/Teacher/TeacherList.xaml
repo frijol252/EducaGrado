@@ -31,17 +31,7 @@
                     <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="1260"/>
                 </StackPanel>
                 <StackPanel Height="80" VerticalAlignment="Bottom"  Orientation="Horizontal">
-                    <StackPanel Orientation="Horizontal" x:Name="stacken" HorizontalAlignment="Center" Margin="0 20 0 0">
-                        <TextBox x:Name="txtid" Text="" Width="0" Height="0"></TextBox>
-                        <Label Content="Nombre:" Margin=" 200 0 30 0" Foreground="Black" FontSize="20"></Label>
-                        <Label Content="....." x:Name="namenabled" Width="200" Foreground="Black" FontSize="20"></Label>
-                        <Label Content="Apellidos:" Margin=" 100 0 30 0" Foreground="Black" FontSize="20"></Label>
-                        <Label Content="....." Width="100" x:Name="lastenabled" Foreground="Black" FontSize="20"></Label>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Button x:Name="Disabledbtn" IsEnabled="False" Content="Deshabilitar" FontSize="18" Height="40" Foreground="White" Width="200" Margin="30 0 0 0" Background="Red" Click="Disabledbtn_Click"></Button>
-                        <Button x:Name="subjects" IsEnabled="False" Content="Materias" FontSize="18" Height="40" Foreground="White" Width="200" Margin="20 0 0 0" Background="#FFE63070" Click="Subjects_Click"></Button>
-                    </StackPanel>
+                    
 
                 </StackPanel>
             </Grid>

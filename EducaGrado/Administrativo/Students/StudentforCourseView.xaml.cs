@@ -2,20 +2,13 @@
 using Implementation;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EducaGrado.Administrativo.Students
 {
@@ -167,7 +160,7 @@ namespace EducaGrado.Administrativo.Students
             this.Close();
         }
 
-        
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -227,7 +220,7 @@ namespace EducaGrado.Administrativo.Students
                 DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
 
                 int idPerson = int.Parse(dataRowView[0].ToString());
-                StudentModif studentModif = new StudentModif(idCourse,idPerson);
+                StudentModif studentModif = new StudentModif(idCourse, idPerson);
                 studentModif.Show();
                 this.Close();
 
@@ -249,12 +242,12 @@ namespace EducaGrado.Administrativo.Students
 
 
                 System.Windows.Forms.DialogResult result;
-                if(dis==0) result = MsgBox.Show("Estas Seguro de Deshabilitar " + nombreestudiante + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                if (dis == 0) result = MsgBox.Show("Estas Seguro de Deshabilitar " + nombreestudiante + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
                 else result = MsgBox.Show("Estas Seguro de Habilitar " + nombreestudiante + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     studentImpl = new StudentImpl();
-                    int res = studentImpl.DeleteDis(int.Parse(dataRowView[0].ToString()),dis);
+                    int res = studentImpl.DeleteDis(int.Parse(dataRowView[0].ToString()), dis);
                     if (res != 0)
                     {
                         MsgBox.Show("Estado de Estudiante Actualizado ", "Atencion", MsgBox.Buttons.OK, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
