@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DAO;
+using Model;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAO;
-using Model;
 
 namespace Implementation
 {
@@ -28,7 +24,7 @@ namespace Implementation
             try
             {
                 SqlCommand cmd = DBImplementation.CreateBasicComand(query);
-                
+
                 return DBImplementation.ExecuteDataTableCommand(cmd);
             }
             catch (Exception ex) { throw ex; }
@@ -45,7 +41,7 @@ namespace Implementation
                 if (dt.Read())
 
                 {
-                    p.Photo= dt.GetValue(0) as byte[];
+                    p.Photo = dt.GetValue(0) as byte[];
                 }
                 cmd.Connection.Close();
                 return p;

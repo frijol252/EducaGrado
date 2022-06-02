@@ -4,9 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Implementation
 {
@@ -98,13 +95,13 @@ order by CategoryName";
 
                 List<SqlCommand> cmds = DBImplementation.CreateNBasicCommands(categoryMatters.Count);
 
-                for (int i=0; i<categoryMatters.Count;i++)
+                for (int i = 0; i < categoryMatters.Count; i++)
                 {
                     cmds[i].CommandText = queryCategory;
                     cmds[i].Parameters.AddWithValue("@id", categoryMatters[i].CategoryId);
                     cmds[i].Parameters.AddWithValue("@CategoryName", categoryMatters[i].CategoryName);
                 }
-                    DBImplementation.ExecuteNBasicCommand(cmds);
+                DBImplementation.ExecuteNBasicCommand(cmds);
 
             }
             catch (Exception ex)

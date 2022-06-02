@@ -10,7 +10,7 @@
         WindowStyle="None" WindowStartupLocation="CenterScreen"
         mc:Ignorable="d" Initialized="Window_Initialized" Loaded="Window_Loaded"
         AllowsTransparency="True"
-        Title="TeacherAdd" Height="600" Width="1300">
+        Title="TeacherAdd" Height="600" Width="800">
     <Window.Resources>
         <!-- Insert -->
         <Storyboard x:Key="SubMenuOpen">
@@ -74,15 +74,6 @@
             <BeginStoryboard Storyboard="{StaticResource SubMenuCollapseDel}"/>
         </EventTrigger>
         <!-- Delete -->
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Delete">
-            <BeginStoryboard Storyboard="{StaticResource SubMenuOpenDel}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Delete">
-            <BeginStoryboard Storyboard="{StaticResource SubMenuCollapse}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Delete">
-            <BeginStoryboard Storyboard="{StaticResource SubMenuCollapseModif}"/>
-        </EventTrigger>
     </Window.Triggers>
     <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
         <Grid>
@@ -93,154 +84,86 @@
                     </Button>
                 </Grid>
 
-                <Grid Margin="0 25 0 0" Height="575" Width="1300" Background="#ededed">
-                    <StackPanel Width="500" Margin="0 20 0 0" HorizontalAlignment="Left">
-                        <!--Insert-->
-                        <StackPanel x:Name="Insestack" Background="#ededed" Margin="30,0,19,0" Height="500" Orientation="Vertical" VerticalAlignment="Top">
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Nombre"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 70 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtname" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el nombre del profesor" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Apellido paterno:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 20 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtlastname" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el apellido paterno del profesor" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Apellido materno:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 18 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtsecondlastname" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el apellido materno del profesor (Opcional)" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Correo electronico:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 12 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtemail" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el correo electronico del profesor" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Telefono/Celular:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 22 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtPhone" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el Telefono/celular del profesor" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Fecha de nacimiento:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 5 0" FontWeight="Bold"></TextBlock>
-                                <DatePicker x:Name="txtBirth" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la fecha de nacimiento del profesor" ></DatePicker>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Genero:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 60 0" FontWeight="Bold"></TextBlock>
-                                <ComboBox x:Name="txtGender" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" >
-                                    <ComboBoxItem Content="Masculino" IsSelected="True"/>
-                                    <ComboBoxItem Content="Femenino"/>
-                                    <ComboBoxItem Content="Sin especificar"/>
-                                </ComboBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Dirección:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 60 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtAddress" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la dirección del profesor" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="5 0 0 10">
-                                <TextBlock Text="Fecha de inicio:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 48 0" FontWeight="Bold"></TextBlock>
-                                <DatePicker x:Name="txtstartDate" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la fecha de inicio del profesor" ></DatePicker>
-                            </StackPanel>
-                            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Center">
-                                <TextBlock VerticalAlignment="Center" Text="Ciudad:" Margin="0 0 10 0" Foreground="#c51d6a" FontWeight="Bold"></TextBlock>
-                                <ComboBox x:Name="comboCiudad" DropDownClosed="ComboCiudad_DropDownClosed" VerticalAlignment="Center" Width="120"></ComboBox>
-                                <TextBlock VerticalAlignment="Center" Text="Provincia:" Margin="40 0 10 0" Foreground="#c51d6a" FontWeight="Bold"></TextBlock>
-                                <ComboBox x:Name="comboProvincia" DropDownClosed="ComboProvincia_DropDownClosed" VerticalAlignment="Center" Width="120"></ComboBox>
-                            </StackPanel>
-                            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
-                                <TextBlock VerticalAlignment="Center" Text="Pueblo:" Foreground="#c51d6a" Margin="0 0 10 0" FontWeight="Bold"></TextBlock>
-                                <ComboBox x:Name="comboMuni" DropDownClosed="ComboMuni_DropDownClosed" VerticalAlignment="Center" Width="120"></ComboBox>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Horizontal" Margin="100 0 60 0">
-                                <Button x:Name="InsertNow" Click="InsertNow_Click" Content="Insertar profesor" Height="40" Margin="70 20 0 0" Foreground="White" Background="#06ad75"></Button>
-                            </StackPanel>
-                        </StackPanel>
-                        <!--Update-->
-                        <StackPanel x:Name="Modstack" Background="#ededed" Margin="30 0 30 0" Height="0" Orientation="Vertical" VerticalAlignment="Top">
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Name"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 70 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtnameMod" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="His/Her Name" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Last Name:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 41 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtlastnameMod" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="His/Her Last Name" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Sec Last Name:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 18 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtsecondlastnameMod" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="His/Her Second Last Name (Optional)" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="E-mail:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 63 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtemailMod" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="His/Her E-Mail" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Phone:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 63 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtPhoneMod" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="His/Her Phone" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
-                                <TextBlock Text="Address:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 60 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtAddressMod" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="His/Her Addres" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Center">
-                                <TextBlock VerticalAlignment="Center" Text="City:" Margin="0 0 10 0" Foreground="#c51d6a" FontWeight="Bold"></TextBlock>
-                                <ComboBox x:Name="comboCiudadMod" DropDownClosed="ComboCiudadMod_DropDownClosed" VerticalAlignment="Center" Width="120"></ComboBox>
-                                <TextBlock VerticalAlignment="Center" Text="Province:" Margin="40 0 10 0" Foreground="#c51d6a" FontWeight="Bold"></TextBlock>
-                                <ComboBox x:Name="comboProvinciaMod" DropDownClosed="ComboProvinciaMod_DropDownClosed" VerticalAlignment="Center" Width="120"></ComboBox>
-                            </StackPanel>
-                            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
-                                <TextBlock VerticalAlignment="Center" Text="Town:" Foreground="#c51d6a" Margin="0 0 10 0" FontWeight="Bold"></TextBlock>
-                                <ComboBox x:Name="comboMuniMod" DropDownClosed="ComboMuniMod_DropDownClosed" VerticalAlignment="Center" Width="120"></ComboBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="50 10 60 0">
-                                <Button x:Name="Modifbtn" Click="Modifbtn_Click" Content="Modif" Height="40" Margin="70 20 0 0" Width="200" Foreground="White" Background="#06ad75"></Button>
-                            </StackPanel>
-                        </StackPanel>
-                        <!--Delete-->
-                        <StackPanel x:Name="Delstack"  Background="#ededed" Margin="30 0 30 0" Height="0" Orientation="Vertical" VerticalAlignment="Top">
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 80 0 50">
-                                <TextBlock Text="Name"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 70 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtnameDel" IsEnabled="False" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="His/Her Name" ></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 50">
-                                <TextBlock Text="Last Name:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 41 0" FontWeight="Bold"></TextBlock>
-                                <TextBox x:Name="txtlastnameDel" IsEnabled="False" VerticalAlignment="Top" Foreground="#c51d6a" Width="300" FontWeight="Bold" materialDesign:HintAssist.Hint="His/Her Last Name" ></TextBox>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Horizontal" Margin="50 10 60 0">
-                                <Button x:Name="Delbtn" Click="Delbtn_Click" Content="Delete" Height="40" Margin="70 20 0 0" Width="200" Foreground="White" Background="#06ad75"></Button>
-                            </StackPanel>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel VerticalAlignment="Top">
-                        <m:Map x:Name="MyMap" Height="250" Width="250" Margin="0,20,0,20" CredentialsProvider="1WdzIFszIc0rfwM0AmvW~clGTM6b_ilH2elwWSlNVRw~AnfQuB1K0pImuUkzK0Ta0zaV86zcBvle_cYadfBj0t0ZEbcxqgz-m5dEavx_Ht3d" MouseDoubleClick="MyMap_MouseDoubleClick" ZoomLevel="16" Center="-17.393596, -66.157070" Mode="AerialWithLabels"/>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                                <Button x:Name="btnZoom" Click="btnZoom_Click" Content="+" Margin="0 0 5 0" Background="#FFE63070" BorderBrush="Black" Width="50" Foreground="White" materialDesing:ButtonAssist.CornerRadius="15"/>
-                                <Button x:Name="btnAlejar" Click="btnAlejar_Click" Content="-" Margin="0 0 5 0" Background="#FFE63070" BorderBrush="Black" Width="50" Foreground="White" materialDesing:ButtonAssist.CornerRadius="15"/>
-                                <Button x:Name="btnSat" Click="btnSaltelite_Click" Content="Satelital" Margin="0 0 5 0" Background="#FFE63070" BorderBrush="Black" Width="90" Foreground="White" materialDesing:ButtonAssist.CornerRadius="15"/>
-                                <Button x:Name="btnCalles" Click="btnCalles_Click" Content="Calles" Margin="0" Background="#FFE63070" BorderBrush="Black" Width="90" Foreground="White" materialDesing:ButtonAssist.CornerRadius="15"/>
-                            </StackPanel>
+                <Grid Margin="0,31,0,0" Background="#ededed">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Image x:Name="imagesector" Height="200" Width="180" >
+                                <Image x:Name="imagesector" Height="170" Width="170" Margin="20,20,20,20">
                                 </Image>
-                                <Button x:Name="btnAddImage" Click="btnAddImage_Click" Background="#06ad75" Foreground="White" Content="Añadir Imagen" FontSize="12"></Button>
+                                <Button x:Name="btnAddImage" Click="btnAddImage_Click" Background="#06ad75" Foreground="White" Content="subir imagen" FontSize="12" materialDesing:ButtonAssist.CornerRadius="15"></Button>
                             </StackPanel>
 
-
+                            <StackPanel Orientation="Horizontal" Margin="10 0 0 10">
+                                <Button x:Name="btnZoom" Click="btnZoom_Click" Content="+" Margin="0 0 5 0" Background="#FFE63070"  BorderBrush="Black" Width="50" Foreground="White" materialDesing:ButtonAssist.CornerRadius="15"/>
+                                <Button x:Name="btnAlejar" Click="btnAlejar_Click" Content="-" Margin="0 0 5 0" Background="#FFE63070" BorderBrush="Black" Width="50" Foreground="White" materialDesing:ButtonAssist.CornerRadius="15"/>
+                                <Button x:Name="btnSat" Click="btnSaltelite_Click" Content="Sat" Margin="0 0 5 0" Background="#FFE63070"  BorderBrush="Black" Width="90" Foreground="White" materialDesing:ButtonAssist.CornerRadius="15"/>
+                                <Button x:Name="btnCalles" Click="btnCalles_Click" Content="Calle" Margin="0" Background="#FFE63070" BorderBrush="Black" Width="90" Foreground="White" materialDesing:ButtonAssist.CornerRadius="15"/>
+                            </StackPanel>
+                            <m:Map x:Name="MyMap" Height="250" Width="250" Margin="0" CredentialsProvider="1WdzIFszIc0rfwM0AmvW~clGTM6b_ilH2elwWSlNVRw~AnfQuB1K0pImuUkzK0Ta0zaV86zcBvle_cYadfBj0t0ZEbcxqgz-m5dEavx_Ht3d" MouseDoubleClick="MyMap_MouseDoubleClick" ZoomLevel="16" Center="-17.393596, -66.157070" Mode="AerialWithLabels"/>
                         </StackPanel>
-                    </StackPanel>
-                    <StackPanel Width="520" HorizontalAlignment="Right" >
+                        <StackPanel>
+                            <!-- INSERT -->
+                            <StackPanel x:Name="Insestack" Background="#ededed" Margin="30 10 30 0" Height="500" Orientation="Vertical" VerticalAlignment="Top">
+                                <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                                    <TextBlock Text="Nombre:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 66 0" FontWeight="Bold"></TextBlock>
+                                    <TextBox x:Name="txtname" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el nombre del estudiante" ></TextBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                                    <TextBlock Text="Primer apellido:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 25 0" FontWeight="Bold"></TextBlock>
+                                    <TextBox x:Name="txtlastname" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el primer apellido del estudiante" ></TextBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                                    <TextBlock Text="Segundo apellido*:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 14 0" FontWeight="Bold"></TextBlock>
+                                    <TextBox x:Name="txtsecondlastname" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el segundo apellido del estudiante (Opcional)" FontSize="11"></TextBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                                    <TextBlock Text="Correo electrónico:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 10 0" FontWeight="Bold"></TextBlock>
+                                    <TextBox x:Name="txtemail" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el correo electrónico del estudiante" ></TextBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                                    <TextBlock Text="Telefono/Celular:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 20 0" FontWeight="Bold"></TextBlock>
+                                    <TextBox x:Name="txtPhone" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el telefono/celular del estudiante" ></TextBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                                    <TextBlock Text="Ci:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 20 0" FontWeight="Bold"></TextBlock>
+                                    <TextBox x:Name="txtCi" VerticalAlignment="Top" Foreground="Black" Width="150" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese el CI" ></TextBox>
+                                    <TextBlock Text="Extension*:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 20 0" FontWeight="Bold"></TextBlock>
+                                    <TextBox x:Name="txtCieX" VerticalAlignment="Top" Foreground="Black" Width="150" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la extension de CI" ></TextBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                                    <TextBlock Text="Fecha de nacimiento:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 10 0" FontWeight="Bold"></TextBlock>
+                                    <DatePicker x:Name="txtBirth" VerticalAlignment="Top" Foreground="Black" Width="280" FontWeight="Bold" Focusable="False" materialDesign:HintAssist.Hint="Ingrese la fecha de nacimiento" ></DatePicker>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                                    <TextBlock Text="Genero:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 70 0" FontWeight="Bold"></TextBlock>
+                                    <ComboBox x:Name="txtGender" VerticalAlignment="Top" Foreground="Black" Width="300" FontWeight="Bold" >
+                                        <ComboBoxItem Content="Ma" IsSelected="True"/>
+                                        <ComboBoxItem Content="Fe"/>
+                                        <ComboBoxItem Content="SE"/>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                                    <TextBlock Text="Dirección:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 60 0" FontWeight="Bold"></TextBlock>
+                                    <TextBox x:Name="txtAddress" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la dirección del estudiante" ></TextBox>
+                                </StackPanel>
+                                <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock VerticalAlignment="Center" Text="Ciudad:" Margin="-8 0 10 0" Foreground="#c51d6a" FontWeight="Bold"></TextBlock>
+                                    <ComboBox x:Name="comboCiudad" DropDownClosed="ComboCiudad_DropDownClosed" DisplayMemberPath="Name" SelectedValuePath="ID" VerticalAlignment="Center" Width="120"></ComboBox>
+                                    <TextBlock VerticalAlignment="Center" Text="Provincia:" Margin="40 0 10 0" Foreground="#c51d6a" FontWeight="Bold"></TextBlock>
+                                    <ComboBox x:Name="comboProvincia" DropDownClosed="ComboProvincia_DropDownClosed" DisplayMemberPath="Name" SelectedValuePath="ID" VerticalAlignment="Center" Width="120"></ComboBox>
+                                </StackPanel>
+                                <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Center" Margin="30 10 0 0">
+                                    <TextBlock VerticalAlignment="Center" Text="Pueblo:" Foreground="#c51d6a" Margin="-00 0 10 0" FontWeight="Bold"></TextBlock>
+                                    <ComboBox x:Name="comboMuni" DropDownClosed="ComboMuni_DropDownClosed" VerticalAlignment="Center" DisplayMemberPath="Name" SelectedValuePath="ID" Width="120"></ComboBox>
+                                    <TextBlock Text="Codigo rude:" VerticalAlignment="Top" Foreground="#c51d6a" Margin="30 10 20 0" FontWeight="Bold"></TextBlock>
+                                    <TextBox x:Name="txtrude" VerticalAlignment="Top" Foreground="Black" Width="110" FontWeight="Bold" materialDesign:HintAssist.Hint="Rude" ></TextBox>
+                                </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" Margin="24,10,24,0">
-                            <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 4"/>
-                            <TextBox x:Name="txtsearch" TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="458" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" ></TextBox>
+                                <StackPanel Orientation="Horizontal" Margin="100 0 60 0">
+                                    <Button x:Name="InsertNow" Click="InsertNow_Click" Content="Insertar estudiante" Height="40" Margin="70 20 0 0" Foreground="White" Background="#06ad75" materialDesing:ButtonAssist.CornerRadius="15"></Button>
+                                </StackPanel>
+                            </StackPanel>
                         </StackPanel>
-
-                        <DataGrid x:Name="dgvDatos" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" IsReadOnly="True" Background="#ededed" CanUserAddRows="False"  HorizontalAlignment="Left" Height="412" Margin="20,20,0,0" VerticalAlignment="Top" Width="480"/>
-                    </StackPanel>
-
-                    <StackPanel Margin="500 0 110 20" Width="900" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Bottom">
-                        <Button x:Name="Insert" Content="Insertar" Height="40" Width="200" Margin="100 0 0 0" Background="#06ad75"></Button>
-                        <Button x:Name="Modif" IsEnabled="False" Content="Modificar" Height="40" Width="200" Margin="20 0 0 0 " Background="#06ad75"></Button>
-                        <Button x:Name="Delete" IsEnabled="False" Content="Eliminar" Height="40" Width="200" Margin="20 0 0 0 " Background="#06ad75"></Button>
-                        <TextBox x:Name="txtid" Visibility="Collapsed"></TextBox>
                     </StackPanel>
                 </Grid>
             </Grid>

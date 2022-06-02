@@ -1,15 +1,13 @@
-﻿using System;
+﻿using DAO;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using DAO;
-using Model;
 
 namespace Implementation
 {
@@ -35,7 +33,7 @@ namespace Implementation
                 throw ex;
             }
         }
-        public int DeleteDis(int idPerson,int status)
+        public int DeleteDis(int idPerson, int status)
         {
             string query = @"UPDATE UserAccount SET status = @status WHERE UserAccountId = (SELECT UserAccountId FROM Person WHERE PersonId = @PersonId)";
             try
@@ -54,13 +52,13 @@ namespace Implementation
         }
         public Person Get(int idperson)
         {
-            
+
             string query = @"SELECT p.Names ,p.LastName ,p.SLastName,p.address ,p.CI ,p.CIExtension,p.DateBirth,p.photo ,p.email,p.latitude ,p.longitude ,p.phone,p.gender ,p.TownId ,s.RudeNumber, t.ProvinceId
                             FROM Person p 
                             INNER JOIN Student s ON s.StudentId =p.PersonId 
                             INNER JOIN Town t ON t.TownId = p.TownId
                             WHERE p.PersonId = 3";
-            
+
             try
             {
                 Person person = new Person();
@@ -90,7 +88,7 @@ namespace Implementation
         {
             throw new NotImplementedException();
         }
-        public void InsertTransact(Student t,Person p)
+        public void InsertTransact(Student t, Person p)
         {
             string queryUser = @"INSERT INTO UserAccount (UserName,PasswordAccount,KeyPassword,VIPassword,RoleUserId)
                                 VALUES (@UserName,@PasswordAccount,@KeyPassword,@VIPassword,@RoleUserId)";
@@ -107,7 +105,7 @@ namespace Implementation
             try
             {
                 #region ATRIBUTOS
-                int clasescount=0;
+                int clasescount = 0;
                 int idUser = DBImplementation.GetIdentityFromTable("UserAccount");
                 int idPerson = DBImplementation.GetIdentityFromTable("Person");
                 int idgrade = DBImplementation.GetIdentityFromTable("Grade");
@@ -116,38 +114,38 @@ namespace Implementation
 
 
                 UserAccount userAccount = new UserAccount();
-                userAccount = users(p.Names,p.LastName, idUser);
+                userAccount = users(p.Names, p.LastName, idUser);
                 userAccount.Password = Encriptar(userAccount.Passstring);
                 userAccount.Key = Key;
                 userAccount.VI = IV;
 
-                    #region contarClases
-                    DataTable dtclases = new DataTable();
-                    ClassImpl classImpl = new ClassImpl();
-                    dtclases = classImpl.Select(t.CourseId);
-                    foreach (DataRow d in dtclases.Rows)
-                    {
-                        clasescount++;
-                    }
-                    #endregion
+                #region contarClases
+                DataTable dtclases = new DataTable();
+                ClassImpl classImpl = new ClassImpl();
+                dtclases = classImpl.Select(t.CourseId);
+                foreach (DataRow d in dtclases.Rows)
+                {
+                    clasescount++;
+                }
+                #endregion
 
-                    #region contarNotas
-                    DataTable dtnotas = new DataTable();
-                    ModalityImpl modalityImpl = new ModalityImpl();
-                    dtnotas = modalityImpl.Select();
-                    foreach (DataRow d in dtnotas.Rows)
-                    {
-                        cantgrades = int.Parse(d[0].ToString());
-                        canttest = int.Parse(d[1].ToString());
-                        typeq = int.Parse(d[2].ToString());
-                    }
-                    totalgrades = cantgrades + canttest;
-                    totalgrades = totalgrades * typeq;
-                    totalgrades += typeq;
+                #region contarNotas
+                DataTable dtnotas = new DataTable();
+                ModalityImpl modalityImpl = new ModalityImpl();
+                dtnotas = modalityImpl.Select();
+                foreach (DataRow d in dtnotas.Rows)
+                {
+                    cantgrades = int.Parse(d[0].ToString());
+                    canttest = int.Parse(d[1].ToString());
+                    typeq = int.Parse(d[2].ToString());
+                }
+                totalgrades = cantgrades + canttest;
+                totalgrades = totalgrades * typeq;
+                totalgrades += typeq;
                 #endregion
                 totalextras = totalgrades * clasescount;
                 #endregion
-                List<SqlCommand> cmds = DBImplementation.CreateNBasicCommands(3+totalextras);
+                List<SqlCommand> cmds = DBImplementation.CreateNBasicCommands(3 + totalextras);
                 #region user insert
                 cmds[0].CommandText = queryUser;
                 cmds[0].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserName ", userAccount.UserName));
@@ -232,7 +230,7 @@ WHERE PersonId =@PersonId";
             string queryStudent = @"UPDATE Student SET RudeNumber =@RudeNumber WHERE StudentId =@StudentId";
             try
             {
-                
+
                 List<SqlCommand> cmds = DBImplementation.CreateNBasicCommands(2);
                 #region person insert
                 cmds[0].CommandText = queryPerson;
@@ -291,7 +289,7 @@ WHERE PersonId =@PersonId";
             }
             catch (Exception ex) { throw ex; }
         }
-        public DataTable SelectLike(int idcourse,string like)
+        public DataTable SelectLike(int idcourse, string like)
         {
 
 
@@ -308,7 +306,7 @@ WHERE PersonId =@PersonId";
                 SqlCommand cmd = DBImplementation.CreateBasicComand(query);
                 cmd.Parameters.AddWithValue("@SchoolId", Session.SessionSchoolId);
                 cmd.Parameters.AddWithValue("@CourseId", idcourse);
-                cmd.Parameters.AddWithValue("@like", "%"+like+"%");
+                cmd.Parameters.AddWithValue("@like", "%" + like + "%");
                 return DBImplementation.ExecuteDataTableCommand(cmd);
             }
             catch (Exception ex) { throw ex; }
@@ -385,7 +383,7 @@ WHERE PersonId =@PersonId";
             string username;
             string password;
 
-            username = "" + name.Substring(0, 1).ToLower() + last.Substring(0, 1).ToLower()+ DateTime.Now.Year.ToString() + id ;
+            username = "" + name.Substring(0, 1).ToLower() + last.Substring(0, 1).ToLower() + DateTime.Now.Year.ToString() + id;
 
             string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
             password = "";

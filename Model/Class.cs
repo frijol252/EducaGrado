@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Model
+﻿namespace Model
 {
     public class Class
     {
@@ -24,7 +18,7 @@ namespace Model
         public int TeacherId { get => teacherId; set => teacherId = value; }
         public string Day { get => day; set => day = value; }
 
-        public Class(int classId, int courseId, int scheduleId, int matterId, byte status, int teacherId,string day)
+        public Class(int classId, int courseId, int scheduleId, int matterId, byte status, int teacherId, string day)
         {
             this.classId = classId;
             this.courseId = courseId;
@@ -34,7 +28,7 @@ namespace Model
             this.teacherId = teacherId;
             this.day = day;
         }
-        public Class(int courseId, int scheduleId, int matterId,string day)
+        public Class(int courseId, int scheduleId, int matterId, string day)
         {
             this.courseId = courseId;
             this.scheduleId = scheduleId;

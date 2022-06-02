@@ -4,18 +4,8 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace EducaGrado.Administrativo.Controles.Materias
 {
@@ -28,11 +18,11 @@ namespace EducaGrado.Administrativo.Controles.Materias
         CategoryMatter categoryMatter;
         MatterImpl matterImpl;
         Matter matter;
-        int categoriaselected=-1;
+        int categoriaselected = -1;
         public MattersView()
         {
             InitializeComponent();
-            
+
         }
         private void UserControl_Initialized(object sender, EventArgs e)
         {
@@ -112,9 +102,9 @@ namespace EducaGrado.Administrativo.Controles.Materias
         {
             try
             {
-                
+
                 matterImpl = new MatterImpl();
-                if(categoriaselected == -1)
+                if (categoriaselected == -1)
                 {
                     dgvDatos2.ItemsSource = null;
                     dgvDatos2.ItemsSource = matterImpl.Select().DefaultView;
@@ -142,7 +132,7 @@ namespace EducaGrado.Administrativo.Controles.Materias
                 else
                 {
                     dgvDatos2.ItemsSource = null;
-                    dgvDatos2.ItemsSource = matterImpl.SelectLikeByCategory(categoriaselected,like).DefaultView;
+                    dgvDatos2.ItemsSource = matterImpl.SelectLikeByCategory(categoriaselected, like).DefaultView;
                 }
 
             }
@@ -154,7 +144,7 @@ namespace EducaGrado.Administrativo.Controles.Materias
         }
 
 
-        
+
         #endregion
 
         private void DgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
@@ -183,9 +173,9 @@ namespace EducaGrado.Administrativo.Controles.Materias
             {
 
                 DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-                
+
                 string NombreCategoria = dataRowView[1].ToString();
-                
+
 
                 System.Windows.Forms.DialogResult result = MsgBox.Show("Estas Seguro de Eliminar " + NombreCategoria + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
                 if (result == System.Windows.Forms.DialogResult.Yes)
@@ -195,7 +185,7 @@ namespace EducaGrado.Administrativo.Controles.Materias
                     categoryMatter.CategoryId = IdCategory;
                     categoryMatterImpl = new CategoryMatterImpl();
                     categoryMatterImpl.Delete(categoryMatter);
-                    MsgBox.Show("Categoria Eliminada", "Completado",MsgBox.Buttons.OK);
+                    MsgBox.Show("Categoria Eliminada", "Completado", MsgBox.Buttons.OK);
                     LoadDataGrid();
                     categoriaselected = -1;
                     LoadDataGridMatter();
@@ -212,9 +202,9 @@ namespace EducaGrado.Administrativo.Controles.Materias
             List<CategoryMatter> categoryMatters = new List<CategoryMatter>();
             foreach (DataRowView row in dgvDatos.ItemsSource)
             {
-                
+
                 categoryMatters.Add(new CategoryMatter(int.Parse(row[0].ToString()), row[1].ToString()));
-                
+
             }
             categoryMatterImpl = new CategoryMatterImpl();
             categoryMatterImpl.updateCategory(categoryMatters);
@@ -226,7 +216,7 @@ namespace EducaGrado.Administrativo.Controles.Materias
         {
             try
             {
-                
+
                 List<Matter> matters = new List<Matter>();
                 foreach (DataRowView row in dgvDatos2.ItemsSource)
                 {
@@ -238,11 +228,11 @@ namespace EducaGrado.Administrativo.Controles.Materias
                 matterImpl.updateMatters(matters);
                 MsgBox.Show("Materias Actualizadas", "Completado", MsgBox.Buttons.OK);
                 LoadDataGridMatter();
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MsgBox.Show("Algo Salio Mal Comunicate con el soporte \n"+ex.Message, "Error", MsgBox.Buttons.OK);
+                MsgBox.Show("Algo Salio Mal Comunicate con el soporte \n" + ex.Message, "Error", MsgBox.Buttons.OK);
             }
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -290,7 +280,7 @@ namespace EducaGrado.Administrativo.Controles.Materias
                 {
                     int IdMatter = int.Parse(dataRowView[0].ToString());
                     matter = new Matter();
-                    matter.MatterId= IdMatter;
+                    matter.MatterId = IdMatter;
                     matterImpl = new MatterImpl();
                     matterImpl.Delete(matter);
                     MsgBox.Show("Materia Eliminada", "Completado", MsgBox.Buttons.OK);

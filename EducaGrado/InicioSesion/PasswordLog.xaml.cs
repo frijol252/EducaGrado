@@ -1,21 +1,11 @@
 ﻿using Implementation;
 using Model;
 using System;
-using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EducaGrado.InicioSesion
 {
@@ -56,12 +46,12 @@ namespace EducaGrado.InicioSesion
                 string passconf = txtconfirm.Password;
                 userAccount = new UserAccount();
                 userAccount.UserID = userId;
-                
+
                 if (!string.IsNullOrEmpty(pass) || !string.IsNullOrEmpty(passconf))
                 {
                     if (pass == passconf)
                     {
-                        
+
                         encriptadoAES(pass);
                         userAccount.Password = encriptado;
                         userAccount.Key = Key;
@@ -84,7 +74,7 @@ namespace EducaGrado.InicioSesion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo ocurrio comuniquese con el soporte" );
+                MessageBox.Show("Algo ocurrio comuniquese con el soporte");
             }
         }
 

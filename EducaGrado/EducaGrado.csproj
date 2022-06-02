@@ -71,6 +71,9 @@
     <Compile Include="Administrativo\Students\SubjectModif.xaml.cs">
       <DependentUpon>SubjectModif.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Administrativo\Teacher\TeacherModif.xaml.cs">
+      <DependentUpon>TeacherModif.xaml</DependentUpon>
+    </Compile>
     <Compile Include="xDialog\MsgBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +149,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administrativo\Teacher\TeacherModif.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administrativo\Teacher\TeacherScheduleAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,11 +181,9 @@
     <Compile Include="Administrativo\Controles\Invoice\DosageView.xaml.cs">
       <DependentUpon>DosageView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Administrativo\Controles\Invoice\InvoiceView.xaml.cs" />
     <Compile Include="Administrativo\Controles\Invoice\PaymentView.xaml.cs">
       <DependentUpon>PaymentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Administrativo\Controles\Invoice\RevisionInvoice.xaml.cs" />
     <Compile Include="Administrativo\Controles\Invoice\StudentLint.xaml.cs">
       <DependentUpon>StudentLint.xaml</DependentUpon>
     </Compile>

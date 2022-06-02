@@ -2,19 +2,10 @@
 using Implementation;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EducaGrado.Administrativo.Students
 {
@@ -68,7 +59,7 @@ namespace EducaGrado.Administrativo.Students
         int ids = 0;
         private void DgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            
+
         }
 
         #endregion
@@ -137,7 +128,7 @@ namespace EducaGrado.Administrativo.Students
                     int IdCategory = int.Parse(dataRowView[0].ToString());
                     cl = new Model.Class();
                     cl.ClassId = IdCategory;
-                    clImpl= new ClassImpl();
+                    clImpl = new ClassImpl();
                     clImpl.Delete(cl);
                     MsgBox.Show("Categoria Eliminada", "Completado", MsgBox.Buttons.OK);
                     loadGrid();
@@ -156,7 +147,7 @@ namespace EducaGrado.Administrativo.Students
                 DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
                 string NombreMateria = dataRowView[1].ToString();
                 int IdCategory = int.Parse(dataRowView[0].ToString());
-                SubjectModif subjectModif = new SubjectModif(course,IdCategory);
+                SubjectModif subjectModif = new SubjectModif(course, IdCategory);
                 subjectModif.Show();
                 this.Close();
             }

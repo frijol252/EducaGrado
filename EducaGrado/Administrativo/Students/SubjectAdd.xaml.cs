@@ -4,17 +4,9 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EducaGrado.Administrativo.Students
 {
@@ -79,7 +71,7 @@ namespace EducaGrado.Administrativo.Students
         }
         #endregion
 
-        
+
         int idSchedule = 0;
         int idSubject = 0;
         string materiaselected = "";
@@ -125,7 +117,7 @@ namespace EducaGrado.Administrativo.Students
                             count++;
                         }
                     }
-                    else if(cellValue== "Seleccionado")
+                    else if (cellValue == "Seleccionado")
                     {
                         foreach (DataRowView row in dgvDatos.ItemsSource)
                         {
@@ -137,9 +129,9 @@ namespace EducaGrado.Administrativo.Students
                         }
                     }
                     else { MsgBox.Show("No puede crear choques de horario", "Atencion", MsgBox.Buttons.OK, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn); }
-                    
 
-                    
+
+
 
 
 
@@ -176,18 +168,18 @@ namespace EducaGrado.Administrativo.Students
         private void Addsubject_Click(object sender, RoutedEventArgs e)
         {
             List<Class> lista = new List<Class>();
-            
-            System.Windows.Forms.DialogResult result = MsgBox.Show("Esta seguro de Agregar "+materiaselected+"?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+
+            System.Windows.Forms.DialogResult result = MsgBox.Show("Esta seguro de Agregar " + materiaselected + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 foreach (DataRowView row in dgvDatos.ItemsSource)
                 {
-                    for (int i=2; i<8; i++)
+                    for (int i = 2; i < 8; i++)
                     {
                         if (row[i].ToString() == "Seleccionado")
                         {
 
-                            lista.Add(new Class(course, int.Parse(row[0].ToString()),idSubject,ReturnDay(i)));
+                            lista.Add(new Class(course, int.Parse(row[0].ToString()), idSubject, ReturnDay(i)));
                         }
                     }
                 }
@@ -198,7 +190,7 @@ namespace EducaGrado.Administrativo.Students
                 courseSubject.Show();
                 this.Close();
             }
-            
+
 
         }
         public string ReturnDay(int i)
@@ -210,7 +202,7 @@ namespace EducaGrado.Administrativo.Students
             if (i == 6) return "Vi";
             else return "Sa";
         }
-       
+
     }
-    
+
 }

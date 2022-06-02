@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -33,7 +28,7 @@ namespace Model
         DateTime registrationDate;
         DateTime updateDate;
         string extra;
-        
+
 
 
 
@@ -88,9 +83,9 @@ namespace Model
             this.registrationDate = registrationDate;
             this.updateDate = updateDate;
         }
-        public Person( string names, string lastName, string secondLastName, string address, string ci, string ciextension, DateTime birthDate, byte[] photo, string email, double latitude, double longitude, string phone, string gender,int townId)
+        public Person(string names, string lastName, string secondLastName, string address, string ci, string ciextension, DateTime birthDate, byte[] photo, string email, double latitude, double longitude, string phone, string gender, int townId)
         {
-            
+
             this.names = names;
             this.lastName = lastName;
             this.secondLastName = secondLastName;
@@ -106,7 +101,7 @@ namespace Model
             this.gender = gender;
             this.townId = townId;
         }
-        public Person(string names, string lastName, string secondLastName, string address, string ci, string ciextension, DateTime birthDate, byte[] photo, string email, double latitude, double longitude, string phone, string gender, int townId,string extra)
+        public Person(string names, string lastName, string secondLastName, string address, string ci, string ciextension, DateTime birthDate, byte[] photo, string email, double latitude, double longitude, string phone, string gender, int townId, string extra)
         {
 
             this.names = names;
@@ -128,7 +123,7 @@ namespace Model
         public Person()
         {
 
-            
+
         }
         #endregion
     }

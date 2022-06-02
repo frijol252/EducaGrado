@@ -12,21 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace EducaGrado.Administrativo.Controles.Invoice
+namespace EducaGrado.Administrativo.Teacher
 {
     /// <summary>
-    /// Lógica de interacción para RevisionInvoice.xaml
+    /// Lógica de interacción para TeacherModif.xaml
     /// </summary>
-    public partial class RevisionInvoice : Window
+    public partial class TeacherModif : Window
     {
-        public RevisionInvoice()
+        public TeacherModif()
         {
-            //
-        }
-
-        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
+            InitializeComponent();
         }
     }
 }

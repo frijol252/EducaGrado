@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Model;
+﻿using EducaGrado.xDialog;
 using Implementation;
 using Microsoft.Maps.MapControl.WPF;
-using System.Data;
 using Microsoft.Win32;
-using EducaGrado.xDialog;
+using Model;
+using System;
+using System.Data;
 using System.IO;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace EducaGrado.Administrativo.Students
 {
@@ -83,18 +74,18 @@ namespace EducaGrado.Administrativo.Students
                 longitude = ubicationPoint.Longitude;
 
 
-                CargarCombos(person.TownId,person.SchoolId);
+                CargarCombos(person.TownId, person.SchoolId);
                 idTown = person.TownId;
             }
             catch (Exception ex)
             {
-                MsgBox.Show("Comuniquese con el soporte de Educa"+ex.Message, "Error", MsgBox.Buttons.OK, MsgBox.Icon.Error);
+                MsgBox.Show("Comuniquese con el soporte de Educa" + ex.Message, "Error", MsgBox.Buttons.OK, MsgBox.Icon.Error);
             }
 
 
 
-            
-            
+
+
         }
         public BitmapImage ToImage(byte[] array)
         {
@@ -195,9 +186,9 @@ namespace EducaGrado.Administrativo.Students
         ProvinceImpl provinceImpl;
         TownImpl townImpl;
         int idTown;
-       
 
-        public void CargarCombos(int idTown,int idProvince)
+
+        public void CargarCombos(int idTown, int idProvince)
         {
             try
             {
@@ -218,7 +209,7 @@ namespace EducaGrado.Administrativo.Students
             }
             catch
             {
-                MsgBox.Show("Comunicate con el equipo de Educa ","Error",MsgBox.Buttons.OK, MsgBox.Icon.Error);
+                MsgBox.Show("Comunicate con el equipo de Educa ", "Error", MsgBox.Buttons.OK, MsgBox.Icon.Error);
             }
         }
 
@@ -287,12 +278,12 @@ namespace EducaGrado.Administrativo.Students
                 {
                     if (validarCombos())
                     {
-                        System.Windows.Forms.DialogResult result = MsgBox.Show("Esta seguro de Modificar a " + person.Names + " " + person.LastName+ "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                        System.Windows.Forms.DialogResult result = MsgBox.Show("Esta seguro de Modificar a " + person.Names + " " + person.LastName + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
                         if (result == System.Windows.Forms.DialogResult.Yes)
                         {
                             person = new Person(txtname.Text, txtlastname.Text, txtsecondlastname.Text, txtAddress.Text
                                 , txtCi.Text, txtCieX.Text, DateTime.Parse(txtBirth.Text), ToByte(image), txtemail.Text, latitude,
-                                longitude, txtPhone.Text, txtGender.Text, idTown,txtrude.Text);
+                                longitude, txtPhone.Text, txtGender.Text, idTown, txtrude.Text);
                             person.PersonId = idPerson;
                             studentImpl = new StudentImpl();
                             studentImpl.UpdateTransact(person);
