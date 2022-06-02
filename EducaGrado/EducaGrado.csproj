@@ -93,15 +93,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Administrativo\Controles\Invoice\InvoiceView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Administrativo\Controles\Invoice\PaymentView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Administrativo\Controles\Invoice\RevisionInvoice.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -189,11 +181,9 @@
     <Compile Include="Administrativo\Controles\Invoice\DosageView.xaml.cs">
       <DependentUpon>DosageView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Administrativo\Controles\Invoice\InvoiceView.xaml.cs" />
     <Compile Include="Administrativo\Controles\Invoice\PaymentView.xaml.cs">
       <DependentUpon>PaymentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Administrativo\Controles\Invoice\RevisionInvoice.xaml.cs" />
     <Compile Include="Administrativo\Controles\Invoice\StudentLint.xaml.cs">
       <DependentUpon>StudentLint.xaml</DependentUpon>
     </Compile>

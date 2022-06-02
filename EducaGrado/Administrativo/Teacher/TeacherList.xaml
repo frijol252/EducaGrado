@@ -28,7 +28,12 @@
                         <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 4"/>
                         <TextBox x:Name="txtsearch" TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="1236" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" ></TextBox>
                     </StackPanel>
-                    <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="1260"/>
+                    <StackPanel Orientation="Horizontal">
+                        <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="900"/>
+                        <StackPanel Orientation="Vertical" Margin="30 0 0 0">
+                            <Image x:Name="imagesector"></Image>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel Height="80" VerticalAlignment="Bottom"  Orientation="Horizontal">
                     
