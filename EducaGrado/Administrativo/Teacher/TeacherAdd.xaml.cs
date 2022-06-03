@@ -1,8 +1,11 @@
-﻿using Implementation;
+﻿using EducaGrado.xDialog;
+using Implementation;
 using Microsoft.Maps.MapControl.WPF;
 using Microsoft.Win32;
 using Model;
 using System;
+using System.Data;
+using System.IO;
 using System.Net.Mail;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,12 +21,12 @@ namespace EducaGrado.Administrativo.Teacher
     {
         #region parameters
         string usuario;
-        Model.Teacher teacher;
+        Person person;
         TeacherImpl teacherimpl;
         UserAccount usuarioclass;
-        UserImpl impluser;
         BitmapImage image;
-        byte idTown = 1;
+        int idTown = -1;
+        double latitude = 0, longitude = 0;
         #endregion;
         public TeacherAdd()
         {
@@ -60,135 +63,73 @@ namespace EducaGrado.Administrativo.Teacher
 
         private void InsertNow_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    UsuarioAniadir();
-            //    //names, lastName, secondLastName, address, phone, birthDate,gender,startDate,email
-            //    if (txtname.Text != "" && txtlastname.Text != "" && txtAddress.Text != "" && txtPhone.Text != "" && txtBirth.Text != "" && txtGender.Text != "" && txtstartDate.Text != "" && txtemail.Text != "")
-            //    {
-            //        string contraniafin = contrasenia();
-            //        string second;
-            //        if (txtsecondlastname.Text == null)
-            //        {
-            //            second = "";
-            //        }
-            //        else
-            //        {
-            //            second = txtsecondlastname.Text;
-            //        }
-            //        UsuarioAniadir();
-            //        teacher = new Model.Teacher(txtname.Text, txtlastname.Text, second, txtAddress.Text, txtPhone.Text, txtBirth.SelectedDate.Value, txtGender.Text, txtstartDate.SelectedDate.Value, txtemail.Text, ubicationPoint.Latitude, ubicationPoint.Longitude, idTown, pathImagePortada);
-            //        usuarioclass = new User(usuario, contraniafin, "P", 0);
-
-            //        teacherimpl.InsertTransaction(usuarioclass, teacher);
-
-
-            //        image = new BitmapImage();
-            //        image.BeginInit();
-            //        image.CacheOption = BitmapCacheOption.OnLoad;
-            //        image.UriSource = new Uri(DBImplementation.pathImages + 0 + ".png");
-            //        image.EndInit();
-            //        imagesector.Source = image;
-
-
-
-            //        pathImagePortada = null;
-            //        SendEmail(txtemail.Text, usuario.ToUpper(), contraniafin);
-            //        LoadDataGrid();
-            //        ocultar();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Don't leave data empty");
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    MessageBox.Show(ex.Message);
-            //}
-        }
-        private void SendEmail(string email, string username, string password)
-        {
-            #region mail
-
             try
             {
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-
-                mail.From = new MailAddress(DBImplementation.usermail);
-                mail.To.Add(email);
-                mail.Subject = "Welcome to Educa";
-                mail.Body = "You were registered with the username: " + username + ", and with the password: " + password
-                    + "\nOn your first login you will be asked for some parameters";
-
-                SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential(DBImplementation.usermail, DBImplementation.passwordmail);
-                SmtpServer.EnableSsl = true;
-
-                SmtpServer.Send(mail);
+                if (validar())
+                {
+                    if (validarMapa())
+                    {
+                        if (validarCombos())
+                        {
+                            System.Windows.Forms.DialogResult result = MsgBox.Show("Esta seguro de Agregar a " + txtname.Text + " " + txtlastname.Text + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                            if (result == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                person = new Person(txtname.Text, txtlastname.Text, txtsecondlastname.Text, txtAddress.Text
+                                    , txtCi.Text, txtCieX.Text, DateTime.Parse(txtBirth.Text), ToByte(image), txtemail.Text, latitude,
+                                    longitude, txtPhone.Text, txtGender.Text, idTown);
+                                teacherimpl = new TeacherImpl();
+                                teacherimpl.InsertTransact(person);
+                                MsgBox.Show("Profesor Insertado", "Atencion", MsgBox.Buttons.OK, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            MsgBox.Show("Seleccione un pueblo", "Atencion", MsgBox.Buttons.OK);
+                        }
+                    }
+                    else
+                    {
+                        MsgBox.Show("Seleccione un punto en el mapa con doble click", "Atencion", MsgBox.Buttons.OK);
+                    }
+                }
+                else
+                {
+                    MsgBox.Show("Llene todos los campos obligatorios", "Atencion", MsgBox.Buttons.OK);
+                }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MsgBox.Show("Comuniquese con educa " +ex.Message, "Error", MsgBox.Buttons.OK, MsgBox.Icon.Error);
             }
-
-            #endregion
         }
 
-        int idmodi = -1;
-        string pathup = "";
-        private void DgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        public bool validar()
         {
-            //if (dgvDatos.Items.Count > 0 && dgvDatos.SelectedItem != null)
-            //{
-            //    try
-            //    {
-            //        modif();
-            //        DataRowView dataRow = (DataRowView)dgvDatos.SelectedItem;
-            //        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
-            //        teacherimpl = new TeacherImpl();
-            //        teacher = teacherimpl.Get(id);
-            //        txtid.Text = teacher.PersonId.ToString();
-            //        txtnameMod.Text = teacher.Names;
-            //        txtnameDel.Text = teacher.Names;
-            //        txtlastnameMod.Text = teacher.LastName;
-            //        txtlastnameDel.Text = teacher.LastName;
-            //        txtsecondlastnameMod.Text = teacher.SecondLastName;
-            //        txtemailMod.Text = teacher.Email;
-            //        txtPhoneMod.Text = teacher.Phone;
-            //        txtAddressMod.Text = teacher.Address;
-
-            //        image = new BitmapImage();
-            //        image.BeginInit();
-            //        image.CacheOption = BitmapCacheOption.OnLoad;
-            //        image.UriSource = new Uri(DBImplementation.pathImages + teacher.Photo + ".png");
-            //        image.EndInit();
-            //        imagesector.Source = image;
-
-
-            //        pathImagePortada = DBImplementation.pathImages + teacher.Photo + ".png";
-            //        pathup = pathImagePortada;
-            //        Location ubi = new Location(teacher.Latitude, teacher.Longitude);
-            //        MyMap.Center = ubi;
-            //        ubicationPoint = ubi;
-            //        Pushpin point = new Pushpin();
-            //        point.Location = ubi;
-            //        MyMap.Children.Clear();
-            //        MyMap.Children.Add(point);
-            //        idmodi = teacher.TownId;
-            //        llamarmuni(teacher.TownId);
-            //        Modif.IsEnabled = true;
-            //        Delete.IsEnabled = true;
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
+            if (!string.IsNullOrEmpty(txtname.Text))
+                if (!string.IsNullOrEmpty(txtlastname.Text))
+                    if (!string.IsNullOrEmpty(txtemail.Text))
+                        if (!string.IsNullOrEmpty(txtPhone.Text))
+                            if (!string.IsNullOrEmpty(txtCi.Text))
+                                if (!string.IsNullOrEmpty(txtBirth.Text))
+                                    if (!string.IsNullOrEmpty(txtAddress.Text))
+                                            return true;
+            return false;
         }
+        public bool validarCombos()
+        {
+            if (idTown != -1)
+                return true;
+            return false;
+        }
+        public bool validarMapa()
+        {
+            if (latitude != 0)
+                if (longitude != 0)
+                    return true;
+            return false;
+        }
+
 
 
         private void Window_Initialized(object sender, EventArgs e)
@@ -198,7 +139,7 @@ namespace EducaGrado.Administrativo.Teacher
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            loadImage();
             comboCity();
         }
 
@@ -247,12 +188,13 @@ namespace EducaGrado.Administrativo.Teacher
             //    MessageBox.Show("Something happened \nCommunicate with the Suport department \neducateam.suport@gmail.com");
             //}
         }
+        #endregion
 
-
+        #region image
         private void btnAddImage_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Archivos de Imagen|*.PNG";
+            ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;";
             if (ofd.ShowDialog() == true)
             {
                 image = new BitmapImage();
@@ -263,6 +205,43 @@ namespace EducaGrado.Administrativo.Teacher
                 imagesector.Source = image;
             }
 
+        }
+
+        public void loadImage()
+        {
+            image = ToImage(File.ReadAllBytes(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\images\Test.txt")));
+            imagesector.Source = image;
+        }
+        public byte[] ToByte(BitmapImage bitmapImage)
+        {
+            byte[] data;
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
+            using (MemoryStream ms = new MemoryStream())
+            {
+                encoder.Save(ms);
+                data = ms.ToArray();
+                return data;
+            }
+        }
+        public BitmapImage ToImage(byte[] array)
+        {
+            using (MemoryStream ms = new MemoryStream(array))
+            {
+                BitmapImage img = new BitmapImage();
+                img.BeginInit();
+                img.CacheOption = BitmapCacheOption.OnLoad;//CacheOption must be set after BeginInit()
+                img.StreamSource = ms;
+                img.EndInit();
+
+                if (img.CanFreeze)
+                {
+                    img.Freeze();
+                }
+
+
+                return img;
+            }
         }
 
         #endregion;
@@ -281,6 +260,9 @@ namespace EducaGrado.Administrativo.Teacher
                 MyMap.Children.Clear();
                 MyMap.Children.Add(point);
                 MessageBox.Show("Marked location");
+
+                latitude = ubicationPoint.Latitude;
+                longitude = ubicationPoint.Longitude;
             }
             catch
             {
@@ -313,249 +295,61 @@ namespace EducaGrado.Administrativo.Teacher
         #endregion
 
         #region Combos
+
         CityImpl cityImpl;
-        string sValue = "";
-        ProvinceImpl provinceImpl;
-        string sValuep = "";
-        TownImpl townImpl;
-        Town town;
-        string sValueT = "";
         public void comboCity()
         {
-            //try
-            //{
-            //    cityImpl = new CityImpl();
-            //    DataTable ciudad = cityImpl.Select();
-            //    comboCiudad.ItemsSource = ciudad.DefaultView;
-            //    comboCiudad.DisplayMemberPath = "CityName";
-            //    comboCiudad.SelectedValuePath = "CityId".ToString();
-            //    comboCiudad.SelectedIndex = 0;
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Something happened \nCommunicate with the Suport department \neducateam.suport@gmail.com");
-            //}
+            try
+            {
+                cityImpl = new CityImpl();
+                DataTable ciudad = cityImpl.Select();
+                comboCiudad.ItemsSource = ciudad.DefaultView;
+                comboCiudad.SelectedIndex = 0;
+                comboProvince();
+            }
+            catch
+            {
+                MessageBox.Show("Something happened \nCommunicate with the Suport department \neducateam.suport@gmail.com");
+            }
 
         }
-
 
         private void ComboCiudad_DropDownClosed(object sender, EventArgs e)
         {
-            //DataRowView oDataRowView = comboCiudad.SelectedItem as DataRowView;
 
-
-            //if (oDataRowView != null)
-            //{
-            //    sValue = oDataRowView.Row["CityName"] as string;
-            //}
-            //comboProvince();
+            comboProvince();
 
         }
-
+        ProvinceImpl provinceImpl;
         public void comboProvince()
         {
-            //provinceImpl = new ProvinceImpl();
-            //DataTable province = provinceImpl.Select(sValue);
-            //comboProvincia.ItemsSource = province.DefaultView;
-            //comboProvincia.DisplayMemberPath = "provinceName";
-            //comboProvincia.SelectedValuePath = "ProvinceId".ToString();
-            //comboProvincia.SelectedIndex = 0;
+            provinceImpl = new ProvinceImpl();
+            DataTable province = provinceImpl.Select(int.Parse(comboCiudad.SelectedValue.ToString()));
+            comboProvincia.ItemsSource = province.DefaultView;
+            comboProvincia.SelectedIndex = 0;
+            comboTown();
         }
 
         private void ComboProvincia_DropDownClosed(object sender, EventArgs e)
         {
-            //DataRowView oDataRowView = comboProvincia.SelectedItem as DataRowView;
 
-
-            //if (oDataRowView != null)
-            //{
-            //    sValuep = oDataRowView.Row["provinceName"] as string;
-            //}
-            //comboTown();
+            comboTown();
         }
-
+        TownImpl townImpl;
+        Town town;
         public void comboTown()
         {
-            //townImpl = new TownImpl();
-            //DataTable town = townImpl.Select(sValue, sValuep);
-            //comboMuni.ItemsSource = town.DefaultView;
-            //comboMuni.DisplayMemberPath = "name";
-            //comboMuni.SelectedValuePath = "id".ToString();
-            //comboMuni.SelectedIndex = 0;
+            townImpl = new TownImpl();
+            DataTable town = townImpl.Select(int.Parse(comboProvincia.SelectedValue.ToString()));
+            comboMuni.ItemsSource = town.DefaultView;
+            comboMuni.SelectedIndex = 0;
         }
 
         private void ComboMuni_DropDownClosed(object sender, EventArgs e)
         {
-            //DataRowView oDataRowView = comboMuni.SelectedItem as DataRowView;
-
-
-            //if (oDataRowView != null)
-            //{
-            //    sValueT = oDataRowView.Row["name"] as string;
-            //}
-            //getIdTown();
+            idTown = int.Parse(comboMuni.SelectedValue.ToString());
+            MsgBox.Show("Seleccionado " + comboMuni.Text, "Atencion", MsgBox.Buttons.OK);
         }
-        public void getIdTown()
-        {
-            //try
-            //{
-
-            //    townImpl = new TownImpl();
-            //    town = townImpl.GetID(sValue, sValuep, sValueT);
-
-            //    idTown = byte.Parse(town.Id.ToString());
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-        }
-
-
-
-
-
-
-
-
-        public void llamarprovince(int id)
-        {
-            //provinceImpl = new ProvinceImpl();
-            //DataTable province = provinceImpl.SelectList(id);
-            //comboProvinciaMod.ItemsSource = province.DefaultView;
-            //comboProvinciaMod.DisplayMemberPath = "name";
-            //int count = 0;
-            //foreach (DataRow a in province.Rows)
-            //{
-
-            //    int ids = int.Parse(a["id"].ToString());
-            //    if (idprovince == ids)
-            //    {
-            //        comboProvinciaMod.SelectedIndex = count;
-            //        idcity = int.Parse(a["city"].ToString());
-            //        sValuep = a["name"].ToString();
-            //    }
-            //    count++;
-
-            //}
-            //llamarciudad(idcity);
-        }
-
-        private void ComboProvinciaMod_DropDownClosed(object sender, EventArgs e)
-        {
-            provinceMod();
-        }
-        public void provinceMod()
-        {
-            //if (comboProvinciaMod.SelectedItem != null)
-            //{
-            //    sValuep = comboProvinciaMod.Text as string;
-            //}
-            //comboTownMod();
-            //muniMod();
-        }
-
-        public void comboTownMod()
-        {
-            //townImpl = new TownImpl();
-            //DataTable town = townImpl.Select(sValue, sValuep);
-            //comboMuniMod.ItemsSource = town.DefaultView;
-            //comboMuniMod.DisplayMemberPath = "name";
-            //comboMuniMod.SelectedValuePath = "id".ToString();
-            //comboMuniMod.SelectedIndex = 0;
-        }
-
-
-        int idcity = -1;
-        public void llamarciudad(int id)
-        {
-            //cityImpl = new CityImpl();
-            //DataTable city = cityImpl.SelectList();
-            //comboCiudadMod.ItemsSource = city.DefaultView;
-            //comboCiudadMod.DisplayMemberPath = "name";
-            //int count = 0;
-            //foreach (DataRow row in city.Rows)
-            //{
-
-            //    int ids = int.Parse(row["id"].ToString());
-            //    if (idcity == ids)
-            //    {
-            //        comboCiudadMod.SelectedIndex = count;
-            //        sValue = row["name"].ToString();
-            //    }
-            //    count++;
-
-            //}
-            //sValue = comboCiudadMod.Text;
-        }
-
-
-
-        private void ComboCiudadMod_DropDownClosed(object sender, EventArgs e)
-        {
-            ciudadMod();
-        }
-        public void ciudadMod()
-        {
-            //    if (comboCiudadMod.SelectedItem != null)
-            //    {
-            //        sValue = comboCiudadMod.Text as string;
-            //    }
-            //    comboProvinceMod();
-            //    provinceMod();
-            //
-        }
-
-        public void comboProvinceMod()
-        {
-            //provinceImpl = new ProvinceImpl();
-            //DataTable province = provinceImpl.Select(sValue);
-            //comboProvinciaMod.ItemsSource = province.DefaultView;
-            //comboProvinciaMod.DisplayMemberPath = "provinceName";
-            //comboProvinciaMod.SelectedValuePath = "ProvinceId".ToString();
-            //comboProvinciaMod.SelectedIndex = 0;
-        }
-
-
-        int idprovince = -1;
-        public void llamarmuni(int id)
-        {
-            //townImpl = new TownImpl();
-            //DataTable town = townImpl.SelectList(id);
-            //comboMuniMod.ItemsSource = town.DefaultView;
-            //comboMuniMod.DisplayMemberPath = "name";
-            //int count = 0;
-            //foreach (DataRow row in town.Rows)
-            //{
-
-            //    int ids = int.Parse(row["id"].ToString());
-            //    if (idmodi == ids)
-            //    {
-            //        comboMuniMod.SelectedIndex = count;
-            //        idTown = byte.Parse(idmodi.ToString());
-            //        sValueT = row["name"].ToString();
-            //    }
-            //    idprovince = int.Parse(row["province"].ToString());
-            //    count++;
-            //}
-            //llamarprovince(idprovince);
-
-        }
-        private void ComboMuniMod_DropDownClosed(object sender, EventArgs e)
-        {
-            muniMod();
-        }
-        public void muniMod()
-        {
-            //if (comboMuniMod.SelectedItem != null)
-            //{
-
-            //    sValueT = comboMuniMod.Text;
-            //}
-
-            //getIdTown();
-        }
-
 
         #endregion
     }

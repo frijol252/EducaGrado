@@ -11,5 +11,6 @@ namespace DAO
         DataTable SelectByCategory(int idcat);
         DataTable SelectForAddMatters(int idCourse);
         void updateMatters(List<Matter> matters);
+        DataTable SelectTeacher(int idTeacher);
     }
 }

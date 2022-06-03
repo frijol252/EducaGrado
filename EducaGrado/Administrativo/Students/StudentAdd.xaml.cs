@@ -18,7 +18,7 @@ namespace EducaGrado.Administrativo.Students
     public partial class StudentAdd : Window
     {
         int idcourse;
-        int idcity = -1, idprovince = -1, idtown = -1;
+        int idtown = -1;
         double latitude = 0, longitude = 0;
         public StudentAdd(int i)
         {
@@ -43,8 +43,6 @@ namespace EducaGrado.Administrativo.Students
         Student stu;
         StudentImpl studentImpl;
         Person person;
-        string pathImagePortada = null;
-        byte[] imagebyte;
 
         private void InsertNow_Click_1(object sender, RoutedEventArgs e)
         {
@@ -63,6 +61,7 @@ namespace EducaGrado.Administrativo.Students
                                 longitude, txtPhone.Text, txtGender.Text, idtown);
                             studentImpl = new StudentImpl();
                             studentImpl.InsertTransact(stu, person);
+                            
                         }
                     }
                     else

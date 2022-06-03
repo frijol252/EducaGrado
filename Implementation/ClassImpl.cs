@@ -25,6 +25,29 @@ namespace Implementation
                 System.Diagnostics.Debug.WriteLine(string.Format("{0} | Error:  Could not Dele Class({1}).", DateTime.Now, ex.Message));
             }
         }
+        public void DeleteTeacher(int idSchedule,int idTeacher,string dayClass)
+        {
+            string queryMatter = @"UPDATE Class SET TeacherId = NULL 
+                                WHERE ClassId = (SELECT c.ClassId  FROM Schedule s
+                                INNER JOIN ScheduleClass sc ON sc.ScheduleId= s.ScheduleId
+                                INNER JOIN Class c ON c.ClassId = sc.ClassId
+                                WHERE c.TeacherId=@TeacherId AND s.ScheduleId=@ScheduleId AND sc.dayClass = @dayClass)"; ;
+            try
+            {
+                List<SqlCommand> cmds = DBImplementation.CreateNBasicCommands(1);
+                cmds[0].CommandText = queryMatter;
+                cmds[0].Parameters.AddWithValue("@TeacherId ", idTeacher);
+                cmds[0].Parameters.AddWithValue("@ScheduleId ", idSchedule);
+                cmds[0].Parameters.AddWithValue("@dayClass ", dayClass);
+
+                DBImplementation.ExecuteNBasicCommand(cmds);
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(string.Format("{0} | Error:  Could not Dele Class({1}).", DateTime.Now, ex.Message));
+            }
+        }
 
         public int Insert(Class t)
         {
@@ -175,6 +198,25 @@ WHERE c.CourseId = @CourseId AND c.status = 1";
         public int Update(Class t)
         {
             throw new NotImplementedException();
+        }
+
+        public int UpdateTeacher(int idClass,int idTeacher)
+        {
+            string query = @"UPDATE Class SET TeacherId = @TeacherId 
+                            WHERE ClassId = @ClassId";
+            try
+            {
+                SqlCommand cmd = DBImplementation.CreateBasicComand(query);
+
+                cmd.Parameters.AddWithValue("@ClassId", idClass);
+                cmd.Parameters.AddWithValue("@TeacherId", idTeacher);
+                return DBImplementation.ExecuteBasicCommand(cmd);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public void Updatetransact(List<Class> t)

@@ -57,7 +57,7 @@ namespace Implementation
                             FROM Person p 
                             INNER JOIN Student s ON s.StudentId =p.PersonId 
                             INNER JOIN Town t ON t.TownId = p.TownId
-                            WHERE p.PersonId = 3";
+                            WHERE p.PersonId = @PersonId";
 
             try
             {
@@ -250,7 +250,7 @@ WHERE PersonId =@PersonId";
                 cmds[0].Parameters.Add(new System.Data.SqlClient.SqlParameter("@phone ", p.Phone));
                 cmds[0].Parameters.Add(new System.Data.SqlClient.SqlParameter("@gender ", p.Gender));
                 #endregion
-                System.Diagnostics.Debug.WriteLine(string.Format("{0} | Info: Start student Insert.", DateTime.Now));
+                
                 #region student insert 
                 cmds[1].CommandText = queryStudent;
                 cmds[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@StudentId ", p.PersonId));
@@ -374,33 +374,7 @@ WHERE PersonId =@PersonId";
             }
         }
 
-        #region usercreation
-
-        Random rdn = new Random();
-        public UserAccount users(string name, string last, int id)
-        {
-            UserAccount usuario;
-            string username;
-            string password;
-
-            username = "" + name.Substring(0, 1).ToLower() + last.Substring(0, 1).ToLower() + DateTime.Now.Year.ToString() + id;
-
-            string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            password = "";
-
-            for (int i = 0; i <= 4; i++)
-            {
-                password = password + caracteres.Substring(rdn.Next(1, 63), 1);
-            }
-            usuario = new UserAccount();
-            usuario.UserName = username;
-            usuario.Passstring = password;
-            usuario.RoleUserId = 1;
-
-            return usuario;
-        }
-        #endregion
-
+        
         private void SendEmail(string email, string username, string password)
         {
 
@@ -429,6 +403,34 @@ WHERE PersonId =@PersonId";
 
 
         }
+
+        #region usercreation
+
+        Random rdn = new Random();
+        public UserAccount users(string name, string last, int id)
+        {
+            UserAccount usuario;
+            string username;
+            string password;
+
+            username = "" + name.Substring(0, 1).ToLower() + last.Substring(0, 1).ToLower() + DateTime.Now.Year.ToString() + id;
+
+            string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            password = "";
+
+            for (int i = 0; i <= 4; i++)
+            {
+                password = password + caracteres.Substring(rdn.Next(1, 63), 1);
+            }
+            usuario = new UserAccount();
+            usuario.UserName = username;
+            usuario.Passstring = password;
+            usuario.RoleUserId = 1;
+
+            return usuario;
+        }
+        #endregion
+
 
         #region encriptar
         static byte[] Key = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,

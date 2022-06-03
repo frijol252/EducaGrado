@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -38,9 +39,9 @@ namespace EducaGrado.Administrativo.Home
 
                     break;
                 case 2:
-                    Administrativo.Teacher.TeacherList teacherList = new Teacher.TeacherList();
-                    teacherList.Show();
-                    
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new EducaGrado.Administrativo.Teacher.TeacherList());
+
                     break;
                 case 3:
                     GridPrincipal.Children.Clear();
@@ -84,6 +85,7 @@ namespace EducaGrado.Administrativo.Home
         //Falta Terminar este boton
         private void BtnLogOut_Click(object sender, RoutedEventArgs e)
         {
+            Session.setnulls();
             EducaGrado.InicioSesion.Index m = new EducaGrado.InicioSesion.Index();
             m.Show();
             this.Close();

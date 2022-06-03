@@ -16,5 +16,15 @@
         public static int SessionSchoolId { get => sessionSchoolId; set => sessionSchoolId = value; }
         public static string SessionSchoolName { get => sessionSchoolName; set => sessionSchoolName = value; }
 
+        public static void setnulls()
+        {
+            sessionID=-1;
+            sessionRole=-1;
+            sessionCurrent=null;
+            sessionPersonId=-1;
+            sessionSchoolId=-1;
+            sessionSchoolName = null;
+        }
+
     }
 }

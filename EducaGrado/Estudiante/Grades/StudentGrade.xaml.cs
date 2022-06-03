@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace EducaGrado.Estudiante.Grades
 {
     /// <summary>
-    /// Lógica de interacción para StudentsGradeView.xaml
+    /// Lógica de interacción para StudentGrade.xaml
     /// </summary>
-    public partial class StudentsGradeView : UserControl
+    public partial class StudentGrade : UserControl
     {
-        public StudentsGradeView()
+        public StudentGrade()
         {
             InitializeComponent();
         }

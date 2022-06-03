@@ -85,7 +85,7 @@ namespace EducaGrado.InicioSesion
                                                 MS.Show();
                                                 this.Close();
                                             }
-                                            else MessageBox.Show("La unidad educativa cuenta con problemas de inicio");
+                                            else MessageBox.Show("La unidad educativa cuenta con problemas de configuracion");
                                             break;
                                         case 3:
                                             SetSession(dt);
@@ -97,8 +97,15 @@ namespace EducaGrado.InicioSesion
                                                     this.Close();
                                                     break;
                                                 case 2:
+                                                    Profesor.Home.TeacherHome teacherHome = new Profesor.Home.TeacherHome();
+                                                    teacherHome.Show();
+                                                    this.Close();
+                                                    
                                                     break;
                                                 case 3:
+                                                    Estudiante.Home.IndexStudent indexStudent = new Estudiante.Home.IndexStudent();
+                                                    indexStudent.Show();
+                                                    this.Close();
                                                     break;
                                             }
                                             break;

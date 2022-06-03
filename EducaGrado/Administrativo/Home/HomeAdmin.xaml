@@ -44,12 +44,12 @@
         <Storyboard x:Key="SubMenuOpenTeacher">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="ListTeacherItem">
                 <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0:1" Value="180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0:1" Value="60"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="SubMenuCollapseTeacher">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="ListTeacherItem">
-                <EasingDoubleKeyFrame KeyTime="0" Value="180"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0:1" Value="60"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
@@ -79,18 +79,10 @@
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
         <!-- subMenu Teacher -->
+
         <EventTrigger RoutedEvent="GotFocus" SourceName="ListTeacherItem">
-            <BeginStoryboard Storyboard="{StaticResource SubMenuOpenTeacher}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="LostFocus" SourceName="ListTeacherItem">
-            <BeginStoryboard Storyboard="{StaticResource SubMenuCollapseTeacher}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ListTeacher">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="CrudTeacher">
-            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
-        </EventTrigger >
         <EventTrigger RoutedEvent="GotFocus" SourceName="listStudent">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
@@ -172,7 +164,7 @@
                             <Grid x:Name="GridCursorSalario" Margin="0 0 0 0" Background="#FFE63070" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
 
                             <materialDesign:PackIcon Kind="CashPlus" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Administracion" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                            <TextBlock Text="Pagos" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
                         </StackPanel>
                         <StackPanel  Height="10" Width="auto" Background="#FFE63070">
                         </StackPanel>

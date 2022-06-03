@@ -37,7 +37,7 @@ namespace EducaGrado.Administrativo.Students
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Ocultar();
+            
         }
         public void loadGrid()
         {
@@ -59,9 +59,46 @@ namespace EducaGrado.Administrativo.Students
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-        public void Ocultar()
+        private void Txtsearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //dgvDatos.Columns[0].Visibility = Visibility.Hidden;
+            try
+            {
+                if (dis == 0)
+                {
+                    if (txtsearch.Text == "")
+                    {
+                        studentImpl = new StudentImpl();
+                        dgvDatos.ItemsSource = null;
+                        dgvDatos.ItemsSource = studentImpl.Select(idCourse).DefaultView;
+                    }
+                    else
+                    {
+                        studentImpl = new StudentImpl();
+                        dgvDatos.ItemsSource = null;
+                        dgvDatos.ItemsSource = studentImpl.SelectLike(idCourse, txtsearch.Text).DefaultView;
+                    }
+                }
+                else
+                {
+                    if (txtsearch.Text == "")
+                    {
+                        studentImpl = new StudentImpl();
+                        dgvDatos.ItemsSource = null;
+                        dgvDatos.ItemsSource = studentImpl.SelectDis(idCourse).DefaultView;
+                    }
+                    else
+                    {
+                        studentImpl = new StudentImpl();
+                        dgvDatos.ItemsSource = null;
+                        dgvDatos.ItemsSource = studentImpl.SelectDisLike(idCourse, txtsearch.Text).DefaultView;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -111,47 +148,7 @@ namespace EducaGrado.Administrativo.Students
                 return img;
             }
         }
-        private void Txtsearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                if (dis == 0)
-                {
-                    if (txtsearch.Text == "")
-                    {
-                        studentImpl = new StudentImpl();
-                        dgvDatos.ItemsSource = null;
-                        dgvDatos.ItemsSource = studentImpl.Select(idCourse).DefaultView;
-                    }
-                    else
-                    {
-                        studentImpl = new StudentImpl();
-                        dgvDatos.ItemsSource = null;
-                        dgvDatos.ItemsSource = studentImpl.SelectLike(idCourse, txtsearch.Text).DefaultView;
-                    }
-                }
-                else
-                {
-                    if (txtsearch.Text == "")
-                    {
-                        studentImpl = new StudentImpl();
-                        dgvDatos.ItemsSource = null;
-                        dgvDatos.ItemsSource = studentImpl.SelectDis(idCourse).DefaultView;
-                    }
-                    else
-                    {
-                        studentImpl = new StudentImpl();
-                        dgvDatos.ItemsSource = null;
-                        dgvDatos.ItemsSource = studentImpl.SelectDisLike(idCourse, txtsearch.Text).DefaultView;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
+        
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
