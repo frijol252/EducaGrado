@@ -3,61 +3,71 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EducaGrado.Administrativo.Teacher"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="TeacherScheduleAdd" mc:Ignorable="d" WindowStyle="None" AllowsTransparency="True" Initialized="Window_Initialized" Loaded="Window_Loaded"
-             d:DesignHeight="650" d:DesignWidth="1000">
+        xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:EducaGrado.Administrativo.Teacher" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         mc:Ignorable="d" Title="TeacherScheduleAdd" WindowStyle="None" AllowsTransparency="True" Initialized="Window_Initialized" Loaded="Window_Loaded"
+         Height="550" Width="960">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="919*"/>
-            <ColumnDefinition Width="81*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="59*"/>
-            <RowDefinition Height="6*"/>
-        </Grid.RowDefinitions>
-        <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown" Background="#06ad75" Margin="0,0,3,0" Grid.ColumnSpan="2">
+        <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75" Margin="0,0,1,0">
             <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="BtnClose_Click">
                 <materialDesign:PackIcon Kind="Close" Foreground="White"/>
             </Button>
         </Grid>
-        <Grid Margin="-25,28,-32,2" Height="620" Background="#ededed" Grid.RowSpan="2" Grid.ColumnSpan="2">
-            <StackPanel Height="418"  VerticalAlignment="Top" Margin="0,-2,0,0">
-                <StackPanel Orientation="Horizontal" Margin="60,0,0,0">
-                    <Button Width="198" Background="PaleVioletRed" Foreground="White" FontWeight="Bold" Content="Ir a Materias del Profesor" Click="Button_Click"></Button>
-                    <Label Margin="150,0,0,0" FontSize="30" Content="Añadir materia a profesor" FontWeight="Bold"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="25,10,24,0" HorizontalAlignment="Left" Width="570">
-                    <materialDesign:PackIcon Kind="Search"  FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 4"/>
-                    <TextBox x:Name="txtsearch"  TextChanged="Txtsearch_TextChanged" Foreground="Black" Width="932" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-
-                    <DataGrid x:Name="dgvDatos" IsReadOnly="True" SelectedCellsChanged="DgvDatos_SelectedCellsChanged" Background="#ededed" CanUserAddRows="False"  HorizontalAlignment="Left" Height="357" Margin="20,10,0,0" VerticalAlignment="Top" Width="572"/>
-
-                    <StackPanel VerticalAlignment="Center" Width="299">
-                        <Button Click="BtnAdd_Click_1" x:Name="btnAdd" FontSize="20" Content="Añadir materia" Foreground="White" Background="#06ad75"  IsEnabled="False" Margin="100,0,28,0" />
-
+        <Grid Margin="0,31,0,0" Background="#ededed">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="300">
+                    <StackPanel Orientation="Vertical" Height="500" Margin="10,10,0,0">
+                        <Label x:Name="lblmatery" Height="50" Margin="50,0,0,20"></Label>
+                        <DataGrid x:Name="dgvSub" IsReadOnly="True" Background="#ededed" AutoGenerateColumns="False" SelectedCellsChanged="dgvSub_SelectedCellsChanged" CanUserAddRows="False" HorizontalAlignment="Left" Height="400" Margin="0,0,0,0" VerticalAlignment="Top" Width="293">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Curso" Binding="{Binding Path='Course'}" Width="*" Visibility="Visible" IsReadOnly="False" />
+                                <DataGridTextColumn Header="Materia" Binding="{Binding Path='Name'}" Width="*" Visibility="Visible" IsReadOnly="False" />
+                            </DataGrid.Columns>
+                        </DataGrid>
 
                     </StackPanel>
 
                 </StackPanel>
+                <StackPanel>
+                    <!-- INSERT -->
+                    <StackPanel x:Name="Insestack" Background="#ededed" Margin="30 0 30 0" Height="514" Orientation="Vertical" VerticalAlignment="Top">
 
-            </StackPanel>
-            <StackPanel Margin="0,421,0,0" Height="200">
-                <StackPanel Height="40" Margin="60,70,20,0" Orientation="Horizontal">
-                    <Label Foreground="#2a3f54" FontSize="15" >Nombre de la materia:</Label>
-                    <Label x:Name="lblnames" FontSize="15" Content="..." Width="50"></Label>
-                    <Label Foreground="#2a3f54" Margin="60,0,0,0" FontSize="15" >Curso de la materia:</Label>
-                    <Label x:Name="lblcat" FontSize="15" Content="..." Width="250"></Label>
-                    <TextBox Visibility="Hidden" x:Name="lblid"></TextBox>
+                        <StackPanel Orientation="Horizontal" Height="371"  Margin="10 10 0 10" Width="600">
+
+                            <DataGrid IsEnabled="True" IsReadOnly="True" x:Name="dgvDatos" AutoGenerateColumns="False" 
+                                      Background="#ededed" CanUserAddRows="False" HorizontalAlignment="Left" Height="362" Margin="0,-2,0,0"
+                                      VerticalAlignment="Top" Width="600">
+                                <DataGrid.Columns>
+
+                                    <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Horario" Binding="{Binding Path='HR'}" Width="*" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Lunes" Binding="{Binding Path='Lunes'}" Width="*"  />
+                                    <DataGridTextColumn Header="Martes" Binding="{Binding Path='Martes'}" Width="*"/>
+                                    <DataGridTextColumn Header="Miercoles" Binding="{Binding Path='Miercoles'}" Width="*" />
+                                    <DataGridTextColumn Header="Jueves" Binding="{Binding Path='Jueves'}" Width="*" />
+                                    <DataGridTextColumn Header="Viernes" Binding="{Binding Path='Viernes'}" Width="*" />
+                                    <DataGridTextColumn Header="Sabado" Binding="{Binding Path='Sabado'}" Width="*" />
+
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="50 0 60 0">
+                            <Button IsEnabled="False" Margin="170 20 0 0" Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="Transparent" Height="80" Width="80"  Background="#04af76" ToolTip="Close"  x:Name="btnAddSubject" Click="Addsubject_Click">
+                                <materialDesing:PackIcon Kind="Check" Foreground="White" Padding="0" Height="60" Width="60"/>
+                            </Button>
+                            <Button IsEnabled="False" Margin="40 20 0 0" Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="Transparent" Height="80" Width="80"  Background="#ee4343" ToolTip="Close"  x:Name="btnNope" Click="btnNope_Click">
+                                <materialDesing:PackIcon Kind="Close" Foreground="White" Padding="0" Height="60" Width="60"/>
+                            </Button>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="50 10 60 0">
+
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Margin="300,10,0,0" Orientation="Horizontal">
-
-                </StackPanel>
-
             </StackPanel>
-
         </Grid>
     </Grid>
 </Window>

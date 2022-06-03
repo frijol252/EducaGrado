@@ -89,12 +89,12 @@ FROM Matter m
 INNER JOIN CategoryMatter cm ON cm.CategoryMatterId = m.CategoryMatterId 
 WHERE cm.ModalityId = (SELECT mo.ModalityId  FROM Modality mo 
 INNER JOIN School s ON s.ModalityId=mo.ModalityId
-WHERE s.SchoolId=1) and m.matterid NOT IN (SELECT c.idMatter  FROM Class c WHERE c.CourseId=@CourseId AND c.status=1) ";
+WHERE s.SchoolId=@SchoolId) and m.matterid NOT IN (SELECT c.idMatter  FROM Class c WHERE c.CourseId=@CourseId AND c.status=1) ";
             try
             {
                 SqlCommand cmd = DBImplementation.CreateBasicComand(query);
                 cmd.Parameters.AddWithValue("@SchoolId", Session.SessionSchoolId);
-                cmd.Parameters.AddWithValue("@CourseId", Session.SessionSchoolId);
+                cmd.Parameters.AddWithValue("@CourseId", idCourse);
                 return DBImplementation.ExecuteDataTableCommand(cmd);
             }
             catch (Exception ex) { throw ex; }
@@ -135,6 +135,28 @@ LIKE @like";
                 cmd.Parameters.AddWithValue("@SchoolId", Session.SessionSchoolId);
                 cmd.Parameters.AddWithValue("@CategoryId", idcat);
                 cmd.Parameters.AddWithValue("@like", "%" + like + "%");
+                return DBImplementation.ExecuteDataTableCommand(cmd);
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public DataTable SelectTeacher(int idTeacher)
+        {
+            string query = @"SELECT c.ClassId AS 'ID',CONCAT(co.numberCourse,co.letterCourse,' ',co.sectionCourse) AS 'Course',m.matterName AS 'Name'
+FROM Class c 
+INNER JOIN Course co ON co.CourseId =c.CourseId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE c.status =1 AND c.TeacherId IS NULL AND c.ClassId IN 
+(SELECT ds.ID
+FROM (SELECT cl.ClassId AS 'ID',CONCAT(sc.ScheduleId ,sc.dayClass)  AS 'Day' FROM Schedule s INNER JOIN ScheduleClass sc ON sc.ScheduleId=s.ScheduleId
+INNER JOIN Class cl ON cl.ClassId=sc.ClassId AND s.ModalityId= (SELECT sch.ModalityId  FROM School sch WHERE sch.SchoolId=@SchoolId)) ds
+WHERE ds.Day NOT IN (SELECT CONCAT(sc.ScheduleId ,sc.dayClass)  AS 'Day' FROM Schedule s INNER JOIN ScheduleClass sc ON sc.ScheduleId=s.ScheduleId
+INNER JOIN Class cl ON cl.ClassId=sc.ClassId WHERE cl.TeacherId = @TeacherId AND s.ModalityId= (SELECT sch.ModalityId  FROM School sch WHERE sch.SchoolId=@SchoolId))
+) ";
+            try
+            {
+                SqlCommand cmd = DBImplementation.CreateBasicComand(query);
+                cmd.Parameters.AddWithValue("@SchoolId", Session.SessionSchoolId);
+                cmd.Parameters.AddWithValue("@TeacherId", idTeacher);
                 return DBImplementation.ExecuteDataTableCommand(cmd);
             }
             catch (Exception ex) { throw ex; }

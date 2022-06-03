@@ -7,5 +7,7 @@ namespace DAO
     {
         DataTable SelectHourClass(int course);
         DataTable SelectHourClass(int course, int idclass);
+        DataTable SelectHourClassTeacher(int idteacher);
+        DataTable SelectHourClassbyClass(int idteacher);
     }
 }

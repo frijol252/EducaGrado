@@ -10,6 +10,7 @@ namespace DAO
         void Inserttransact(List<Class> t);
         void Updatetransact(List<Class> t);
         DataTable SelectStudents(int id);
+        int UpdateTeacher(int idClass, int idTeacher);
 
     }
 }

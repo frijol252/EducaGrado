@@ -1,6 +1,9 @@
-﻿using Implementation;
+﻿using EducaGrado.xDialog;
+using Implementation;
 using Model;
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,145 +16,126 @@ namespace EducaGrado.Administrativo.Teacher
     public partial class TeacherScheduleAdd : Window
     {
         int idTeacher;
-        ClassImpl classImpl;
-        Class classesita;
-        public TeacherScheduleAdd(int id)
+        public TeacherScheduleAdd(int idTeacher)
         {
-            this.idTeacher = id;
+            this.idTeacher = idTeacher;
             InitializeComponent();
         }
-        #region control
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-
         }
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
-        public void LoadDataGrid()
-        {
-            //try
-            //{
-            //    classImpl = new ClassImpl();
-            //    dgvDatos.ItemsSource = null;
-            //    dgvDatos.ItemsSource = classImpl.SelectTeacherAdd(idTeacher).DefaultView;
-
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-        public void LoadDataGridlike(string like)
-        {
-            //try
-            //{
-            //    classImpl = new ClassImpl();
-            //    dgvDatos.ItemsSource = null;
-            //    dgvDatos.ItemsSource = classImpl.SelectTeacherAdd(like).DefaultView;
-
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-        private void ocultar()
-        {
-            //try
-            //{
-            //    dgvDatos.Columns[0].Visibility = Visibility.Hidden;
-            //}
-            //catch
-            //{
-
-            //}
-        }
 
 
+        #region grid
+        Matter matter;
+        MatterImpl matterImpl;
+        Schedule sch;
+        ScheduleImpl scheduleImpl;
+        ClassImpl clasImpl;
+        Class classs;
         private void Window_Initialized(object sender, EventArgs e)
         {
-            LoadDataGrid();
-        }
+            loadGrid();
+            loadGridSche();
 
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ocultar();
         }
-
-        private void Txtsearch_TextChanged(object sender, TextChangedEventArgs e)
+        public void loadGrid()
         {
-            //try
-            //{
-            //    if (txtsearch.Text == "")
-            //    {
-            //        LoadDataGrid();
-            //        ocultar();
-            //    }
-            //    else
-            //    {
-            //        LoadDataGridlike(txtsearch.Text);
-            //        ocultar();
-            //    }
-            //}
-            //catch
-            //{
+            try
+            {
+                matterImpl = new MatterImpl();
+                dgvSub.ItemsSource = null;
+                dgvSub.ItemsSource = matterImpl.SelectTeacher(idTeacher).DefaultView;
 
-            //}
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+        public void loadGridSche()
+        {
+            try
+            {
+                scheduleImpl = new ScheduleImpl();
+                dgvDatos.ItemsSource = null;
+                dgvDatos.ItemsSource = scheduleImpl.SelectHourClassbyClass(idSubject).DefaultView;
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
         #endregion
-        #region selected
-        int idclass;
-        private void DgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            //if (dgvDatos.Items.Count > 0 && dgvDatos.SelectedItem != null)
-            //{
-            //    try
-            //    {
-            //        DataRowView dataRow = (DataRowView)dgvDatos.SelectedItem;
-            //        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
 
-            //        idclass = id;
-            //        lblnames.Content = dataRow.Row.ItemArray[1];
-            //        lblcat.Content = dataRow.Row.ItemArray[2];
-            //        btnAdd.IsEnabled = true;
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
+
+        int idSchedule = 0;
+        int idSubject = 0;
+        string materiaselected = "";
+        List<int> lista = new List<int>();
+        private void dgvSub_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if (dgvSub.Items.Count > 0 && dgvSub.SelectedItem != null)
+            {
+                try
+                {
+                    btnAddSubject.IsEnabled = true;
+                    btnNope.IsEnabled = true;
+                    DataRowView dataRow = (DataRowView)dgvSub.SelectedItem;
+                    idSubject = int.Parse(dataRow.Row.ItemArray[0].ToString());
+                    lblmatery.Content = dataRow.Row.ItemArray[1].ToString()+" "+ dataRow.Row.ItemArray[2].ToString();
+                    loadGridSche();
+                    
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
-        #endregion
-        private void BtnAdd_Click_1(object sender, RoutedEventArgs e)
+        private void Addsubject_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    //names, lastName, secondLastName, address, phone, birthDate,gender,startDate,email
-            //    classesita = new Class(idclass, idTeacher, 0, 0);
-            //    classImpl = new ClassImpl();
-            //    classImpl.InsertTeacherSubject(classesita);
-            //    LoadDataGrid();
-            //    ocultar();
-            //    MessageBox.Show("Subject Add successfully");
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Something happened \nCommunicate with the Suport department \neducateam.suport@gmail.com");
-            //}
+            try
+            {
+                DataRowView dataRow = (DataRowView)dgvSub.SelectedItem;
+                System.Windows.Forms.DialogResult result = MsgBox.Show("Desea Añadir "+ dataRow.Row.ItemArray[1].ToString()+" "+ dataRow.Row.ItemArray[2].ToString() + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    clasImpl = new ClassImpl();
+                    int res = clasImpl.UpdateTeacher(idSubject,idTeacher);
+                    MsgBox.Show("Materia Añadida", "Completado", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                    TeacherSubject teacherSubject = new TeacherSubject(idTeacher);
+                    teacherSubject.Show();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
 
         }
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public string ReturnDay(int i)
         {
-            //try
-            //{
-            //    TeacherSubject ts = new TeacherSubject(idTeacher);
-            //    ts.Show();
-            //    this.Close();
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Something happened \nCommunicate with the Suport department \neducateam.suport@gmail.com");
-            //}
+            if (i == 2) return "Lu";
+            if (i == 3) return "Ma";
+            if (i == 4) return "Mi";
+            if (i == 5) return "Ju";
+            if (i == 6) return "Vi";
+            else return "Sa";
+        }
+
+        private void btnNope_Click(object sender, RoutedEventArgs e)
+        {
+            dgvDatos.ItemsSource = null;
+            btnAddSubject.IsEnabled = false;
+            btnNope.IsEnabled = false;
         }
     }
 }

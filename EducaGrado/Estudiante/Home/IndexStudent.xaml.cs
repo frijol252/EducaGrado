@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,17 +32,37 @@ namespace EducaGrado.Estudiante.Home
 
         private void ButtonFechar_Click(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.Shutdown();
         }
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
 
+            Session.setnulls();
+            InicioSesion.Index index = new InicioSesion.Index();
+            index.Show();
+            this.Close();
         }
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
+             int index = ListViewMenu.SelectedIndex;
+             //MoverCursorMenu(index);
 
+             switch (index)
+             {
+                 case 0:
+                     GridPrincipal.Children.Clear();
+                     break;
+                 case 2:
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Estudiante.);
+                    break;
+                 default:
+                     break;
+             }
+            
         }
     }
 }

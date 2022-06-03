@@ -1,6 +1,8 @@
-﻿using Implementation;
+﻿using EducaGrado.xDialog;
+using Implementation;
 using Model;
 using System;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,89 +15,88 @@ namespace EducaGrado.Administrativo.Teacher
     public partial class TeacherSubject : Window
     {
         int idTeacher;
-        Class @class;
+        ScheduleImpl scheduleImpl;
         ClassImpl classImpl;
-        public TeacherSubject(int id)
+        public TeacherSubject(int idTeacher)
         {
-            this.idTeacher = id;
+            this.idTeacher = idTeacher;
             InitializeComponent();
+            loadGrid();
+        }
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+
         }
 
         public void loadGrid()
         {
-            //try
-            //{
-            //    classImpl = new ClassImpl();
-            //    dgvDatos.ItemsSource = null;
-            //    dgvDatos.ItemsSource = classImpl.SelectTeacherActive(idTeacher).DefaultView;
+            try
+            {
+                scheduleImpl = new ScheduleImpl();
+                dgvDatos.ItemsSource = null;
+                dgvDatos.ItemsSource = scheduleImpl.SelectHourClassTeacher(idTeacher).DefaultView;
 
-            //}
-            //catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-        public void Ocultar()
-        {
-            //dgvDatos.Columns[0].Visibility = Visibility.Hidden;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
+        private void dgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if (dgvDatos.Items.Count > 0 && dgvDatos.SelectedItem != null)
+            {
+                try
+                {
+                    DataRowView dataRow = (DataRowView)dgvDatos.SelectedItem;
+                    int index = dgvDatos.CurrentCell.Column.DisplayIndex;
+                    string cellValue = dataRow.Row.ItemArray[index].ToString();
+                    System.Windows.Forms.DialogResult result = MsgBox.Show("Esta seguro de desasingnar " + cellValue + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                    if (result == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
+                        classImpl = new ClassImpl();
+                        classImpl.DeleteTeacher(id, idTeacher, ReturnDay(index));
+                        MsgBox.Show("Clase Desasignada", "Completado", MsgBox.Buttons.OK, MsgBox.Icon.Info);
+                        loadGrid();
+                    }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            Ocultar();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
-        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        public string ReturnDay(int i)
         {
+            if (i == 2) return "Lu";
+            if (i == 3) return "Ma";
+            if (i == 4) return "Mi";
+            if (i == 5) return "Ju";
+            if (i == 6) return "Vi";
+            else return "Sa";
+        }
+
+        private void btnAddClass_Click(object sender, RoutedEventArgs e)
+        {
+            TeacherScheduleAdd teacherAdd = new TeacherScheduleAdd(idTeacher);
+            teacherAdd.Show();
             this.Close();
-
-        }
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-        private void Window_Initialized(object sender, EventArgs e)
-        {
-            loadGrid();
-        }
-        int ids;
-        private void DgvDatos_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            //if (dgvDatos.Items.Count > 0 && dgvDatos.SelectedItem != null)
-            //{
-            //    try
-            //    {
-            //        DataRowView dataRow = (DataRowView)dgvDatos.SelectedItem;
-            //        int id = int.Parse(dataRow.Row.ItemArray[0].ToString());
-            //        ids = id;
-            //        btnDel.IsEnabled = true;
-            //        lblnames.Content = dataRow.Row.ItemArray[1];
-            //        lblcat.Content = dataRow.Row.ItemArray[2];
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
-        }
-
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            //teacherScheduleAdd tsa = new teacherScheduleAdd(idTeacher);
-            //tsa.Show();
-            //this.Close();
-        }
-
-        private void BtnDel_Click(object sender, RoutedEventArgs e)
-        {
-            //@class = new Class(ids, 0, 0, 0);
-            //classImpl = new ClassImpl();
-            //classImpl.DelTeacherSubject(@class);
-            //loadGrid();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //TeacherWatch tw = new TeacherWatch();
-            //tw.Show();
-            //this.Close();
         }
     }
 }
