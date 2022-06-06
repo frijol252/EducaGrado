@@ -74,11 +74,20 @@
     <Compile Include="Administrativo\Teacher\TeacherModif.xaml.cs">
       <DependentUpon>TeacherModif.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Estudiante\Grades\StudentGrade.xaml.cs">
+      <DependentUpon>StudentGrade.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Estudiante\Home\IndexStudent.xaml.cs">
       <DependentUpon>IndexStudent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Estudiante\Schedules\StudentSchedules.xaml.cs">
+      <DependentUpon>StudentSchedules.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Profesor\Home\TeacherHome.xaml.cs">
       <DependentUpon>TeacherHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\Schedules\TeacherSchedules.xaml.cs">
+      <DependentUpon>TeacherSchedules.xaml</DependentUpon>
     </Compile>
     <Compile Include="Profesor\Subjects\StudenGrade.xaml.cs">
       <DependentUpon>StudenGrade.xaml</DependentUpon>
@@ -173,9 +182,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Estudiante\Grades\StudentGrade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Estudiante\Home\IndexStudent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Estudiante\Schedules\StudentSchedules.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="InicioSesion\ForgotPassword.xaml">
       <SubType>Designer</SubType>
@@ -260,6 +277,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Profesor\Schedules\TeacherSchedules.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Profesor\Subjects\StudenGrade.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -321,11 +342,8 @@
     <Folder Include="Administrativo\Images\" />
     <Folder Include="Estudiante\Account\" />
     <Folder Include="Estudiante\Claims\" />
-    <Folder Include="Estudiante\Grades\" />
-    <Folder Include="Estudiante\Schedules\" />
     <Folder Include="Profesor\Account\" />
     <Folder Include="Profesor\Claims\" />
-    <Folder Include="Profesor\Schedules\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\educadblogo.png" />

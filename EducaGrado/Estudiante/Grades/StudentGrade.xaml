@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:EducaGrado.Estudiante.Grades"
-             mc:Ignorable="d" 
+             xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:EducaGrado.Estudiante.Grades" 
+             mc:Ignorable="d"  Initialized="UserControl_Initialized"
              d:DesignHeight="450" d:DesignWidth="1000">
     <Grid>
         <Grid Height="30" VerticalAlignment="Top" Background="#04af76" />
@@ -12,7 +13,9 @@
             <Label FontWeight="Bold" Content="LISTA DE CALIFICACIONES" FontSize="35" Margin="30,0,0,0" FontFamily="Times New Roman Bold"></Label>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"  Margin="10,60,0,17" Width="956">
 
-                <DataGrid HorizontalScrollBarVisibility="Hidden" x:Name="dgvDatos"  IsReadOnly="True" Background="#ededed" CanUserAddRows="False" HorizontalAlignment="Left" Height="340" Margin="20,-2,0,0" VerticalAlignment="Top" Width="928"/>
+                <DataGrid HorizontalScrollBarVisibility="Hidden" AutoGenerateColumns="True" x:Name="dgvDatos"  IsReadOnly="True" Background="#ededed" CanUserAddRows="False" HorizontalAlignment="Left" Height="340" Margin="20,-2,0,0" VerticalAlignment="Top" Width="928">
+                    
+                </DataGrid>
             </StackPanel>
 
 

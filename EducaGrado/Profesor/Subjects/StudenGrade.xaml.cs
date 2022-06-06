@@ -48,5 +48,14 @@ namespace EducaGrado.Profesor.Subjects
         {
 
         }
+        /*
+         
+                int i = 5; //Set this equal to desired column index.... 
+                ContentPresenter myCp = dgvDatos.Columns[i].GetCellContent(dgvDatos.Items[0]) as ContentPresenter;
+                var myTemplate = myCp.ContentTemplate;
+                TextBox mytxtbox = myTemplate.FindName("feesAmountTextBox", myCp) as TextBox;
+                mytxtbox.Name = "a";
+                MessageBox.Show(mytxtbox.Text);
+         */
     }
 }

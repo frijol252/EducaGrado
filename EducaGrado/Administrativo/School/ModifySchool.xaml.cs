@@ -1,4 +1,5 @@
-﻿using Implementation;
+﻿using EducaGrado.xDialog;
+using Implementation;
 using Model;
 using System;
 using System.Windows;
@@ -27,25 +28,55 @@ namespace EducaGrado.Administrativo.School
         {
             try
             {
-                byte notas = byte.Parse(txtnotas.Text);
-                byte examen = byte.Parse(txtexamen.Text);
+                byte notas=0;
+                byte examen = 0;
+                byte porcentajenotas = 0;
+                byte pocentajetest = 0;
                 string calificacion = comboCalificacion.Text;
                 string cursos = txtcursos.Text;
-                schoolType = new SchoolType();
-                modality = new Modality();
-                schoolType.Cursos = cursos;
-                modality.NumberGrades = notas;
-                modality.NumberTest = examen;
-                modality.TypeQualify = calificacion;
-                if (!string.IsNullOrEmpty(notas.ToString()) || !string.IsNullOrEmpty(examen.ToString()) || !string.IsNullOrEmpty(calificacion.ToString()) || !string.IsNullOrEmpty(cursos.ToString()))
+                if (!string.IsNullOrEmpty(txtnotas.Text) || !string.IsNullOrEmpty(txtexamen.Text) || !string.IsNullOrEmpty(txtPorcentaje.Text) 
+                    || !string.IsNullOrEmpty(txtPorcentajeTest.Text)
+                    || !string.IsNullOrEmpty(cursos.ToString()) || !string.IsNullOrEmpty(cursos.ToString()))
                 {
-                    schoolImpl = new SchoolImpl();
-                    schoolImpl.UpdateTypeWork(schoolType, modality, Session.SessionSchoolId);
-                    MessageBox.Show("Tipo de trabajo de la escuela establecido");
-                    Administrativo.Home.HomeAdmin ha = new Home.HomeAdmin();
-                    ha.Show();
-                    this.Close();
+                    if (byte.TryParse(txtnotas.Text, out notas) && byte.TryParse(txtexamen.Text, out examen) &&
+                    byte.TryParse(txtPorcentaje.Text, out porcentajenotas) && byte.TryParse(txtPorcentajeTest.Text, out pocentajetest))
+                    {
+                        byte suma = (byte)(porcentajenotas + pocentajetest);
+                        if (suma == 100)
+                        {
+                            schoolType = new SchoolType();
+                            modality = new Modality();
+                            schoolType.Cursos = cursos;
+                            modality.NumberGrades = notas;
+                            modality.NumberTest = examen;
+                            modality.TypeQualify = calificacion;
+                            modality.PercentGrades = porcentajenotas;
+                            modality.PercentTest = pocentajetest;
+
+
+                            schoolImpl = new SchoolImpl();
+                            schoolImpl.UpdateTypeWork(schoolType, modality, Session.SessionSchoolId);
+                            MsgBox.Show("Tipo de trabajo de la escuela establecido", "Completado", MsgBox.Buttons.OK);
+                            Administrativo.Home.HomeAdmin ha = new Home.HomeAdmin();
+                            ha.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MsgBox.Show("La suma de porcentajes tiene que dar 100%", "Error", MsgBox.Buttons.OK,MsgBox.Icon.Error);
+                        }
+                        
+                    }
+                    else
+                    {
+                        MsgBox.Show("No se puede introducir texto", "Atencion", MsgBox.Buttons.OK, MsgBox.Icon.Error);
+                    }
                 }
+                else
+                {
+                    MsgBox.Show("Llene todos los espacios", "Atencion", MsgBox.Buttons.OK, MsgBox.Icon.Error);
+                }
+                
             }
             catch (Exception ex)
             {

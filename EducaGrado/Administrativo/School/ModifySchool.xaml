@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EducaGrado.Administrativo.School"
         mc:Ignorable="d" WindowStyle="None" AllowsTransparency="True"
-        Title="ModifySchool" Height="300" Width="500">
+        Title="ModifySchool" Height="400" Width="500">
     <Grid>
         <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75" Margin="0,0,1,0">
             <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible">
@@ -24,7 +24,7 @@
                 </StackPanel>
                 <StackPanel>
                     <!-- INSERT -->
-                    <StackPanel x:Name="Insestack" Background="#ededed" Margin="30 10 30 0" Height="250" Orientation="Vertical" VerticalAlignment="Top">
+                    <StackPanel x:Name="Insestack" Background="#ededed" Margin="30 10 30 0" Height="309" Orientation="Vertical" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
                             <TextBlock Text="Cantidad de notas :"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 35 0" FontWeight="Bold"></TextBlock>
                             <TextBox x:Name="txtnotas" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de notas" ></TextBox>
@@ -46,8 +46,15 @@
                             <TextBlock Text="Cantidad de cursos por paralelo :" VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 10 0" FontWeight="Bold"></TextBlock>
                             <TextBox x:Name="txtcursos" VerticalAlignment="Top" Foreground="Black" Width="240" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de cursos por paralelo" ></TextBox>
                         </StackPanel>
-                        
 
+                        <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                            <TextBlock Text="Porcentaje de Notas:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 15 0" FontWeight="Bold"></TextBlock>
+                            <TextBox x:Name="txtPorcentaje" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de examenes" ></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Height="30"  Margin="10 0 0 10">
+                            <TextBlock Text="Porcentaje de Examenes:"  VerticalAlignment="Top" Foreground="#c51d6a" Margin="0 10 15 0" FontWeight="Bold"></TextBlock>
+                            <TextBox x:Name="txtPorcentajeTest" VerticalAlignment="Top" Foreground="Black" Width="290" FontWeight="Bold" materialDesign:HintAssist.Hint="Ingrese la cantidad de examenes" ></TextBox>
+                        </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="100 0 50 0">
                             <Button x:Name="btnModifySchool" Content="Modificar colegio" Height="40" Margin="60 20 0 0" Foreground="White" Background="#06ad75" materialDesing:ButtonAssist.CornerRadius="15" Click="btnModifySchool_Click"></Button>
                         </StackPanel>

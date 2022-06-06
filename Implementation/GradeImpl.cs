@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Implementation
 {
@@ -19,7 +20,14 @@ namespace Implementation
 
         public DataTable Select()
         {
-            throw new NotImplementedException();
+            string query = @"EXEC SelectGradesStudent @UserAccountId";
+            try
+            {
+                SqlCommand cmd = DBImplementation.CreateBasicComand(query);
+                cmd.Parameters.AddWithValue("@UserAccountId", Session.SessionID);
+                return DBImplementation.ExecuteDataTableCommand(cmd);
+            }
+            catch (Exception ex) { throw ex; }
         }
 
         public int Update(Grade t)

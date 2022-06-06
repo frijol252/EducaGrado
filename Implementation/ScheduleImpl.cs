@@ -167,6 +167,45 @@ WHERE sc.SchoolId=@SchoolId) ORDER BY s.hourStart ASC ";
             }
             catch (Exception ex) { throw ex; }
         }
+        public DataTable SelectHourClassTeacher()
+        {
+            string query = @"SELECT s.ScheduleId AS 'ID',CONCAT((CONVERT(VARCHAR(5), hourStart , 108)),'-',(CONVERT(VARCHAR(5), hourFinish , 108))) AS 'HR',
+ISNULL((SELECT m.matterName  FROM ScheduleClass sc2 INNER JOIN Class c ON c.ClassId =sc2.ClassId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE sc2.ScheduleId=s.ScheduleId AND sc2.dayClass='Lu' AND c.TeacherId =(SELECT p.PersonId FROM Person p INNER JOIN UserAccount ua ON ua.UserAccountId =
+p.UserAccountId WHERE ua.UserAccountId=@TeacherId)
+AND c.status=1),'-') AS 'Lunes',
+ISNULL((SELECT m.matterName  FROM ScheduleClass sc2 INNER JOIN Class c ON c.ClassId =sc2.ClassId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE sc2.ScheduleId=s.ScheduleId AND sc2.dayClass='Ma' AND c.TeacherId =(SELECT p.PersonId FROM Person p INNER JOIN UserAccount ua ON ua.UserAccountId =
+p.UserAccountId WHERE ua.UserAccountId=@TeacherId)
+ AND c.status=1),'-') AS 'Martes',
+ISNULL((SELECT m.matterName  FROM ScheduleClass sc2 INNER JOIN Class c ON c.ClassId =sc2.ClassId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE sc2.ScheduleId=s.ScheduleId AND sc2.dayClass='Mi' AND c.TeacherId =(SELECT p.PersonId FROM Person p INNER JOIN UserAccount ua ON ua.UserAccountId =
+p.UserAccountId WHERE ua.UserAccountId=@TeacherId)
+ AND c.status=1),'-') AS 'Miercoles',
+ISNULL((SELECT m.matterName  FROM ScheduleClass sc2 INNER JOIN Class c ON c.ClassId =sc2.ClassId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE sc2.ScheduleId=s.ScheduleId AND sc2.dayClass='Ju' AND c.TeacherId =(SELECT p.PersonId FROM Person p INNER JOIN UserAccount ua ON ua.UserAccountId =
+p.UserAccountId WHERE ua.UserAccountId=@TeacherId)
+ AND c.status=1),'-') AS 'Jueves',
+ISNULL((SELECT m.matterName  FROM ScheduleClass sc2 INNER JOIN Class c ON c.ClassId =sc2.ClassId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE sc2.ScheduleId=s.ScheduleId AND sc2.dayClass='Vi' AND c.TeacherId =(SELECT p.PersonId FROM Person p INNER JOIN UserAccount ua ON ua.UserAccountId =
+p.UserAccountId WHERE ua.UserAccountId=@TeacherId)
+ AND c.status=1),'-') AS 'Viernes',
+ISNULL((SELECT m.matterName  FROM ScheduleClass sc2 INNER JOIN Class c ON c.ClassId =sc2.ClassId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE sc2.ScheduleId=s.ScheduleId AND sc2.dayClass='Sa' AND c.TeacherId =(SELECT p.PersonId FROM Person p INNER JOIN UserAccount ua ON ua.UserAccountId =
+p.UserAccountId WHERE ua.UserAccountId=@TeacherId)
+ AND c.status=1),'-') AS 'Sabado'
+FROM Schedule s 
+WHERE s.ModalityId = (SELECT m2.ModalityId FROM Modality m2 INNER JOIN School sc ON sc.ModalityId = m2.ModalityId
+WHERE sc.SchoolId=@SchoolId) ORDER BY s.hourStart ASC  ";
+            try
+            {
+                SqlCommand cmd = DBImplementation.CreateBasicComand(query);
+                cmd.Parameters.AddWithValue("@SchoolId", Session.SessionSchoolId);
+                cmd.Parameters.AddWithValue("@TeacherId", Session.SessionID);
+                return DBImplementation.ExecuteDataTableCommand(cmd);
+            }
+            catch (Exception ex) { throw ex; }
+        }
 
         public DataTable SelectHourClassbyClass(int idClass)
         {
@@ -191,6 +230,52 @@ WHERE sc.SchoolId=@SchoolId) ORDER BY s.hourStart ASC";
                 SqlCommand cmd = DBImplementation.CreateBasicComand(query);
                 cmd.Parameters.AddWithValue("@SchoolId", Session.SessionSchoolId);
                 cmd.Parameters.AddWithValue("@ClassId", idClass);
+                return DBImplementation.ExecuteDataTableCommand(cmd);
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public DataTable SelectHourClassStudent()
+        {
+            string query = @"SELECT s.ScheduleId AS 'ID',CONCAT((CONVERT(VARCHAR(5), hourStart , 108)),'-',(CONVERT(VARCHAR(5), hourFinish , 108))) AS 'HR',
+ISNULL((SELECT m.matterName  FROM ScheduleClass sc2 INNER JOIN Class c ON c.ClassId =sc2.ClassId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE sc2.ScheduleId=s.ScheduleId AND sc2.dayClass='Lu' AND c.CourseId=(select s.CourseId  from UserAccount ua 
+INNER JOIN Person p ON p.UserAccountId = ua.UserAccountId 
+INNER JOIN Student s ON s.StudentId =p.PersonId 
+WHERE  ua.UserAccountId = @UserAccountId) AND c.status=1),'O') AS 'Lunes',
+ISNULL((SELECT m.matterName  FROM ScheduleClass sc2 INNER JOIN Class c ON c.ClassId =sc2.ClassId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE sc2.ScheduleId=s.ScheduleId AND sc2.dayClass='Ma' AND c.CourseId=(select s.CourseId  from UserAccount ua 
+INNER JOIN Person p ON p.UserAccountId = ua.UserAccountId 
+INNER JOIN Student s ON s.StudentId =p.PersonId 
+WHERE  ua.UserAccountId = @UserAccountId) AND c.status=1),'O') AS 'Martes',
+ISNULL((SELECT m.matterName  FROM ScheduleClass sc2 INNER JOIN Class c ON c.ClassId =sc2.ClassId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE sc2.ScheduleId=s.ScheduleId AND sc2.dayClass='Mi' AND c.CourseId=(select s.CourseId  from UserAccount ua 
+INNER JOIN Person p ON p.UserAccountId = ua.UserAccountId 
+INNER JOIN Student s ON s.StudentId =p.PersonId 
+WHERE  ua.UserAccountId = @UserAccountId) AND c.status=1),'O') AS 'Miercoles',
+ISNULL((SELECT m.matterName  FROM ScheduleClass sc2 INNER JOIN Class c ON c.ClassId =sc2.ClassId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE sc2.ScheduleId=s.ScheduleId AND sc2.dayClass='Ju' AND c.CourseId=(select s.CourseId  from UserAccount ua 
+INNER JOIN Person p ON p.UserAccountId = ua.UserAccountId 
+INNER JOIN Student s ON s.StudentId =p.PersonId 
+WHERE  ua.UserAccountId = @UserAccountId) AND c.status=1),'O') AS 'Jueves',
+ISNULL((SELECT m.matterName  FROM ScheduleClass sc2 INNER JOIN Class c ON c.ClassId =sc2.ClassId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE sc2.ScheduleId=s.ScheduleId AND sc2.dayClass='Vi' AND c.CourseId=(select s.CourseId  from UserAccount ua 
+INNER JOIN Person p ON p.UserAccountId = ua.UserAccountId 
+INNER JOIN Student s ON s.StudentId =p.PersonId 
+WHERE  ua.UserAccountId = @UserAccountId) AND c.status=1),'O') AS 'Viernes',
+ISNULL((SELECT m.matterName  FROM ScheduleClass sc2 INNER JOIN Class c ON c.ClassId =sc2.ClassId INNER JOIN Matter m ON m.matterid = c.idMatter 
+WHERE sc2.ScheduleId=s.ScheduleId AND sc2.dayClass='Sa' AND c.CourseId=(select s.CourseId  from UserAccount ua 
+INNER JOIN Person p ON p.UserAccountId = ua.UserAccountId 
+INNER JOIN Student s ON s.StudentId =p.PersonId 
+WHERE  ua.UserAccountId = @UserAccountId) AND c.status=1),'O') AS 'Sabado'
+FROM Schedule s 
+WHERE s.ModalityId = (SELECT m2.ModalityId FROM Modality m2 INNER JOIN School sc ON sc.ModalityId = m2.ModalityId
+WHERE sc.SchoolId=@SchoolId) ORDER BY s.hourStart ASC ";
+            try
+            {
+                SqlCommand cmd = DBImplementation.CreateBasicComand(query);
+                cmd.Parameters.AddWithValue("@SchoolId", Session.SessionSchoolId);
+                cmd.Parameters.AddWithValue("@UserAccountId", Session.SessionID);
                 return DBImplementation.ExecuteDataTableCommand(cmd);
             }
             catch (Exception ex) { throw ex; }

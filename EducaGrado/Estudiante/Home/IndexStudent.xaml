@@ -62,7 +62,7 @@
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ListTeacher">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="CrudTeacher">
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnNotas">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
     </Window.Triggers>
@@ -165,13 +165,13 @@
                             <TextBlock Text="Recursos" FontSize="17" VerticalAlignment="Center" Margin="20 0" Foreground="Black"/>
                         </StackPanel>
                         <StackPanel  Width="auto" Background="#999999">
-                            <Button Height="60" Background="#FFE63070" x:Name="ListTeacher">
+                            <Button Height="60" Background="#FFE63070" x:Name="ListTeacher" Click="ListTeacher_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="UserBox" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="Black"/>
                                     <TextBlock Text="Horarios" FontSize="17" VerticalAlignment="Center" Margin="20 0" Foreground="Black"/>
                                 </StackPanel>
                             </Button>
-                            <Button Height="60" Background="#FFE63070" x:Name="CrudTeacher" Click="CrudTeacher_Click">
+                            <Button Height="60" Background="#FFE63070" x:Name="btnNotas" Click="btnNotas_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Grade" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="Black"/>
                                     <TextBlock Text="Notas" FontSize="17" Foreground="Black" VerticalAlignment="Center" Margin="20 0"/>

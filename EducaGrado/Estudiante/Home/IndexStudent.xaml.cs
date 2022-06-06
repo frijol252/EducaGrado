@@ -25,10 +25,6 @@ namespace EducaGrado.Estudiante.Home
             InitializeComponent();
         }
 
-        private void CrudTeacher_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void ButtonFechar_Click(object sender, RoutedEventArgs e)
         {
@@ -56,13 +52,23 @@ namespace EducaGrado.Estudiante.Home
                      GridPrincipal.Children.Clear();
                      break;
                  case 2:
-                    GridPrincipal.Children.Clear();
-                    GridPrincipal.Children.Add(new Estudiante.);
                     break;
                  default:
                      break;
              }
             
+        }
+
+        private void ListTeacher_Click(object sender, RoutedEventArgs e)
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new EducaGrado.Estudiante.Schedules.StudentSchedules());
+        }
+
+        private void btnNotas_Click(object sender, RoutedEventArgs e)
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new EducaGrado.Estudiante.Grades.StudentGrade());
         }
     }
 }

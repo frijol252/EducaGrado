@@ -33,7 +33,7 @@ namespace Implementation
 
         public void UpdateTypeWork(SchoolType schoolType, Modality modality, int schoolid)
         {
-            string queryModality = @"UPDATE  Modality  SET NumberGrades = @NumberGrades, NumberTest = @NumberTest,TypeQualify =@TypeQualify 
+            string queryModality = @"UPDATE  Modality  SET NumberGrades = @NumberGrades, NumberTest = @NumberTest,TypeQualify =@TypeQualify ,PorcentGrades = @PorcentGrades, PorcentTest=@PorcentTest
 WHERE ModalityId = (SELECT s.ModalityId  FROM School s WHERE SchoolId = @SchoolId)";
             string querySchoolType = @"UPDATE  SchoolType  SET numberCourses  = @numberCourses  WHERE SchoolTypeId = (SELECT s.SchoolTypeId  FROM School s WHERE SchoolId = @SchoolId)";
             try
@@ -43,6 +43,8 @@ WHERE ModalityId = (SELECT s.ModalityId  FROM School s WHERE SchoolId = @SchoolI
                 cmds[0].Parameters.AddWithValue("@NumberGrades", modality.NumberGrades);
                 cmds[0].Parameters.AddWithValue("@NumberTest", modality.NumberTest);
                 cmds[0].Parameters.AddWithValue("@TypeQualify", modality.TypeQualify);
+                cmds[0].Parameters.AddWithValue("@PorcentGrades", modality.PercentGrades);
+                cmds[0].Parameters.AddWithValue("@PorcentTest", modality.PercentTest);
                 cmds[0].Parameters.AddWithValue("@SchoolId", schoolid);
                 cmds[1].CommandText = querySchoolType;
                 cmds[1].Parameters.AddWithValue("@numberCourses", schoolType.Cursos);
