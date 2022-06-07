@@ -206,9 +206,9 @@ namespace Implementation
                             cmds[contadorcmd].Parameters.AddWithValue("@TypeScore", 2);
                             contadorcmd++;
                         }
-
+                        idgrade += idgradeincrement;
                     }
-                    idgrade += idgradeincrement;
+                    
                 }
                 #endregion
 
@@ -425,7 +425,7 @@ WHERE PersonId =@PersonId";
             usuario = new UserAccount();
             usuario.UserName = username;
             usuario.Passstring = password;
-            usuario.RoleUserId = 1;
+            usuario.RoleUserId = 3;
 
             return usuario;
         }

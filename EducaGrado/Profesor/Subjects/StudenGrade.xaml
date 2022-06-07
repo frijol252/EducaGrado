@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EducaGrado.Profesor.Subjects"
-        mc:Ignorable="d"
+        mc:Ignorable="d"  Loaded="Window_Loaded"
         Title="StudenGrade" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStyle="None" AllowsTransparency="True"
-         Width="727.631" Height="633.083">
+         Width="1000" Height="520">
     <Grid Margin="0,0,25,61">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -23,12 +23,18 @@
         </Grid>
         <Grid Margin="-1,28,-23,-63" Background="#ededed">
             <StackPanel Height="418"  VerticalAlignment="Top" Margin="0,-2,0,0">
-                <StackPanel Orientation="Horizontal" Margin="24,10,31,0">
-                    <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 4"/>
-                    <TextBox x:Name="txtsearch" TextChanged="txtsearch_TextChanged" Foreground="Black" Width="653" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
-                </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="dgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="680"/>
+                    <DataGrid x:Name="dgvDatos" IsReadOnly="False" Background="#ededed"
+                              CanUserAddRows="False" AutoGenerateColumns="False"
+                              HorizontalAlignment="Left" Height="370" Margin="20,10,0,0" VerticalAlignment="Top" Width="960">
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Path='Name'}" Width="150" IsReadOnly="True"/>
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
 
 
 
@@ -36,24 +42,9 @@
 
             </StackPanel>
             <StackPanel Margin="0,421,0,-2">
-                <StackPanel Height="40" Margin="40,10,0,0" Orientation="Horizontal">
-                    <Label Content="Estudiante:" FontWeight="Bold"></Label>
-                    <Label Content="..." FontWeight="Bold" x:Name="lblstudent"></Label>
-                </StackPanel>
-                <StackPanel Height="40" Margin="70,10,0,0" Orientation="Horizontal">
-                    <Label Content="Nota 1:" FontWeight="Bold"></Label>
-                    <TextBox x:Name="txtGrade1" Width="45" Height="30" VerticalAlignment="Top"></TextBox>
-                    <Label Content="Nota2 2:" FontWeight="Bold" Margin="20,0,0,0"></Label>
-                    <TextBox x:Name="txtGrade2" Width="45" Height="30" VerticalAlignment="Top"></TextBox>
-                    <Label Content="Nota 3:" FontWeight="Bold" Margin="20,0,0,0"></Label>
-                    <TextBox x:Name="txtGrade3" Width="45" Height="30" VerticalAlignment="Top"></TextBox>
-                    <Label Content="Nota 4:" FontWeight="Bold" Margin="20,0,0,0"></Label>
-                    <TextBox x:Name="txtGrade4" Width="45" Height="30" VerticalAlignment="Top"></TextBox>
-                    <Label Content="Nota de examen:" FontWeight="Bold" Margin="20,0,0,0"></Label>
-                    <TextBox x:Name="txtTest" Width="45" Height="30" VerticalAlignment="Top"></TextBox>
-                </StackPanel>
-                <StackPanel Margin="300,10,0,0" Orientation="Horizontal">
-                    <Button x:Name="btnAddGrade" Content="Añadir notas" Background="#FFE63070" Foreground="White" IsEnabled="False" Click="btnAddGrade_Click"></Button>
+                
+                <StackPanel Margin="350,10,0,0" Orientation="Horizontal">
+                    <Button x:Name="btnAddGrade" Content="Modificar notas" Background="#b7ff59" Foreground="White" IsEnabled="True" Click="btnAddGrade_Click" Width="325"></Button>
                 </StackPanel>
 
             </StackPanel>

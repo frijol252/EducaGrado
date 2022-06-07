@@ -141,9 +141,9 @@ namespace Implementation
                             cmds[contadorcmd].Parameters.AddWithValue("@TypeScore", 2);
                             contadorcmd++;
                         }
-
+                        idgrade += idgradeincrement;
                     }
-                    idgrade += idgradeincrement;
+                    
                 }
                 #endregion
 

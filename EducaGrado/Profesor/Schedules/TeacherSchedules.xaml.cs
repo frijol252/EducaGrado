@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Implementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,22 @@ namespace EducaGrado.Profesor.Schedules
         public TeacherSchedules()
         {
             InitializeComponent();
+        }
+        ScheduleImpl scheduleImpl;
+        private void UserControl_Initialized(object sender, EventArgs e)
+        {
+            loadGrid();
+        }
+        public void loadGrid()
+        {
+            try
+            {
+                scheduleImpl = new ScheduleImpl();
+                dgvDatos.ItemsSource = null;
+                dgvDatos.ItemsSource = scheduleImpl.SelectHourClassTeacher().DefaultView;
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }

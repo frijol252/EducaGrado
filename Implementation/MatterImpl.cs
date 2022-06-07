@@ -162,6 +162,25 @@ INNER JOIN Class cl ON cl.ClassId=sc.ClassId WHERE cl.TeacherId = @TeacherId AND
             catch (Exception ex) { throw ex; }
         }
 
+        public DataTable SelectTeacher()
+        {
+            string query = @"SELECT  c.ClassId AS 'ID',m.matterName AS 'Name',CONCAT(c2.numberCourse,c2.letterCourse,' ',c2.sectionCourse) AS 'Section'  FROM Class c
+INNER JOIN Teacher t ON t.TeacherId =c.TeacherId 
+INNER JOIN Matter m ON m.matterid =c.idMatter 
+INNER JOIN Course c2 ON c2.CourseId =c.CourseId 
+WHERE c.status =1 AND t.TeacherId =
+(SELECT p.PersonId FROM Person p INNER JOIN UserAccount ua ON ua.UserAccountId=p.UserAccountId
+WHERE ua.UserAccountId=@UserAccountId) ";
+            try
+            {
+                SqlCommand cmd = DBImplementation.CreateBasicComand(query);
+                cmd.Parameters.AddWithValue("@SchoolId", Session.SessionSchoolId);
+                cmd.Parameters.AddWithValue("@UserAccountId", Session.SessionID);
+                return DBImplementation.ExecuteDataTableCommand(cmd);
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
         public int Update(Matter t)
         {
             throw new NotImplementedException();

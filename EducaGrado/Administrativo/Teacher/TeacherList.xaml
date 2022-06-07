@@ -32,13 +32,7 @@
                                 <DataGridTextColumn Header="Ci" Binding="{Binding Path='Ci'}" Width="80" IsReadOnly="False" />
                                 <DataGridTextColumn Header="Telefono" Binding="{Binding Path='Phone'}" Width="80" IsReadOnly="False" />
                                 <DataGridTextColumn Header="Direccion" Binding="{Binding Path='DIR'}" Width="200" IsReadOnly="False" />
-                            <DataGridTemplateColumn Header="Fees Amount" Width="80">
-                                <DataGridTemplateColumn.CellTemplate >
-                                    <DataTemplate >
-                                        <TextBox Name="feesAmountTextBox"  Text="{Binding Path='Name',Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ></TextBox>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                            
 
                             <DataGridTemplateColumn Header="Control">
                                 <DataGridTemplateColumn.CellTemplate>

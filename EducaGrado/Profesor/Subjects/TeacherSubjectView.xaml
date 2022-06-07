@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EducaGrado.Profesor.Subjects"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Initialized="UserControl_Initialized" Loaded="UserControl_Loaded"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-             d:DesignHeight="550" d:DesignWidth="550">
+             d:DesignHeight="450" d:DesignWidth="650">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -19,29 +19,17 @@
             <StackPanel Height="418"  VerticalAlignment="Top" Margin="25,-2,0,0">
 
                 <StackPanel Orientation="Horizontal">
-                    <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" HorizontalAlignment="Left" Height="370" Margin="0,10,0,0" VerticalAlignment="Top" 
-                              SelectedCellsChanged="dgvDatos_SelectedCellsChanged" Width="272"/>
+                    <DataGrid x:Name="dgvDatos" IsReadOnly="False" RowHeight="80"  AutoGenerateColumns="False" Background="#ededed" CanUserAddRows="False" HorizontalAlignment="Left" Height="370" Margin="0,10,0,0" VerticalAlignment="Top" 
+                               Width="599">
+                        <DataGrid.Columns>
 
-                    <StackPanel VerticalAlignment="Center" Width="204">
-                        <Button IsEnabled="False"  x:Name="btnFirst" Content="Primer trimestre"  Foreground="White" Background="#FFE63070" Margin="26,0,25,0" />
+                            <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Materia" Binding="{Binding Path='Name'}" Width="150"  IsReadOnly="True" />
+                            <DataGridTextColumn Header="Curso" Binding="{Binding Path='Section'}" Width="100" IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
 
-                        <Button IsEnabled="False"  x:Name="btnSecond"  Content="Segundo trimestre" Foreground="White" Background="#56D188" Margin="26,40,25,0" />
-
-                        <Button IsEnabled="False"  x:Name="btnThird"  Content="Tercer trimestre" Foreground="White" Background="#56D1CD" Margin="26,40,25,0" />
-                    </StackPanel>
-
-                </StackPanel>
-
-            </StackPanel>
-            <StackPanel Margin="0,421,0,1">
-                <StackPanel Height="40" Margin="20,40,0,0" Orientation="Horizontal">
-                    <Label Foreground="#2a3f54" FontSize="15" >Nombre de la materia:</Label>
-                    <Label x:Name="lblnames" FontSize="15" Content="..." Width="135"></Label>
-                    <Label Foreground="#2a3f54" Margin="10,0,0,0" FontSize="15" >Curso de la materia:</Label>
-                    <Label x:Name="lblcat" FontSize="15" Content="..." Width="84"></Label>
-                    <TextBox Visibility="Hidden" x:Name="lblid"></TextBox>
-                </StackPanel>
-                <StackPanel Margin="300,10,0,0" Orientation="Horizontal">
+                    <StackPanel VerticalAlignment="Center" Width="204"/>
 
                 </StackPanel>
 

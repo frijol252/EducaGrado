@@ -168,20 +168,21 @@ namespace EducaGrado.Administrativo.Teacher
                 DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
 
                 string nombreestudiante = dataRowView[1].ToString();
-                //System.Windows.Forms.DialogResult result;
-                //if (dis == 0) result = MsgBox.Show("Estas Seguro de Deshabilitar " + nombreestudiante + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
-                //else result = MsgBox.Show("Estas Seguro de Habilitar " + nombreestudiante + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
-                //if (result == System.Windows.Forms.DialogResult.Yes)
-                //{
-                //    teacherimpl = new TeacherImpl();
-                //    int res = teacherimpl.DeleteDis(int.Parse(dataRowView[0].ToString()), dis);
-                //    if (res != 0)
-                //    {
-                //        MsgBox.Show("Estado de Profesor Actualizado ", "Atencion", MsgBox.Buttons.OK, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
-                //        loadGrid();
-                //        imagesector.Source = null;
-                //    }
-                //}
+
+                System.Windows.Forms.DialogResult result;
+                if (dis == 0) result = MsgBox.Show("Estas Seguro de Deshabilitar " + nombreestudiante + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                else result = MsgBox.Show("Estas Seguro de Habilitar " + nombreestudiante + "?", "Atencion", MsgBox.Buttons.YesNo, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    teacherimpl = new TeacherImpl();
+                    int res = teacherimpl.DeleteDis(int.Parse(dataRowView[0].ToString()), dis);
+                    if (res != 0)
+                    {
+                        MsgBox.Show("Estado de Profesor Actualizado ", "Atencion", MsgBox.Buttons.OK, MsgBox.Icon.Exclamation, MsgBox.AnimateStyle.FadeIn);
+                        loadGrid();
+                        imagesector.Source = null;
+                    }
+                }
             }
             catch (Exception ex)
             {
