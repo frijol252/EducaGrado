@@ -48,10 +48,15 @@
     <Compile Include="CityDao.cs" />
     <Compile Include="ClassDao.cs" />
     <Compile Include="CourseDao.cs" />
+    <Compile Include="DosageDao.cs" />
+    <Compile Include="FeeDao.cs" />
     <Compile Include="GradeDao.cs" />
     <Compile Include="IDao.cs" />
+    <Compile Include="InvoiceDao.cs" />
     <Compile Include="MatterDao.cs" />
     <Compile Include="ModalityDao.cs" />
+    <Compile Include="PayerDao.cs" />
+    <Compile Include="PaymentDao.cs" />
     <Compile Include="PersonDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinceDao.cs" />

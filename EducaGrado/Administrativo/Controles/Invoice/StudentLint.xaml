@@ -1,33 +1,45 @@
-﻿<Window x:Class="EducaGrado.Administrativo.Controles.Invoice.StudentLint"
+﻿<UserControl x:Class="EducaGrado.Administrativo.Controles.Invoice.StudentLint"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:EducaGrado.Administrativo.Controles.Invoice"
-        mc:Ignorable="d"
-        Title="StudentList" WindowStyle="None" AllowsTransparency="True"
-             d:DesignHeight="634.825" d:DesignWidth="987.354">
+        xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:EducaGrado.Administrativo.Controles.Invoice" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" Loaded="UserControl_Loaded"
+        d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75" Margin="-25,0,-4,0">
-            <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="btnClose_Click">
-                <materialDesign:PackIcon Kind="Close" Foreground="White"/>
-            </Button>
+        <Grid Height="30" VerticalAlignment="Top"  Background="#06ad75" Margin="0,0,-4,0">
+            
         </Grid>
-        <Grid Margin="-25,28,-4,-3" Background="#ededed">
+        <Grid Margin="0,28,-4,-3" Background="#ededed">
             <StackPanel Height="440"  VerticalAlignment="Top" Margin="0,-2,0,0">
                 <StackPanel Orientation="Horizontal" Margin="24,10,24,0">
                     <materialDesign:PackIcon Kind="Search" FontWeight="Bold" Foreground="#2a3f54" VerticalAlignment="Bottom" Margin="0 4"/>
-                    <TextBox x:Name="txtsearch" TextChanged="txtsearch_TextChanged" Foreground="Black" Width="932" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
+                    <TextBox x:Name="txtsearch" TextChanged="txtsearch_TextChanged" Foreground="Black" Width="550" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.Foreground="#06ad75" Height="33" ></TextBox>
+                    <Button x:Name="btnDos" Content="Llave de Dosificacion" Height="30" Margin="20 20 0 0" Foreground="White" Background="#FFE63070" Click="btnDos_Click"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <DataGrid x:Name="dgvDatos" IsReadOnly="True" Background="#ededed" CanUserAddRows="False" SelectedCellsChanged="dgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="246" Margin="20,10,0,0" VerticalAlignment="Top" Width="680"/>
+                    <DataGrid x:Name="dgvDatos" IsReadOnly="True" IsEnabled="False" Background="#ededed" AutoGenerateColumns="False" CanUserAddRows="False" SelectedCellsChanged="dgvDatos_SelectedCellsChanged" HorizontalAlignment="Left" Height="350" Margin="20,10,0,0" VerticalAlignment="Top" Width="780">
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nombre Estudiante" Binding="{Binding Path='Name'}" IsReadOnly="False" />
+                            <DataGridTextColumn Header="Cuotas por pagar" Width="150" IsReadOnly="True"  Binding="{Binding Path='NO'}"></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Cuotas">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Content="Pagar" Background="#e46c8e" Foreground="White" Width="300" Click="btnView_Click"  materialDesing:ButtonAssist.CornerRadius="15" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
 
                     <StackPanel VerticalAlignment="Center" Width="299">
-                        <Image Margin="40,0,0,0" Width="200" Height="200" x:Name="imagesector"></Image>
-                        <StackPanel Orientation="Horizontal">
-                            <Button  x:Name="btnAdd" Content="Ver pagos" Foreground="White" Background="#FFE63070" Width="219" Margin="30,40,0,0" Height="32"></Button>
-                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"/>
                         <StackPanel Orientation="Horizontal"/>
 
                     </StackPanel>
@@ -37,10 +49,6 @@
             </StackPanel>
             <StackPanel Margin="0,400,0,0">
                 <StackPanel Height="40" Margin="60,40,0,0" Orientation="Horizontal">
-                    <Label Foreground="Black" FontSize="15" >Nombre del estudiante:</Label>
-                    <Label x:Name="lblnames" FontSize="15" Content="..." Width="50"></Label>
-                    <Label Foreground="Black" Margin="60,0,0,0" FontSize="15" >Pagos pendientes:</Label>
-                    <Label x:Name="lblmail" FontSize="15" Content="..." Width="250"></Label>
                     <TextBox Visibility="Hidden" x:Name="lblid"></TextBox>
                 </StackPanel>
                 <StackPanel Margin="300,10,0,0" Orientation="Horizontal">
@@ -51,4 +59,4 @@
 
         </Grid>
     </Grid>
-</Window>
+</UserControl>

@@ -40,16 +40,16 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0:1" Value="180"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <!--Maestros-->
-        <Storyboard x:Key="SubMenuOpenTeacher">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="ListTeacherItem">
+        <!--Pagos-->
+        <Storyboard x:Key="SubMenuOpenPays">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="ListPagos">
                 <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0:1" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0:1" Value="180"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <Storyboard x:Key="SubMenuCollapseTeacher">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="ListTeacherItem">
-                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+        <Storyboard x:Key="SubMenuCollapsePays">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="ListPagos">
+                <EasingDoubleKeyFrame KeyTime="0" Value="180"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0:1" Value="60"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
@@ -70,6 +70,22 @@
         <EventTrigger RoutedEvent="LostFocus" SourceName="Control1">
             <BeginStoryboard Storyboard="{StaticResource SubMenuCollapse}"/>
         </EventTrigger>
+        <!-- subMenu Pagos -->
+        <EventTrigger RoutedEvent="GotFocus" SourceName="ListPagos">
+            <BeginStoryboard Storyboard="{StaticResource SubMenuOpenPays}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="LostFocus" SourceName="ListPagos">
+            <BeginStoryboard Storyboard="{StaticResource SubMenuCollapsePays}"/>
+        </EventTrigger>
+        <!-- btnPagos -->
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Pagos">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <!-- btnFacturas-->
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Revision">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        
         <!-- btnMaterias ListTeacher -->
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="MateriasButton">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
@@ -86,9 +102,7 @@
         <EventTrigger RoutedEvent="GotFocus" SourceName="listStudent">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="GotFocus" SourceName="ListAdmin">
-            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
-        </EventTrigger>
+
         <EventTrigger RoutedEvent="GotFocus" SourceName="ListHome">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
@@ -157,7 +171,7 @@
                     </StackPanel>
 
                 </ListViewItem>
-                <ListViewItem Height="60" x:Name="ListAdmin">
+                <ListViewItem Height="60" x:Name="ListPagos">
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Width="230">
 
@@ -166,7 +180,19 @@
                             <materialDesign:PackIcon Kind="CashPlus" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
                             <TextBlock Text="Pagos" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
                         </StackPanel>
-                        <StackPanel  Height="10" Width="auto" Background="#FFE63070">
+                        <StackPanel  Width="auto" Background="#999999">
+                            <Button Height="60" Background="#FFE63070" x:Name="Pagos" Click="Pagos_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="UserBox" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                                    <TextBlock Text="Revisar Pagos" FontSize="15" Foreground="Black" VerticalAlignment="Center" Margin="20 0"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Height="60" Background="#FFE63070" x:Name="Revision" Click="Revision_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="UserAdd" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                                    <TextBlock Text="Revisar Facturas" FontSize="12" Foreground="Black" VerticalAlignment="Center" Margin="20 0"/>
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
                     </StackPanel>
                 </ListViewItem>

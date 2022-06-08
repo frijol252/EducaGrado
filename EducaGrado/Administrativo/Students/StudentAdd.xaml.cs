@@ -118,7 +118,6 @@ namespace EducaGrado.Administrativo.Students
                 image.EndInit();
                 imagesector.Source = image;
                 //pathImagePortada = ofd.FileName;
-                File.ReadAllBytes("");
             }
 
         }

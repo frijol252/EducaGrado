@@ -95,5 +95,31 @@ namespace EducaGrado.Administrativo.Home
         {
 
         }
+
+        private void Pagos_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                GridPrincipal.Children.Clear();
+                GridPrincipal.Children.Add(new EducaGrado.Administrativo.Controles.Invoice.StudentLint());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Revision_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                GridPrincipal.Children.Clear();
+                GridPrincipal.Children.Add(new EducaGrado.Administrativo.Controles.Invoice.InvoiceView());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

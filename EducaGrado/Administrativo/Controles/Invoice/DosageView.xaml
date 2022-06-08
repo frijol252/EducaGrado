@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:EducaGrado.Administrativo.Controles.Invoice"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Loaded="Window_Loaded"
        Title="DosageView"  WindowStyle="None" AllowsTransparency="True"
-        Width="727.631" Height="300">
+        Width="810.131" Height="300">
     <Grid Margin="0,0,25,61">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -35,11 +35,15 @@
                             <Label Content="Llave de dosificación:" FontWeight="Bold" Margin="20,0,20,0"></Label>
                             <TextBox x:Name="txtTest" Width="234" Height="30" VerticalAlignment="Top"></TextBox>
                         </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
+                            <Label Content="Fecha Limite de Emision:" FontWeight="Bold" Margin="20,0,20,0"></Label>
+                            <DatePicker x:Name="txtDeadLine" VerticalAlignment="Top" Foreground="Black" Width="216" FontWeight="Bold" Focusable="False" materialDesign:HintAssist.Hint="" ></DatePicker>
+                        </StackPanel>
                         <StackPanel Margin="150,10,0,0" Orientation="Horizontal">
-                            <Button x:Name="btnAddGrade" Content="Cambiar dosificación" Background="#FFE63070" Foreground="White" IsEnabled="True"  Height="30" Width="242"></Button>
+                            <Button x:Name="btnAddGrade" Content="Cambiar dosificación" Background="#FFE63070" Foreground="White" IsEnabled="True"  Height="30" Width="242" Click="btnAddGrade_Click"></Button>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                    <StackPanel Orientation="Vertical" Margin="20,0,0,0" Width="366">
                         <StackPanel Margin="10,0,0,5" Orientation="Horizontal">
                             <Label Content="Actual Nro Authorization:"></Label>
                         </StackPanel>
@@ -52,6 +56,12 @@
                         </StackPanel>
                         <StackPanel Margin="10,0,0,30" Orientation="Horizontal">
                             <Label x:Name="lbldosageKey"></Label>
+                        </StackPanel>
+                        <StackPanel Margin="10,0,0,5" Orientation="Horizontal">
+                            <Label Content="Fecha Limite de Emision Actual:"></Label>
+                        </StackPanel>
+                        <StackPanel Margin="10,0,0,30" Orientation="Horizontal">
+                            <Label x:Name="lbldeadline"></Label>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>

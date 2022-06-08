@@ -5,49 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:EducaGrado.Administrativo.Controles.Invoice"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Loaded="Window_Loaded"
          Title="PaymentView" Height="550" Width="950" WindowStyle="None" AllowsTransparency="True">
     <Grid>
         <Grid Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#06ad75" Margin="0,0,1,0">
-            <Button x:Name="btnClose" Padding="0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible">
+            <Button x:Name="btnClose" Padding="0" Click="btnClose_Click" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible">
                 <materialDesign:PackIcon Kind="Close" Foreground="White"/>
             </Button>
         </Grid>
         <Grid Margin="0,31,0,0" Background="#ededed">
             <StackPanel Orientation="Horizontal">
                 <StackPanel Width="300">
-                    <StackPanel  Orientation="Vertical" Height="166" Margin="10,10,0,0">
+                    <StackPanel  Orientation="Vertical" Height="88" Margin="10,100,0,0">
                         <StackPanel Orientation="Horizontal"  Margin="10,10,0,0">
                             <Label Content="NIT/CI:" Margin="0,0,45,0"></Label>
-                            <TextBox x:Name="txtnit" Width="164" LostFocus="txtnit_LostFocus"></TextBox>
+                            <TextBox x:Name="txtnit" Width="164"  KeyDown="txtnit_KeyDown"></TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal"  Margin="10,10,0,0">
                             <Label Content="Razon social:"></Label>
                             <Label x:Name="lblbuss" Content=""></Label>
-                            <TextBox x:Name="txtBuss" Width="0"></TextBox>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                            <Button x:Name="btnSelectSubject" Width="150" Content="seleccionar NIT/CI" Height="40" Margin="70 20 0 0" Foreground="White" Background="#FFE63070"></Button>
-                            <Button x:Name="btnAdd"  Content="Add NIT/CI" Height="0" Width="0" Margin="10 20 0 0" Foreground="White" Background="#FFE63070"></Button>
 
-                        </StackPanel>
                     </StackPanel>
-
-                    <StackPanel Orientation="Vertical" Height="292"  Margin="20,0,22,10">
-                        <Label Content="Pagos:" Margin="0,0,0,10"></Label>
-                        <ListBox x:Name="lstSubs" Width="261" Margin="0,0,-3,42" Height="247"/>
-                    </StackPanel>
-
                 </StackPanel>
                 <StackPanel>
                     <!-- INSERT -->
                     <StackPanel x:Name="Insestack" Background="#ededed" Margin="30 0 30 0" Height="514" Orientation="Vertical" VerticalAlignment="Top">
 
                         <StackPanel Orientation="Horizontal" Height="287"  Margin="10 10 0 10" Width="520">
-                            <DataGrid x:Name="dgvSub" IsReadOnly="True" Background="#ededed" IsEnabled="True" SelectedCellsChanged="dgvSub_SelectedCellsChanged" CanUserAddRows="False" HorizontalAlignment="Left" Height="260" Margin="0,20,0,0" VerticalAlignment="Top" Width="472"/>
+                            <DataGrid x:Name="dgvSub" IsReadOnly="True" AutoGenerateColumns="False" Background="#ededed" IsEnabled="True" SelectedCellsChanged="dgvSub_SelectedCellsChanged" CanUserAddRows="False" HorizontalAlignment="Left" Height="260" Margin="0,20,0,0" VerticalAlignment="Top" Width="472">
+                                <DataGrid.Columns>
+
+                                    <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Seleccionado" Width="120" Binding="{Binding Path='Selected'}" IsReadOnly="False" />
+                                    <DataGridTextColumn Header="Monto" Width="100" IsReadOnly="True"  Binding="{Binding Path='Monto'}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Saldo" Width="100" IsReadOnly="True"  Binding="{Binding Path='Saldo'}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="FeachaLimite" Width="150" IsReadOnly="True"  Binding="{Binding Path='FeachaLimite'}"></DataGridTextColumn>
+                                    
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="50 0 60 0">
-                            <Button x:Name="Add" IsEnabled="False" Content="Agregar horario" Height="40" Margin="0 20 0 0" Foreground="White" Background="#FFE63070"/>
 
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
@@ -56,12 +54,12 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Content="Monto" Margin="30,0,20,0" Height="32"></Label>
-                                    <TextBox x:Name="txtamount" Width="164" Height="32"></TextBox>
+                                    <TextBox x:Name="txtamount" Width="164" TextChanged="txtamount_TextChanged" Height="32"></TextBox>
                                 </StackPanel>
 
                             </StackPanel>
 
-                            <Button x:Name="Addsubject" IsEnabled="False" Content="Agregar clase" Height="40" Margin="20 20 0 0" Foreground="White" Background="#FFE63070"></Button>
+                            <Button x:Name="Addsubject" Content="Agregar clase" Height="40" Margin="20 20 0 0" Foreground="White" Background="#FFE63070" Click="Addsubject_Click"></Button>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="50 10 60 0">
