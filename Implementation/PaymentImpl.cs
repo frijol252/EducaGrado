@@ -31,6 +31,7 @@ namespace Implementation
         {
             throw new NotImplementedException();
         }
+        /*
         public int InsertTransact(List<Fee> listfee, double total,int idpayer)
         {
             string queryFees = @"UPDATE Fee SET Balance = (Balance + @Balance) where FeeId =@FeeId";
@@ -76,5 +77,6 @@ namespace Implementation
                 return 0;
             }
         }
+        */
     }
 }
