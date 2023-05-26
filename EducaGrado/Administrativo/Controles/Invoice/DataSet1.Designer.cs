@@ -20,17 +20,17 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DatosInvoice")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DataSet1")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DatosInvoice : global::System.Data.DataSet {
+    public partial class DataSet1 : global::System.Data.DataSet {
         
-        private INVOICEVIEWDataTable tableINVOICEVIEW;
+        private InvoiceTableDataTable tableInvoiceTable;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public DatosInvoice() {
+        public DataSet1() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected DatosInvoice(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["INVOICEVIEW"] != null)) {
-                    base.Tables.Add(new INVOICEVIEWDataTable(ds.Tables["INVOICEVIEW"]));
+                if ((ds.Tables["InvoiceTable"] != null)) {
+                    base.Tables.Add(new InvoiceTableDataTable(ds.Tables["InvoiceTable"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public INVOICEVIEWDataTable INVOICEVIEW {
+        public InvoiceTableDataTable InvoiceTable {
             get {
-                return this.tableINVOICEVIEW;
+                return this.tableInvoiceTable;
             }
         }
         
@@ -127,7 +127,7 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DatosInvoice cln = ((DatosInvoice)(base.Clone()));
+            DataSet1 cln = ((DataSet1)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["INVOICEVIEW"] != null)) {
-                    base.Tables.Add(new INVOICEVIEWDataTable(ds.Tables["INVOICEVIEW"]));
+                if ((ds.Tables["InvoiceTable"] != null)) {
+                    base.Tables.Add(new InvoiceTableDataTable(ds.Tables["InvoiceTable"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableINVOICEVIEW = ((INVOICEVIEWDataTable)(base.Tables["INVOICEVIEW"]));
+            this.tableInvoiceTable = ((InvoiceTableDataTable)(base.Tables["InvoiceTable"]));
             if ((initTable == true)) {
-                if ((this.tableINVOICEVIEW != null)) {
-                    this.tableINVOICEVIEW.InitVars();
+                if ((this.tableInvoiceTable != null)) {
+                    this.tableInvoiceTable.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DatosInvoice";
+            this.DataSetName = "DataSet1";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DatosInvoice.xsd";
+            this.Namespace = "http://tempuri.org/DataSet1.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableINVOICEVIEW = new INVOICEVIEWDataTable();
-            base.Tables.Add(this.tableINVOICEVIEW);
+            this.tableInvoiceTable = new InvoiceTableDataTable();
+            base.Tables.Add(this.tableInvoiceTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeINVOICEVIEW() {
+        private bool ShouldSerializeInvoiceTable() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DatosInvoice ds = new DatosInvoice();
+            DataSet1 ds = new DataSet1();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,14 +270,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void INVOICEVIEWRowChangeEventHandler(object sender, INVOICEVIEWRowChangeEvent e);
+        public delegate void InvoiceTableRowChangeEventHandler(object sender, InvoiceTableRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class INVOICEVIEWDataTable : global::System.Data.TypedTableBase<INVOICEVIEWRow> {
+        public partial class InvoiceTableDataTable : global::System.Data.TypedTableBase<InvoiceTableRow> {
             
             private global::System.Data.DataColumn columnFullName;
             
@@ -297,22 +297,22 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             
             private global::System.Data.DataColumn columnDeadLine;
             
-            private global::System.Data.DataColumn columnLiteralAmount;
-            
             private global::System.Data.DataColumn columnAmountTotal;
             
             private global::System.Data.DataColumn columnDetail;
             
             private global::System.Data.DataColumn columnAmount;
             
-            private global::System.Data.DataColumn columnQR;
+            private global::System.Data.DataColumn columnLiteralAmount;
             
             private global::System.Data.DataColumn columnPayer;
             
+            private global::System.Data.DataColumn columnQR;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public INVOICEVIEWDataTable() {
-                this.TableName = "INVOICEVIEW";
+            public InvoiceTableDataTable() {
+                this.TableName = "InvoiceTable";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -320,7 +320,7 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal INVOICEVIEWDataTable(global::System.Data.DataTable table) {
+            internal InvoiceTableDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -337,7 +337,7 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected INVOICEVIEWDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected InvoiceTableDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -416,14 +416,6 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn LiteralAmountColumn {
-                get {
-                    return this.columnLiteralAmount;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn AmountTotalColumn {
                 get {
                     return this.columnAmountTotal;
@@ -448,9 +440,9 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn QRColumn {
+            public global::System.Data.DataColumn LiteralAmountColumn {
                 get {
-                    return this.columnQR;
+                    return this.columnLiteralAmount;
                 }
             }
             
@@ -459,6 +451,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public global::System.Data.DataColumn PayerColumn {
                 get {
                     return this.columnPayer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn QRColumn {
+                get {
+                    return this.columnQR;
                 }
             }
             
@@ -473,34 +473,34 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public INVOICEVIEWRow this[int index] {
+            public InvoiceTableRow this[int index] {
                 get {
-                    return ((INVOICEVIEWRow)(this.Rows[index]));
+                    return ((InvoiceTableRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event INVOICEVIEWRowChangeEventHandler INVOICEVIEWRowChanging;
+            public event InvoiceTableRowChangeEventHandler InvoiceTableRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event INVOICEVIEWRowChangeEventHandler INVOICEVIEWRowChanged;
+            public event InvoiceTableRowChangeEventHandler InvoiceTableRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event INVOICEVIEWRowChangeEventHandler INVOICEVIEWRowDeleting;
+            public event InvoiceTableRowChangeEventHandler InvoiceTableRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event INVOICEVIEWRowChangeEventHandler INVOICEVIEWRowDeleted;
+            public event InvoiceTableRowChangeEventHandler InvoiceTableRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddINVOICEVIEWRow(INVOICEVIEWRow row) {
+            public void AddInvoiceTableRow(InvoiceTableRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public INVOICEVIEWRow AddINVOICEVIEWRow(string FullName, string BusinessName, string NIT, string DateLiteral, string Code, string NroInvoice, string NroAutorizacion, string ControlCode, string DeadLine, string LiteralAmount, string AmountTotal, string Detail, string Amount, string QR, string Payer) {
-                INVOICEVIEWRow rowINVOICEVIEWRow = ((INVOICEVIEWRow)(this.NewRow()));
+            public InvoiceTableRow AddInvoiceTableRow(string FullName, string BusinessName, string NIT, string DateLiteral, string Code, string NroInvoice, string NroAutorizacion, string ControlCode, string DeadLine, string AmountTotal, string Detail, string Amount, string LiteralAmount, string Payer, string QR) {
+                InvoiceTableRow rowInvoiceTableRow = ((InvoiceTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         FullName,
                         BusinessName,
@@ -511,21 +511,21 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
                         NroAutorizacion,
                         ControlCode,
                         DeadLine,
-                        LiteralAmount,
                         AmountTotal,
                         Detail,
                         Amount,
-                        QR,
-                        Payer};
-                rowINVOICEVIEWRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowINVOICEVIEWRow);
-                return rowINVOICEVIEWRow;
+                        LiteralAmount,
+                        Payer,
+                        QR};
+                rowInvoiceTableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowInvoiceTableRow);
+                return rowInvoiceTableRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                INVOICEVIEWDataTable cln = ((INVOICEVIEWDataTable)(base.Clone()));
+                InvoiceTableDataTable cln = ((InvoiceTableDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -533,7 +533,7 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new INVOICEVIEWDataTable();
+                return new InvoiceTableDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -548,12 +548,12 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
                 this.columnNroAutorizacion = base.Columns["NroAutorizacion"];
                 this.columnControlCode = base.Columns["ControlCode"];
                 this.columnDeadLine = base.Columns["DeadLine"];
-                this.columnLiteralAmount = base.Columns["LiteralAmount"];
                 this.columnAmountTotal = base.Columns["AmountTotal"];
                 this.columnDetail = base.Columns["Detail"];
                 this.columnAmount = base.Columns["Amount"];
-                this.columnQR = base.Columns["QR"];
+                this.columnLiteralAmount = base.Columns["LiteralAmount"];
                 this.columnPayer = base.Columns["Payer"];
+                this.columnQR = base.Columns["QR"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -577,44 +577,44 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
                 base.Columns.Add(this.columnControlCode);
                 this.columnDeadLine = new global::System.Data.DataColumn("DeadLine", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDeadLine);
-                this.columnLiteralAmount = new global::System.Data.DataColumn("LiteralAmount", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLiteralAmount);
                 this.columnAmountTotal = new global::System.Data.DataColumn("AmountTotal", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAmountTotal);
                 this.columnDetail = new global::System.Data.DataColumn("Detail", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDetail);
                 this.columnAmount = new global::System.Data.DataColumn("Amount", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAmount);
-                this.columnQR = new global::System.Data.DataColumn("QR", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQR);
+                this.columnLiteralAmount = new global::System.Data.DataColumn("LiteralAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLiteralAmount);
                 this.columnPayer = new global::System.Data.DataColumn("Payer", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPayer);
+                this.columnQR = new global::System.Data.DataColumn("QR", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQR);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public INVOICEVIEWRow NewINVOICEVIEWRow() {
-                return ((INVOICEVIEWRow)(this.NewRow()));
+            public InvoiceTableRow NewInvoiceTableRow() {
+                return ((InvoiceTableRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new INVOICEVIEWRow(builder);
+                return new InvoiceTableRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(INVOICEVIEWRow);
+                return typeof(InvoiceTableRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.INVOICEVIEWRowChanged != null)) {
-                    this.INVOICEVIEWRowChanged(this, new INVOICEVIEWRowChangeEvent(((INVOICEVIEWRow)(e.Row)), e.Action));
+                if ((this.InvoiceTableRowChanged != null)) {
+                    this.InvoiceTableRowChanged(this, new InvoiceTableRowChangeEvent(((InvoiceTableRow)(e.Row)), e.Action));
                 }
             }
             
@@ -622,8 +622,8 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.INVOICEVIEWRowChanging != null)) {
-                    this.INVOICEVIEWRowChanging(this, new INVOICEVIEWRowChangeEvent(((INVOICEVIEWRow)(e.Row)), e.Action));
+                if ((this.InvoiceTableRowChanging != null)) {
+                    this.InvoiceTableRowChanging(this, new InvoiceTableRowChangeEvent(((InvoiceTableRow)(e.Row)), e.Action));
                 }
             }
             
@@ -631,8 +631,8 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.INVOICEVIEWRowDeleted != null)) {
-                    this.INVOICEVIEWRowDeleted(this, new INVOICEVIEWRowChangeEvent(((INVOICEVIEWRow)(e.Row)), e.Action));
+                if ((this.InvoiceTableRowDeleted != null)) {
+                    this.InvoiceTableRowDeleted(this, new InvoiceTableRowChangeEvent(((InvoiceTableRow)(e.Row)), e.Action));
                 }
             }
             
@@ -640,14 +640,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.INVOICEVIEWRowDeleting != null)) {
-                    this.INVOICEVIEWRowDeleting(this, new INVOICEVIEWRowChangeEvent(((INVOICEVIEWRow)(e.Row)), e.Action));
+                if ((this.InvoiceTableRowDeleting != null)) {
+                    this.InvoiceTableRowDeleting(this, new InvoiceTableRowChangeEvent(((InvoiceTableRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveINVOICEVIEWRow(INVOICEVIEWRow row) {
+            public void RemoveInvoiceTableRow(InvoiceTableRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -656,7 +656,7 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DatosInvoice ds = new DatosInvoice();
+                DataSet1 ds = new DataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -674,7 +674,7 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "INVOICEVIEWDataTable";
+                attribute2.FixedValue = "InvoiceTableDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -718,15 +718,15 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class INVOICEVIEWRow : global::System.Data.DataRow {
+        public partial class InvoiceTableRow : global::System.Data.DataRow {
             
-            private INVOICEVIEWDataTable tableINVOICEVIEW;
+            private InvoiceTableDataTable tableInvoiceTable;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal INVOICEVIEWRow(global::System.Data.DataRowBuilder rb) : 
+            internal InvoiceTableRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableINVOICEVIEW = ((INVOICEVIEWDataTable)(this.Table));
+                this.tableInvoiceTable = ((InvoiceTableDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -734,14 +734,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string FullName {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.FullNameColumn]));
+                        return ((string)(this[this.tableInvoiceTable.FullNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FullName\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FullName\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.FullNameColumn] = value;
+                    this[this.tableInvoiceTable.FullNameColumn] = value;
                 }
             }
             
@@ -750,14 +750,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string BusinessName {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.BusinessNameColumn]));
+                        return ((string)(this[this.tableInvoiceTable.BusinessNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'BusinessName\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'BusinessName\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.BusinessNameColumn] = value;
+                    this[this.tableInvoiceTable.BusinessNameColumn] = value;
                 }
             }
             
@@ -766,14 +766,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string NIT {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.NITColumn]));
+                        return ((string)(this[this.tableInvoiceTable.NITColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NIT\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NIT\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.NITColumn] = value;
+                    this[this.tableInvoiceTable.NITColumn] = value;
                 }
             }
             
@@ -782,14 +782,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string DateLiteral {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.DateLiteralColumn]));
+                        return ((string)(this[this.tableInvoiceTable.DateLiteralColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DateLiteral\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DateLiteral\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.DateLiteralColumn] = value;
+                    this[this.tableInvoiceTable.DateLiteralColumn] = value;
                 }
             }
             
@@ -798,14 +798,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string Code {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.CodeColumn]));
+                        return ((string)(this[this.tableInvoiceTable.CodeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Code\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Code\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.CodeColumn] = value;
+                    this[this.tableInvoiceTable.CodeColumn] = value;
                 }
             }
             
@@ -814,14 +814,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string NroInvoice {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.NroInvoiceColumn]));
+                        return ((string)(this[this.tableInvoiceTable.NroInvoiceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NroInvoice\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NroInvoice\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.NroInvoiceColumn] = value;
+                    this[this.tableInvoiceTable.NroInvoiceColumn] = value;
                 }
             }
             
@@ -830,14 +830,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string NroAutorizacion {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.NroAutorizacionColumn]));
+                        return ((string)(this[this.tableInvoiceTable.NroAutorizacionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NroAutorizacion\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NroAutorizacion\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.NroAutorizacionColumn] = value;
+                    this[this.tableInvoiceTable.NroAutorizacionColumn] = value;
                 }
             }
             
@@ -846,14 +846,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string ControlCode {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.ControlCodeColumn]));
+                        return ((string)(this[this.tableInvoiceTable.ControlCodeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ControlCode\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ControlCode\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.ControlCodeColumn] = value;
+                    this[this.tableInvoiceTable.ControlCodeColumn] = value;
                 }
             }
             
@@ -862,30 +862,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string DeadLine {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.DeadLineColumn]));
+                        return ((string)(this[this.tableInvoiceTable.DeadLineColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DeadLine\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DeadLine\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.DeadLineColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string LiteralAmount {
-                get {
-                    try {
-                        return ((string)(this[this.tableINVOICEVIEW.LiteralAmountColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'LiteralAmount\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableINVOICEVIEW.LiteralAmountColumn] = value;
+                    this[this.tableInvoiceTable.DeadLineColumn] = value;
                 }
             }
             
@@ -894,14 +878,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string AmountTotal {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.AmountTotalColumn]));
+                        return ((string)(this[this.tableInvoiceTable.AmountTotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'AmountTotal\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'AmountTotal\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.AmountTotalColumn] = value;
+                    this[this.tableInvoiceTable.AmountTotalColumn] = value;
                 }
             }
             
@@ -910,14 +894,14 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string Detail {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.DetailColumn]));
+                        return ((string)(this[this.tableInvoiceTable.DetailColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Detail\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Detail\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.DetailColumn] = value;
+                    this[this.tableInvoiceTable.DetailColumn] = value;
                 }
             }
             
@@ -926,30 +910,30 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string Amount {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.AmountColumn]));
+                        return ((string)(this[this.tableInvoiceTable.AmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Amount\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Amount\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.AmountColumn] = value;
+                    this[this.tableInvoiceTable.AmountColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string QR {
+            public string LiteralAmount {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.QRColumn]));
+                        return ((string)(this[this.tableInvoiceTable.LiteralAmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'QR\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'LiteralAmount\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.QRColumn] = value;
+                    this[this.tableInvoiceTable.LiteralAmountColumn] = value;
                 }
             }
             
@@ -958,195 +942,211 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
             public string Payer {
                 get {
                     try {
-                        return ((string)(this[this.tableINVOICEVIEW.PayerColumn]));
+                        return ((string)(this[this.tableInvoiceTable.PayerColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Payer\' de la tabla \'INVOICEVIEW\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Payer\' de la tabla \'InvoiceTable\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableINVOICEVIEW.PayerColumn] = value;
+                    this[this.tableInvoiceTable.PayerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string QR {
+                get {
+                    try {
+                        return ((string)(this[this.tableInvoiceTable.QRColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'QR\' de la tabla \'InvoiceTable\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInvoiceTable.QRColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsFullNameNull() {
-                return this.IsNull(this.tableINVOICEVIEW.FullNameColumn);
+                return this.IsNull(this.tableInvoiceTable.FullNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetFullNameNull() {
-                this[this.tableINVOICEVIEW.FullNameColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.FullNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsBusinessNameNull() {
-                return this.IsNull(this.tableINVOICEVIEW.BusinessNameColumn);
+                return this.IsNull(this.tableInvoiceTable.BusinessNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetBusinessNameNull() {
-                this[this.tableINVOICEVIEW.BusinessNameColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.BusinessNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsNITNull() {
-                return this.IsNull(this.tableINVOICEVIEW.NITColumn);
+                return this.IsNull(this.tableInvoiceTable.NITColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetNITNull() {
-                this[this.tableINVOICEVIEW.NITColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.NITColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDateLiteralNull() {
-                return this.IsNull(this.tableINVOICEVIEW.DateLiteralColumn);
+                return this.IsNull(this.tableInvoiceTable.DateLiteralColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetDateLiteralNull() {
-                this[this.tableINVOICEVIEW.DateLiteralColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.DateLiteralColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCodeNull() {
-                return this.IsNull(this.tableINVOICEVIEW.CodeColumn);
+                return this.IsNull(this.tableInvoiceTable.CodeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCodeNull() {
-                this[this.tableINVOICEVIEW.CodeColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.CodeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsNroInvoiceNull() {
-                return this.IsNull(this.tableINVOICEVIEW.NroInvoiceColumn);
+                return this.IsNull(this.tableInvoiceTable.NroInvoiceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetNroInvoiceNull() {
-                this[this.tableINVOICEVIEW.NroInvoiceColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.NroInvoiceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsNroAutorizacionNull() {
-                return this.IsNull(this.tableINVOICEVIEW.NroAutorizacionColumn);
+                return this.IsNull(this.tableInvoiceTable.NroAutorizacionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetNroAutorizacionNull() {
-                this[this.tableINVOICEVIEW.NroAutorizacionColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.NroAutorizacionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsControlCodeNull() {
-                return this.IsNull(this.tableINVOICEVIEW.ControlCodeColumn);
+                return this.IsNull(this.tableInvoiceTable.ControlCodeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetControlCodeNull() {
-                this[this.tableINVOICEVIEW.ControlCodeColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.ControlCodeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDeadLineNull() {
-                return this.IsNull(this.tableINVOICEVIEW.DeadLineColumn);
+                return this.IsNull(this.tableInvoiceTable.DeadLineColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetDeadLineNull() {
-                this[this.tableINVOICEVIEW.DeadLineColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsLiteralAmountNull() {
-                return this.IsNull(this.tableINVOICEVIEW.LiteralAmountColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetLiteralAmountNull() {
-                this[this.tableINVOICEVIEW.LiteralAmountColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.DeadLineColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsAmountTotalNull() {
-                return this.IsNull(this.tableINVOICEVIEW.AmountTotalColumn);
+                return this.IsNull(this.tableInvoiceTable.AmountTotalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetAmountTotalNull() {
-                this[this.tableINVOICEVIEW.AmountTotalColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.AmountTotalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDetailNull() {
-                return this.IsNull(this.tableINVOICEVIEW.DetailColumn);
+                return this.IsNull(this.tableInvoiceTable.DetailColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetDetailNull() {
-                this[this.tableINVOICEVIEW.DetailColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.DetailColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsAmountNull() {
-                return this.IsNull(this.tableINVOICEVIEW.AmountColumn);
+                return this.IsNull(this.tableInvoiceTable.AmountColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetAmountNull() {
-                this[this.tableINVOICEVIEW.AmountColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.AmountColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsQRNull() {
-                return this.IsNull(this.tableINVOICEVIEW.QRColumn);
+            public bool IsLiteralAmountNull() {
+                return this.IsNull(this.tableInvoiceTable.LiteralAmountColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetQRNull() {
-                this[this.tableINVOICEVIEW.QRColumn] = global::System.Convert.DBNull;
+            public void SetLiteralAmountNull() {
+                this[this.tableInvoiceTable.LiteralAmountColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsPayerNull() {
-                return this.IsNull(this.tableINVOICEVIEW.PayerColumn);
+                return this.IsNull(this.tableInvoiceTable.PayerColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetPayerNull() {
-                this[this.tableINVOICEVIEW.PayerColumn] = global::System.Convert.DBNull;
+                this[this.tableInvoiceTable.PayerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsQRNull() {
+                return this.IsNull(this.tableInvoiceTable.QRColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetQRNull() {
+                this[this.tableInvoiceTable.QRColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1154,22 +1154,22 @@ namespace EducaGrado.Administrativo.Controles.Invoice {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class INVOICEVIEWRowChangeEvent : global::System.EventArgs {
+        public class InvoiceTableRowChangeEvent : global::System.EventArgs {
             
-            private INVOICEVIEWRow eventRow;
+            private InvoiceTableRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public INVOICEVIEWRowChangeEvent(INVOICEVIEWRow row, global::System.Data.DataRowAction action) {
+            public InvoiceTableRowChangeEvent(InvoiceTableRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public INVOICEVIEWRow Row {
+            public InvoiceTableRow Row {
                 get {
                     return this.eventRow;
                 }

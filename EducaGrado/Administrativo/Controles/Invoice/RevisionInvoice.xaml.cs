@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Implementation;
 
 namespace EducaGrado.Administrativo.Controles.Invoice
 {
@@ -19,9 +22,29 @@ namespace EducaGrado.Administrativo.Controles.Invoice
     /// </summary>
     public partial class RevisionInvoice : Window
     {
-        public RevisionInvoice()
+        int idInvoice;
+        public RevisionInvoice(int idInvoice)
         {
             InitializeComponent();
+            this.idInvoice = idInvoice;
+        }
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+
+        }
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        InvoiceImpl invoiceImpl;
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            invoiceImpl = new InvoiceImpl();
+            DataTable datos = invoiceImpl.Select(idInvoice);
+            InvoiceReport report = new InvoiceReport();
+            report.Database.Tables["InvoiceTable"].SetDataSource(datos);
+            crsInvoice.ViewerCore.ReportSource = report;
         }
     }
 }

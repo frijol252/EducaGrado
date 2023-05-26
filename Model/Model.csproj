@@ -53,6 +53,7 @@
     <Compile Include="Fee.cs" />
     <Compile Include="Grade.cs" />
     <Compile Include="Invoice.cs" />
+    <Compile Include="InvoicePayed.cs" />
     <Compile Include="Matter.cs" />
     <Compile Include="Modality.cs" />
     <Compile Include="Payer.cs" />

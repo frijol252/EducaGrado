@@ -17,6 +17,7 @@ namespace Model
         DateTime updateDate;
         DateTime registrationDate;
         int idPayer;
+        string literal;
         public Invoice()
         {
 
@@ -31,9 +32,10 @@ namespace Model
         public DateTime UpdateDate { get => updateDate; set => updateDate = value; }
         public DateTime RegistrationDate { get => registrationDate; set => registrationDate = value; }
         public int IdPayer { get => idPayer; set => idPayer = value; }
-        
-        public Invoice(int invoideId, double amount, int nroInvoice, string controlCode, int idDosage, string status, DateTime updateDate, DateTime registrationDate, int idPayer)
+        public string Literal { get => literal; set => literal= value; }
+        public Invoice(int invoideId, double amount, int nroInvoice, string controlCode, int idDosage, string status, DateTime updateDate, DateTime registrationDate, int idPayer, string literal)
         {
+            this.Literal = literal;
             this.InvoideId = invoideId;
             this.Amount = amount;
             this.NroInvoice = nroInvoice;

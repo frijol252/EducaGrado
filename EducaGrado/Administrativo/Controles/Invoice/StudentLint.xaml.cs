@@ -87,7 +87,8 @@ namespace EducaGrado.Administrativo.Controles.Invoice
                 DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
 
                 int id = int.Parse(dataRowView[0].ToString());
-                PaymentView paymentView = new PaymentView(id);
+                string name = dataRowView[1].ToString();
+                PaymentView paymentView = new PaymentView(id,name);
                 paymentView.Show();
             }
             catch (Exception ex)

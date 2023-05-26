@@ -4,6 +4,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,11 +17,12 @@ namespace EducaGrado.Administrativo.Controles.Invoice
     public partial class PaymentView : Window
     {
         int idStudent;
-        public PaymentView(int idStudent)
+        string studentName;
+        public PaymentView(int idStudent,string name)
         {
             InitializeComponent();
             this.idStudent = idStudent;
-            
+            this.studentName = name;
         }
         Payer payer;
         PayerImpl payerImpl;
@@ -135,7 +137,7 @@ namespace EducaGrado.Administrativo.Controles.Invoice
         {
             LoadDataGrid();
         }
-
+        
         private void Addsubject_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -144,7 +146,16 @@ namespace EducaGrado.Administrativo.Controles.Invoice
                 {
                     if (llenar())
                     {
+                        setDosage();
+                        Model.Invoice invoice = generarinvoice();
+                        PaymentImpl payment = new PaymentImpl();
+                        payment.InsertTransact(idFees, generarinvoice());
+                        MsgBox.Show("Se registro el pago", "", MsgBox.Buttons.OK, MsgBox.Icon.Info);
+                        int a = DBImplementation.GetIdentityFromTable("Invoice")- DBImplementation.GetIncementFromTable("Invoice");
                         
+                        RevisionInvoice revision = new RevisionInvoice(a);
+                        revision.Show();
+                        this.Close();
                     }
                 }
             }
@@ -153,6 +164,10 @@ namespace EducaGrado.Administrativo.Controles.Invoice
                 MsgBox.Show("Comuniquese con el equipo de educa error"+ex.Message, "Atencion", MsgBox.Buttons.OK, MsgBox.Icon.Error);
             }
         }
+       /* private InvoicePayed datos()
+        {
+            
+        }*/
         private bool llenar()
         {
             double amount = Convert.ToDouble(txtamount.Text.Replace(",", "."));
@@ -163,10 +178,12 @@ namespace EducaGrado.Administrativo.Controles.Invoice
                     if (amount >= fee.Balance)
                     {
                         amount = amount - fee.Balance;
+                        fee.Status = 0;
                     }
                     else
                     {
                         fee.Balance = amount;
+                        fee.Status = 1;
                     }
                 }
                 else
@@ -181,9 +198,11 @@ namespace EducaGrado.Administrativo.Controles.Invoice
         {
             bool validacion = false;
             double monto = 0;
-            if(!string.IsNullOrEmpty(txtamount.Text.Replace(",", ".")))
+            if(!string.IsNullOrEmpty(txtamount.Text))
             {
-                monto= Convert.ToDouble(txtamount.Text.Replace(",", "."));
+                string revisionamount = txtamount.Text.Replace(",", ".");
+                
+                monto = Double.Parse(revisionamount, CultureInfo.InvariantCulture);
             }
 
             if (idpayer != 0) 
@@ -232,6 +251,43 @@ namespace EducaGrado.Administrativo.Controles.Invoice
                     totalfinal += Convert.ToDouble(row[2].ToString());
                 }
             }
+        }
+        Dosage dosage;
+        DosageImpl dosageImpl;
+        
+        public Model.Invoice generarinvoice()
+        {
+            string revisionamount = txtamount.Text.Replace(",", ".");
+            Model.Invoice invoice = new Model.Invoice();
+            invoice.Amount = Double.Parse(revisionamount, CultureInfo.InvariantCulture);
+            invoice.NroInvoice = dosage.FinalNumber + 1;
+            invoice.ControlCode = retCodeControl();
+            invoice.IdDosage = dosage.DosageId;
+            invoice.IdPayer = idpayer;
+            invoice.Literal = LiteralClass.NumeroALetras(Decimal.Parse(revisionamount.Replace(".",",")));
+            
+            return invoice;
+        }
+        public void setDosage()
+        {
+            dosage = new Dosage();
+            dosageImpl = new DosageImpl();
+            dosage = dosageImpl.GET();
+        }
+        public string retCodeControl()
+        {
+            
+            return ControlCode.generateControlCode(dosage.NroAutorization,
+                            dosage.FinalNumber.ToString(),
+                            idpayer.ToString(),
+                            "" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day,
+                            totalfinal.ToString(),
+                            dosage.DosageKey);
+        }
+
+        private void txtnit_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

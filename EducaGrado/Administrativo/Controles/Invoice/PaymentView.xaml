@@ -19,7 +19,7 @@
                     <StackPanel  Orientation="Vertical" Height="88" Margin="10,100,0,0">
                         <StackPanel Orientation="Horizontal"  Margin="10,10,0,0">
                             <Label Content="NIT/CI:" Margin="0,0,45,0"></Label>
-                            <TextBox x:Name="txtnit" Width="164"  KeyDown="txtnit_KeyDown"></TextBox>
+                            <TextBox x:Name="txtnit" Width="164"  KeyDown="txtnit_KeyDown" Cursor="Arrow" ></TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal"  Margin="10,10,0,0">
                             <Label Content="Razon social:"></Label>

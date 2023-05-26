@@ -46,6 +46,11 @@
     <Compile Include="CategoryMatterImpl.cs" />
     <Compile Include="CityImpl.cs" />
     <Compile Include="ClassImpl.cs" />
+    <Compile Include="CodeControl\AllegedRC4.cs" />
+    <Compile Include="CodeControl\Base64SIN.cs" />
+    <Compile Include="CodeControl\ControlCode.cs" />
+    <Compile Include="CodeControl\LiteralClass.cs" />
+    <Compile Include="CodeControl\Verhoeff.cs" />
     <Compile Include="CourseImpl.cs" />
     <Compile Include="DBImplementation.cs" />
     <Compile Include="DosageImpl.cs" />
