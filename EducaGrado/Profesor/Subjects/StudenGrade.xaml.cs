@@ -92,6 +92,8 @@ namespace EducaGrado.Profesor.Subjects
             grades = gradeImpl.SelectTeacher(classid,Typeclass);
             gradetotal.Columns.Add(new DataColumn("ID"));
             gradetotal.Columns.Add(new DataColumn("Name"));
+            gradetotal.Columns.Add(new DataColumn("Promedio"));
+            gradetotal.Columns.Add(new DataColumn("PromedioCrip"));
             foreach (DataRow d in modality.Rows)
             {
                 numbergrades = int.Parse(d[0].ToString());
@@ -107,9 +109,11 @@ namespace EducaGrado.Profesor.Subjects
                 dgvDatos.Columns.Add(CreateTextBoxColumn("Examen" + i));
                 gradetotal.Columns.Add(new DataColumn("Examen" + i));
             }
-            
-            int count = 1;
+
+            int count = 1, contadornot = 0,contadornot2=0 ;
             DataRow row1 = gradetotal.NewRow();
+            int promedio = 0, promedio2 = 0;
+            
             foreach (DataRow d in grades.Rows)
             {
                 if (count == 1)
@@ -122,19 +126,42 @@ namespace EducaGrado.Profesor.Subjects
                     
                     row1["Practica"+count] = d[1].ToString();
                     list.Add(int.Parse(d[2].ToString()));
-
+                    string mensajeprom = (d[1].ToString()).Substring(0, d[1].ToString().IndexOf(","));
+                    promedio = promedio+int.Parse(mensajeprom);
+                    if (mensajeprom != "0")
+                    {
+                        contadornot++;
+                    }
                 }
                 if(count>numbergrades && count<= (numbergrades + numbertest))
                 {
                     row1["Examen" + (count-numbergrades)] = d[1].ToString();
                     list.Add(int.Parse(d[2].ToString()));
+                    string mensajeprom = (d[1].ToString()).Substring(0, d[1].ToString().IndexOf(","));
+                    promedio2 = promedio2 + int.Parse(mensajeprom);
+                    if (mensajeprom != "0")
+                    {
+                        contadornot2++;
+                    }
                 }
                 if (count== (numbergrades + numbertest))
                 {
+                    if (contadornot == 0)
+                        contadornot = 1;
+                    if (contadornot2 == 0)
+                        contadornot2 = 1;
                     row1["ID"]= d[0].ToString();
                     row1["Name"] = d[3].ToString();
+                    double aux1= (promedio / contadornot)*0.4, aux2= (promedio2 / contadornot2) * 0.6;
+                    
+                    row1["Promedio"] = (aux1+aux2).ToString();
+                    row1["PromedioCrip"] = (aux1 + aux2).ToString()+"%";
                     gradetotal.Rows.Add(row1);
                     count = 0;
+                    promedio=0;
+                    promedio2=0;
+                    contadornot=0;
+                    contadornot2 =0;
                 }
                 
                 count++;
@@ -228,7 +255,7 @@ namespace EducaGrado.Profesor.Subjects
             int rows = dgvDatos.Items.Count;
             for (int i=0;i < rows; i++)
             {
-                for(int j = 2; j< (2+numbergrades+numbertest);j++)
+                for(int j = 3; j< (3+numbergrades+numbertest);j++)
                 {
                     ContentPresenter myCp = dgvDatos.Columns[j].GetCellContent(dgvDatos.Items[i]) as ContentPresenter;
                     var myTemplate = myCp.ContentTemplate;
@@ -262,7 +289,6 @@ namespace EducaGrado.Profesor.Subjects
                     
                 }
             }
-            MessageBox.Show("" + listadouble[0] + " " + listadouble[6]);
 
             return listadouble;
         }

@@ -187,7 +187,7 @@
                             <Grid x:Name="GridCursorEstudiante" Margin="0 0 0 0" Background="#FFE63070" Width="10" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top"/>
 
                             <materialDesign:PackIcon Kind="ChatAlert" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="Black"/>
-                            <TextBlock Text="Pensiones" FontSize="17" VerticalAlignment="Center" Margin="20 0" Foreground="Black"/>
+                            <TextBlock Text="Reclamos" FontSize="17" VerticalAlignment="Center" Margin="20 0" Foreground="Black"/>
                         </StackPanel>
                         <StackPanel  Height="10" Width="auto" Background="#FFE63070">
                         </StackPanel>

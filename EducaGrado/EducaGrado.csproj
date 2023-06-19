@@ -203,6 +203,9 @@
     <Compile Include="Estudiante\Schedules\StudentSchedules.xaml.cs">
       <DependentUpon>StudentSchedules.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Profesor\Claims\ClaimsView.xaml.cs">
+      <DependentUpon>ClaimsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Profesor\Home\TeacherHome.xaml.cs">
       <DependentUpon>TeacherHome.xaml</DependentUpon>
     </Compile>
@@ -405,6 +408,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Profesor\Claims\ClaimsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Profesor\Home\TeacherHome.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -490,7 +497,6 @@
     <Folder Include="Estudiante\Account\" />
     <Folder Include="Estudiante\Claims\" />
     <Folder Include="Profesor\Account\" />
-    <Folder Include="Profesor\Claims\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\educadblogo.png" />

@@ -239,10 +239,37 @@ namespace Implementation
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(string.Format("{0} | Info: Register Mail send whitout problems" + Session.SessionCurrent.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("{0} | Info: Register Mail send whitout problems" +ex.Message));
                 Random rdm = new Random();
                 return rdm.Next(1000, 10000); 
             }
+
+
+        }
+        public int SendEmailClaim(string Message)
+        {
+
+
+            
+                Random rdm = new Random();
+                int code = 0;
+                code = rdm.Next(1000, 10000);
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                mail.From = new MailAddress(DBImplementation.usermail);
+            mail.To.Add(new MailAddress(DBImplementation.usermail));
+            mail.Subject = "Reclamo de: "+Session.SessionCurrent;
+                mail.Body = "" + Message;
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential(DBImplementation.usermail, DBImplementation.passwordmail);
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
+
+                return code;
+            
 
 
         }

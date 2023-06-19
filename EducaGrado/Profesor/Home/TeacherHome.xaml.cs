@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using EducaGrado.Profesor.Claims;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,19 @@ namespace EducaGrado.Profesor.Home
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            int index = ListViewMenu.SelectedIndex;
+            //MoverCursorMenu(index);
 
+            switch (index)
+            {
+                case 4:
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new ClaimsView());
+
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

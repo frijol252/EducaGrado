@@ -330,6 +330,19 @@ WHERE PersonId =@PersonId";
             }
             catch (Exception ex) { throw ex; }
         }
+        public DataTable SelectGrade(int idstu)
+        {
+
+
+            string query = @"EXEC SelectGradesAdmin @IdStudent";
+            try
+            {
+                SqlCommand cmd = DBImplementation.CreateBasicComand(query);
+                cmd.Parameters.AddWithValue("@IdStudent", idstu);
+                return DBImplementation.ExecuteDataTableCommand(cmd);
+            }
+            catch (Exception ex) { throw ex; }
+        }
         public DataTable SelectDisLike(int idcourse, string like)
         {
 
@@ -340,7 +353,7 @@ WHERE PersonId =@PersonId";
                             FROM Student s 
                             INNER JOIN Person p ON p.PersonId = s.StudentId
                             INNER JOIN UserAccount ua ON ua.UserAccountId = p.UserAccountId 
-                            WHERE p.SchoolId = @SchoolId AND s.CourseId = @CourseId AND ua.status = 0) ds 
+                            WHERE p.SchoolId = @SchoolId AND s.CourseId = @CourseId AND ua.status = 0 ds 
                             WHERE ds.Name LIKE @like OR ds.Ci LIKE @like";
             try
             {

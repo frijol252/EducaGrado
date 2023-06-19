@@ -6,6 +6,7 @@ using System.Data;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -122,12 +123,87 @@ namespace EducaGrado.Administrativo.Students
                     imagesector.Source = ToImage(person.Photo);
                     lblnames.Content = dataRow.Row.ItemArray[1].ToString();
                     lblCi.Content = dataRow.Row.ItemArray[2].ToString();
+                    dgvGrades.ItemsSource = changeGrades(id).DefaultView;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+        public DataTable changeGrades(int idstu)
+        {
+            studentImpl = new StudentImpl();
+            DataTable liststu = studentImpl.SelectGrade(idstu);
+            DataTable gradetotal = new DataTable();
+            gradetotal.Columns.Add(new DataColumn("ID"));
+            gradetotal.Columns.Add(new DataColumn("Name"));
+            gradetotal.Columns.Add(new DataColumn("Promedio"));
+            gradetotal.Columns.Add(new DataColumn("PromedioCrip"));
+            int count = 1;
+            DataRow row1 = gradetotal.NewRow();
+            string name="";
+            int promedio = 0,reps=1;
+            foreach (DataRow d in liststu.Rows)
+            {
+                
+                if (count == 1)
+                {
+                    row1 = gradetotal.NewRow();
+                    name = d[1].ToString();
+                    row1["Name"] = d[1].ToString();
+                    string mensajeprom = (d[2].ToString()).Substring(0, (d[2].ToString()).IndexOf(','));
+                    promedio = int.Parse(mensajeprom);
+                }
+                else if (name != d[1].ToString())
+                {
+
+                    row1["Promedio"] = (promedio/reps).ToString();
+                    row1["PromedioCrip"] = (promedio / reps).ToString();
+                    reps=1;
+                    gradetotal.Rows.Add(row1);
+                    row1 = gradetotal.NewRow();
+                    name = d[1].ToString();
+                    row1["Name"] = d[1].ToString();
+                    string mensajeprom = (d[2].ToString()).Substring(0, (d[2].ToString()).IndexOf(','));
+                    promedio = int.Parse(mensajeprom);
+                }
+                else
+                {
+                    reps++;
+                    string mensajeprom = (d[2].ToString()).Substring(0, (d[2].ToString()).IndexOf(','));
+                    promedio = promedio + int.Parse(mensajeprom);
+                }
+
+                if (count == liststu.Rows.Count)
+                {
+                    row1["Promedio"] = (promedio / reps).ToString();
+                    row1["PromedioCrip"] = (promedio / reps).ToString();
+                    gradetotal.Rows.Add(row1);
+                }
+                count++;
+            }
+
+            return gradetotal;
+        }
+        private DataGridTemplateColumn CreateTextBoxColumn(string header)
+        {
+            var col = new DataGridTemplateColumn();
+            col.Header = header;
+            var template = new DataTemplate();
+            var textBlockFactory = new FrameworkElementFactory(typeof(ProgressBar));
+            Binding binding = new Binding();
+            binding.Path = new PropertyPath("" + header);
+            binding.Mode = BindingMode.TwoWay;
+            textBlockFactory.Name = "progressSection";
+            textBlockFactory.SetBinding(ProgressBar.BindingGroupProperty, binding);
+            textBlockFactory.SetValue(ProgressBar.WidthProperty, 50.0);
+            textBlockFactory.SetValue(ProgressBar.MaximumProperty, 100.0);
+            template.VisualTree = textBlockFactory;
+
+            col.CellTemplate = template;
+
+            return col;
         }
         public BitmapImage ToImage(byte[] array)
         {

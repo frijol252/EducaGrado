@@ -30,6 +30,19 @@
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path='ID'}" Visibility="Collapsed" IsReadOnly="True"></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Desempeño">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate DataType="classes:AccessPointClass">
+                                        <Grid>
+                                            <StackPanel Orientation="Vertical">
+                                                <ProgressBar  Minimum="0" Maximum="100" Height="20" Value="{Binding  Path='Promedio',Mode=OneWay}" Foreground="#70ed76">
+                                                </ProgressBar>
+                                                <TextBlock Text="{Binding Path='PromedioCrip',Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn Header="Nombre" Binding="{Binding Path='Name'}" Width="150" IsReadOnly="True"/>
 
 

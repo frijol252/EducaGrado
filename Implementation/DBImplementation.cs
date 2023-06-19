@@ -7,7 +7,7 @@ namespace Implementation
     public class DBImplementation
     {
         public static string usermail = "educateam.suport@gmail.com";
-        public static string passwordmail = "tbgoavttfmjbrvbk";
+        public static string passwordmail = "vrllkubjymonwish";
         public static string connectionString = "data source = 127.0.0.1; initial catalog = EducaGrado; user id = sa; password = Univalle2019";
         public static string pathImages = @"../educaimages/";
 

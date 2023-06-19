@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using EducaGrado.Profesor.Claims;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +52,9 @@ namespace EducaGrado.Estudiante.Home
                  case 0:
                      GridPrincipal.Children.Clear();
                      break;
-                 case 2:
+                 case 4:
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new EducaGrado.Profesor.Claims.ClaimsView());
                     break;
                  default:
                      break;
